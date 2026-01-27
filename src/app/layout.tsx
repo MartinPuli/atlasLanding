@@ -15,12 +15,25 @@ export const metadata: Metadata = {
     "Argentina",
   ],
   authors: [{ name: "Atlas One" }],
+  icons: {
+    icon: "/logo-atlas.png",
+    shortcut: "/logo-atlas.png",
+    apple: "/logo-atlas.png",
+  },
   openGraph: {
     title: "Atlas One | Software, Automatizacion e Inteligencia Artificial",
     description:
       "Desarrollamos soluciones digitales a medida para empresas que buscan escalar sin friccion.",
     type: "website",
     locale: "es_AR",
+    images: [
+      {
+        url: "/logo-atlas.png",
+        width: 800,
+        height: 600,
+        alt: "Atlas One Logo",
+      },
+    ],
   },
 };
 

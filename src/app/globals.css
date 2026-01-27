@@ -750,8 +750,8 @@ h6 {
   position: fixed;
   inset: 0;
   z-index: -1;
-  background-color: #020609;
-  /* Dark Navy/Black Base */
+  background-color: #010408;
+  /* Deepest Navy/Black */
   overflow: hidden;
 }
 
@@ -759,30 +759,32 @@ h6 {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%) scale(1.1);
   width: 100vw;
   height: 100vh;
   object-fit: cover;
-  opacity: 0.3;
-  /* Subtle */
-  filter: blur(4px) saturate(0.8);
+  opacity: 0.15;
+  /* Very subtle */
   mix-blend-mode: screen;
-  transition: all 1.5s ease-out;
+  filter: contrast(1.2) brightness(1.2);
+  animation: bg-drift 30s ease-in-out infinite alternate;
 }
 
-/* Dynamic modifier classes to change globe appearance per section via JS/State if needed, 
-   or we can stick to a static subtle movement */
-.globe-state-default {
-  transform: translate(-50%, -50%) scale(1);
-}
+@keyframes bg-drift {
+  0% {
+    transform: translate(-50%, -50%) scale(1.1) rotate(0deg);
+    filter: contrast(1.2) brightness(1.2) hue-rotate(0deg);
+  }
 
-.globe-state-zoomed {
-  transform: translate(-50%, -50%) scale(1.2);
-  opacity: 0.2;
-}
+  50% {
+    transform: translate(-48%, -48%) scale(1.15) rotate(1deg);
+    filter: contrast(1.2) brightness(1.4) hue-rotate(10deg);
+  }
 
-.globe-state-shifted {
-  transform: translate(-40%, -50%) scale(1.1);
+  100% {
+    transform: translate(-52%, -52%) scale(1.1) rotate(-1deg);
+    filter: contrast(1.2) brightness(1.2) hue-rotate(-5deg);
+  }
 }
 
 /* ========== SECTION: PROBLEMS (Grid) ========== */
@@ -890,6 +892,50 @@ h6 {
   background: rgba(3, 11, 18, 0.85);
   border-color: rgba(0, 229, 255, 0.3);
   transform: translateY(-5px);
+}
+
+/* ========== SECTIONS ========== */
+.section-center {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+/* ========== PILLARS EMPHASIS ========== */
+.pillar-card {
+  position: relative;
+  background: linear-gradient(180deg, rgba(5, 18, 25, 0.8), rgba(3, 11, 18, 0.6));
+  border-radius: 20px;
+  border: 1px solid rgba(0, 229, 255, 0.1);
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.pillar-card:hover {
+  transform: translateY(-8px);
+  border-color: rgba(0, 229, 255, 0.4);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5), 0 0 40px rgba(0, 229, 255, 0.1);
+  background: linear-gradient(180deg, rgba(5, 18, 25, 0.9), rgba(0, 229, 255, 0.05));
+}
+
+.pillar-card .icon-glow {
+  background: radial-gradient(circle, rgba(0, 229, 255, 0.15) 0%, transparent 70%);
+  border-radius: 50%;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  transition: all 0.3s ease;
+}
+
+.pillar-card:hover .icon-glow {
+  background: radial-gradient(circle, rgba(0, 229, 255, 0.25) 0%, transparent 70%);
+  transform: scale(1.1);
 }
 
 /* ========== TYPOGRAPHY UTILS ========== */
