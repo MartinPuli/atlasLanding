@@ -1,40 +1,48 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useCallback } from "react";
+import Image from "next/image";
 
 // ============ DATA ============
 
-const services = [
+const pillars = [
   {
-    title: "Desarrollo de Software a Medida",
-    description: "Sistemas internos, plataformas web, backoffice, dashboards, APIs e integraciones personalizadas.",
-    icon: "code",
-  },
-  {
-    title: "Aplicaciones Mobile",
-    description: "Apps iOS y Android modernas, escalables e integradas con pagos, metricas y automatizacion.",
-    icon: "mobile",
-  },
-  {
-    title: "CRM y Sistemas de Gestion",
-    description: "CRM comerciales, ERP livianos y sistemas operativos internos hechos a medida.",
-    icon: "database",
-  },
-  {
-    title: "Automatizacion de Procesos",
-    description: "Flujos automaticos, integracion entre herramientas y eliminacion de tareas manuales.",
-    icon: "automation",
-  },
-  {
-    title: "Agentes de Inteligencia Artificial",
-    description: "Agentes de IA para ventas, soporte, analisis, operaciones y toma de decisiones.",
+    id: "ia",
+    name: "Atlas IA",
+    title: "Inteligencia Artificial",
+    description: "Agentes de IA para ventas, soporte, analisis, operaciones y toma de decisiones integrados a tus sistemas.",
     icon: "ai",
   },
   {
-    title: "Web y Plataformas Digitales",
-    description: "Sitios corporativos, landing pages, dashboards y portales digitales de alto impacto.",
-    icon: "globe",
+    id: "software",
+    name: "Atlas Software",
+    title: "Desarrollo a Medida",
+    description: "Sistemas internos, plataformas web, dashboards, APIs e integraciones disenadas para tu negocio.",
+    icon: "code",
   },
+  {
+    id: "cybersecurity",
+    name: "Atlas Cibersecurity",
+    title: "Seguridad Digital",
+    description: "Proteccion integral, auditorias de seguridad, monitoreo y respuesta ante amenazas para tu infraestructura.",
+    icon: "shield",
+  },
+  {
+    id: "analytics",
+    name: "Atlas Analytics",
+    title: "Datos e Inteligencia",
+    description: "Dashboards, reportes automatizados, visualizacion de datos y Business Intelligence para decisiones informadas.",
+    icon: "chart",
+  },
+];
+
+const services = [
+  { title: "Desarrollo de Software a Medida", description: "Sistemas internos, plataformas web, backoffice, dashboards, APIs e integraciones personalizadas.", icon: "code" },
+  { title: "Aplicaciones Mobile", description: "Apps iOS y Android modernas, escalables e integradas con pagos, metricas y automatizacion.", icon: "mobile" },
+  { title: "CRM y Sistemas de Gestion", description: "CRM comerciales, ERP livianos y sistemas operativos internos hechos a medida.", icon: "database" },
+  { title: "Automatizacion de Procesos", description: "Flujos automaticos, integracion entre herramientas y eliminacion de tareas manuales.", icon: "automation" },
+  { title: "Agentes de Inteligencia Artificial", description: "Agentes de IA para ventas, soporte, analisis, operaciones y toma de decisiones.", icon: "ai" },
+  { title: "Web y Plataformas Digitales", description: "Sitios corporativos, landing pages, dashboards y portales digitales de alto impacto.", icon: "globe" },
 ];
 
 const processSteps = [
@@ -63,6 +71,12 @@ const targetAudience = [
   "Negocios que buscan aplicar IA de forma real",
 ];
 
+const socialLinks = [
+  { name: "Instagram", url: "https://www.instagram.com/atlasone.arg/", icon: "instagram" },
+  { name: "LinkedIn", url: "https://www.linkedin.com/company/atlas-one-erp-ar/", icon: "linkedin" },
+  { name: "X", url: "https://x.com/atlasonearg", icon: "x" },
+];
+
 // ============ HOOKS ============
 
 function useScrollReveal(threshold = 0.1) {
@@ -83,106 +97,134 @@ function useScrollReveal(threshold = 0.1) {
   return { ref, isVisible };
 }
 
+function useNavScroll() {
+  const [visible, setVisible] = useState(true);
+  const [scrolled, setScrolled] = useState(false);
+  const lastScrollY = useRef(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+      setScrolled(currentScrollY > 50);
+
+      if (currentScrollY < 100) {
+        setVisible(true);
+      } else if (currentScrollY > lastScrollY.current) {
+        setVisible(false);
+      } else {
+        setVisible(true);
+      }
+      lastScrollY.current = currentScrollY;
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  return { visible, scrolled };
+}
+
 // ============ ICONS ============
 
-function ServiceIcon({ type }: { type: string }) {
+function Icon({ type, className = "w-7 h-7" }: { type: string; className?: string }) {
   const icons: Record<string, React.ReactNode> = {
     code: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-8 h-8">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className={className}>
         <path strokeLinecap="round" strokeLinejoin="round" d="M17.25 6.75L22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3l-4.5 16.5" />
       </svg>
     ),
     mobile: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-8 h-8">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className={className}>
         <path strokeLinecap="round" strokeLinejoin="round" d="M10.5 1.5H8.25A2.25 2.25 0 006 3.75v16.5a2.25 2.25 0 002.25 2.25h7.5A2.25 2.25 0 0018 20.25V3.75a2.25 2.25 0 00-2.25-2.25H13.5m-3 0V3h3V1.5m-3 0h3m-3 18.75h3" />
       </svg>
     ),
     database: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-8 h-8">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className={className}>
         <path strokeLinecap="round" strokeLinejoin="round" d="M20.25 6.375c0 2.278-3.694 4.125-8.25 4.125S3.75 8.653 3.75 6.375m16.5 0c0-2.278-3.694-4.125-8.25-4.125S3.75 4.097 3.75 6.375m16.5 0v11.25c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125V6.375m16.5 0v3.75m-16.5-3.75v3.75m16.5 0v3.75C20.25 16.153 16.556 18 12 18s-8.25-1.847-8.25-4.125v-3.75m16.5 0c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125" />
       </svg>
     ),
     automation: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-8 h-8">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className={className}>
         <path strokeLinecap="round" strokeLinejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182m0-4.991v4.99" />
       </svg>
     ),
     ai: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-8 h-8">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className={className}>
         <path strokeLinecap="round" strokeLinejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 00-2.456 2.456zM16.894 20.567L16.5 21.75l-.394-1.183a2.25 2.25 0 00-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 001.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 001.423 1.423l1.183.394-1.183.394a2.25 2.25 0 00-1.423 1.423z" />
       </svg>
     ),
     globe: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-8 h-8">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className={className}>
         <path strokeLinecap="round" strokeLinejoin="round" d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0112 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 013 12c0-1.605.42-3.113 1.157-4.418" />
       </svg>
     ),
+    shield: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className={className}>
+        <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" />
+      </svg>
+    ),
+    chart: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className={className}>
+        <path strokeLinecap="round" strokeLinejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 013 19.875v-6.75zM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V8.625zM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V4.125z" />
+      </svg>
+    ),
+    instagram: (
+      <svg viewBox="0 0 24 24" fill="currentColor" className={className}>
+        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+      </svg>
+    ),
+    linkedin: (
+      <svg viewBox="0 0 24 24" fill="currentColor" className={className}>
+        <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+      </svg>
+    ),
+    x: (
+      <svg viewBox="0 0 24 24" fill="currentColor" className={className}>
+        <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+      </svg>
+    ),
   };
-  return icons[type] || icons.code;
+  return <>{icons[type] || icons.code}</>;
 }
 
 // ============ COMPONENTS ============
 
-function AtlasLogo({ className = "" }: { className?: string }) {
-  return (
-    <svg viewBox="0 0 100 100" fill="none" className={className}>
-      <defs>
-        <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stopColor="#38BDF8" />
-          <stop offset="100%" stopColor="#0EA5E9" />
-        </linearGradient>
-        <filter id="glow">
-          <feGaussianBlur stdDeviation="3" result="coloredBlur" />
-          <feMerge>
-            <feMergeNode in="coloredBlur" />
-            <feMergeNode in="SourceGraphic" />
-          </feMerge>
-        </filter>
-      </defs>
-      <polygon
-        points="50,10 90,85 10,85"
-        fill="none"
-        stroke="url(#logoGradient)"
-        strokeWidth="2"
-        filter="url(#glow)"
-      />
-      <polygon
-        points="50,25 75,70 25,70"
-        fill="none"
-        stroke="url(#logoGradient)"
-        strokeWidth="1.5"
-        opacity="0.6"
-      />
-      <circle cx="50" cy="55" r="8" fill="url(#logoGradient)" opacity="0.8" />
-    </svg>
-  );
-}
-
 function Navigation() {
-  const [scrolled, setScrolled] = useState(false);
+  const { visible, scrolled } = useNavScroll();
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 50);
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    setMounted(true);
   }, []);
 
   return (
-    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? "nav-blur" : ""}`}>
-      <div className="container flex items-center justify-between h-20">
-        <a href="#" className="flex items-center gap-3">
-          <AtlasLogo className="w-10 h-10" />
-          <span className="text-white font-semibold text-lg tracking-tight">Atlas One</span>
+    <nav className={`nav ${visible ? "nav-visible" : "nav-hidden"} ${scrolled ? "nav-blur" : ""} ${mounted ? "animate-slide-down" : "opacity-0"}`}>
+      <div className="container flex items-center justify-between h-16 md:h-20">
+        <a href="#" className="flex items-center gap-2 md:gap-3">
+          <Image src="/atlas-logo.svg" alt="Atlas One" width={36} height={36} className="w-8 h-8 md:w-9 md:h-9" />
+          <span className="text-white font-semibold text-base md:text-lg tracking-tight">Atlas One</span>
         </a>
-        <div className="hidden md:flex items-center gap-2">
+
+        <div className="hidden md:flex items-center gap-1">
           <a href="#" className="nav-link">Inicio</a>
-          <a href="#servicios" className="nav-link">Soluciones</a>
+          <a href="#pilares" className="nav-link">Pilares</a>
+          <a href="#servicios" className="nav-link">Servicios</a>
           <a href="#nosotros" className="nav-link">Nosotros</a>
           <a href="#contacto" className="nav-link">Contacto</a>
         </div>
-        <a href="#contacto" className="btn-primary text-sm py-3 px-6 hidden sm:flex">
-          Iniciar proyecto
-        </a>
+
+        <div className="flex items-center gap-3">
+          <div className="hidden sm:flex items-center gap-2">
+            {socialLinks.map((link) => (
+              <a key={link.name} href={link.url} target="_blank" rel="noopener noreferrer" className="social-link !w-9 !h-9" aria-label={link.name}>
+                <Icon type={link.icon} className="w-4 h-4" />
+              </a>
+            ))}
+          </div>
+          <a href="#contacto" className="btn-primary text-sm py-2.5 px-5 hidden sm:flex">
+            Iniciar proyecto
+          </a>
+        </div>
       </div>
     </nav>
   );
@@ -191,75 +233,51 @@ function Navigation() {
 function HeroBackground() {
   return (
     <div className="hero-bg">
-      {/* Waves */}
-      <div className="wave-container">
-        <div className="wave wave-1" />
-        <div className="wave wave-2" />
-        <div className="wave wave-3" />
-      </div>
-
-      {/* Particles */}
-      <div className="particles">
-        {[...Array(20)].map((_, i) => (
-          <div
-            key={i}
-            className="particle"
-            style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-              animationDelay: `${Math.random() * 15}s`,
-              animationDuration: `${15 + Math.random() * 10}s`,
-            }}
-          />
-        ))}
-      </div>
-
-      {/* Glow orbs */}
-      <div
-        className="glow-orb"
-        style={{
-          width: "800px",
-          height: "800px",
-          background: "radial-gradient(circle, rgba(14, 165, 233, 0.15) 0%, transparent 60%)",
-          top: "-300px",
-          left: "50%",
-          transform: "translateX(-50%)",
-        }}
-      />
-      <div
-        className="glow-orb"
-        style={{
-          width: "600px",
-          height: "600px",
-          background: "radial-gradient(circle, rgba(6, 182, 212, 0.1) 0%, transparent 60%)",
-          bottom: "-200px",
-          right: "-200px",
-          animationDelay: "4s",
-        }}
-      />
+      <div className="glow-orb glow-orb-1" />
+      <div className="glow-orb glow-orb-2" />
+      <div className="glow-orb glow-orb-3" />
     </div>
   );
 }
 
-function ServiceCard({ title, description, icon, index }: { title: string; description: string; icon: string; index: number }) {
+function PillarCard({ pillar, index }: { pillar: typeof pillars[0]; index: number }) {
   const { ref, isVisible } = useScrollReveal();
 
   return (
     <div
       ref={ref}
-      className={`glass-card p-8 ${isVisible ? "animate-fade-in-up" : "opacity-0"}`}
+      className={`pillar-card p-6 md:p-8 ${isVisible ? "animate-fade-in-up" : "opacity-0"}`}
       style={{ animationDelay: `${index * 100}ms` }}
     >
-      <div className="icon-glow mb-6">
-        <ServiceIcon type={icon} />
+      <div className="icon-glow mb-5">
+        <Icon type={pillar.icon} className="w-10 h-10" />
       </div>
-      <h3 className="text-xl font-bold text-white mb-4">{title}</h3>
-      <p className="text-[var(--foreground-muted)] leading-relaxed">{description}</p>
+      <p className="text-[var(--accent-primary)] text-sm font-medium mb-2">{pillar.name}</p>
+      <h3 className="text-xl md:text-2xl font-bold text-white mb-3">{pillar.title}</h3>
+      <p className="text-[var(--foreground-muted)] leading-relaxed">{pillar.description}</p>
     </div>
   );
 }
 
-function ProcessStep({ number, title, isLast, index }: { number: string; title: string; isLast: boolean; index: number }) {
+function ServiceCard({ service, index }: { service: typeof services[0]; index: number }) {
+  const { ref, isVisible } = useScrollReveal();
+
+  return (
+    <div
+      ref={ref}
+      className={`glass-card p-6 ${isVisible ? "animate-fade-in-up" : "opacity-0"}`}
+      style={{ animationDelay: `${index * 80}ms` }}
+    >
+      <div className="icon-glow mb-4">
+        <Icon type={service.icon} />
+      </div>
+      <h3 className="text-lg font-bold text-white mb-2">{service.title}</h3>
+      <p className="text-[var(--foreground-muted)] text-sm leading-relaxed">{service.description}</p>
+    </div>
+  );
+}
+
+function ProcessStep({ step, isLast, index }: { step: typeof processSteps[0]; isLast: boolean; index: number }) {
   const { ref, isVisible } = useScrollReveal();
 
   return (
@@ -268,22 +286,22 @@ function ProcessStep({ number, title, isLast, index }: { number: string; title: 
       className={`timeline-step ${isVisible ? "animate-fade-in-up" : "opacity-0"}`}
       style={{ animationDelay: `${index * 100}ms` }}
     >
-      <div className="timeline-number">{number}</div>
-      <p className="text-white font-medium text-sm md:text-base mt-4 max-w-[140px]">{title}</p>
-      {!isLast && <div className="timeline-connector hidden lg:block" />}
+      <div className="timeline-number">{step.number}</div>
+      <p className="text-white font-medium text-sm mt-4 max-w-[120px]">{step.title}</p>
+      {!isLast && <div className="timeline-line hidden lg:block" />}
     </div>
   );
 }
 
 function Section({ children, className = "", id, dark = false }: { children: React.ReactNode; className?: string; id?: string; dark?: boolean }) {
-  const { ref, isVisible } = useScrollReveal();
+  const { ref, isVisible } = useScrollReveal(0.05);
 
   return (
     <section
       ref={ref}
       id={id}
       className={`section ${dark ? "bg-[var(--background-secondary)]" : ""} ${className}`}
-      style={{ opacity: isVisible ? 1 : 0, transition: "opacity 0.8s ease-out" }}
+      style={{ opacity: isVisible ? 1 : 0, transition: "opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1)" }}
     >
       {children}
     </section>
@@ -305,22 +323,30 @@ export default function Home() {
 
       <main className="min-h-screen bg-[var(--background)]">
         {/* Hero Section */}
-        <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden">
+        <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden px-6">
           <HeroBackground />
 
-          <div className="relative z-10 text-center px-6 max-w-5xl mx-auto">
+          <div className="relative z-10 text-center max-w-4xl mx-auto">
             {/* Logo */}
-            <div
-              className={`logo-container mb-12 ${mounted ? "animate-fade-in" : "opacity-0"}`}
-            >
+            <div className={`logo-wrapper mb-8 md:mb-10 ${mounted ? "animate-fade-in" : "opacity-0"}`}>
               <div className="logo-glow" />
-              <AtlasLogo className="logo-svg w-32 h-32 md:w-40 md:h-40" />
+              <Image
+                src="/atlas-logo.svg"
+                alt="Atlas One"
+                width={140}
+                height={140}
+                className="logo-image w-28 h-28 md:w-36 md:h-36"
+                priority
+              />
             </div>
 
+            {/* Brand name */}
+            <h2 className={`text-[var(--accent-primary)] text-xl md:text-2xl font-bold tracking-wider mb-6 ${mounted ? "animate-fade-in-up delay-1" : "opacity-0"}`}>
+              ATLAS ONE
+            </h2>
+
             {/* Headline */}
-            <h1
-              className={`text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white mb-8 leading-[1.1] ${mounted ? "animate-fade-in-up" : "opacity-0"}`}
-            >
+            <h1 className={`text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-[1.15] ${mounted ? "animate-fade-in-up delay-2" : "opacity-0"}`}>
               Construimos software.
               <br />
               Automatizamos procesos.
@@ -329,49 +355,62 @@ export default function Home() {
             </h1>
 
             {/* Subheadline */}
-            <p
-              className={`text-lg md:text-xl text-[var(--foreground-muted)] mb-12 max-w-3xl mx-auto leading-relaxed ${mounted ? "animate-fade-in-up animate-delay-200" : "opacity-0"}`}
-            >
-              Desarrollamos soluciones digitales a medida: software, aplicaciones, CRM,
-              automatizaciones y agentes de inteligencia artificial para empresas que buscan escalar sin friccion.
+            <p className={`text-base md:text-lg text-[var(--foreground-muted)] mb-10 max-w-2xl mx-auto leading-relaxed ${mounted ? "animate-fade-in-up delay-3" : "opacity-0"}`}>
+              Desarrollamos soluciones digitales a medida: software, aplicaciones, CRM, automatizaciones y agentes de inteligencia artificial para empresas que buscan escalar sin friccion.
             </p>
 
             {/* CTAs */}
-            <div
-              className={`flex flex-col sm:flex-row gap-4 justify-center ${mounted ? "animate-fade-in-up animate-delay-300" : "opacity-0"}`}
-            >
+            <div className={`flex flex-col sm:flex-row gap-4 justify-center ${mounted ? "animate-fade-in-up delay-4" : "opacity-0"}`}>
               <a href="#contacto" className="btn-primary">
                 Iniciar proyecto
               </a>
-              <a href="#servicios" className="btn-secondary">
+              <a href="#pilares" className="btn-secondary">
                 Ver soluciones
               </a>
             </div>
           </div>
 
           {/* Scroll indicator */}
-          <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2">
-            <div className="w-px h-16 bg-gradient-to-b from-transparent via-[var(--accent-primary)] to-transparent opacity-50" />
+          <div className={`absolute bottom-8 left-1/2 -translate-x-1/2 ${mounted ? "animate-fade-in delay-5" : "opacity-0"}`}>
+            <div className="w-px h-12 bg-gradient-to-b from-transparent via-[var(--accent-primary)] to-transparent opacity-40" />
           </div>
         </section>
 
-        {/* About Section */}
-        <Section id="nosotros" dark>
+        {/* Pillars Section */}
+        <Section id="pilares" dark>
           <div className="container">
-            <div className="grid lg:grid-cols-2 gap-16 items-center">
-              <div>
-                <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-8">
+            <div className="text-center mb-12 md:mb-16">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4">
+                Nuestros <span className="gradient-text">4 Pilares</span>
+              </h2>
+              <p className="text-base md:text-lg text-[var(--foreground-muted)] max-w-2xl mx-auto">
+                Cuatro areas de especializacion para transformar tu negocio
+              </p>
+            </div>
+
+            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 md:gap-6">
+              {pillars.map((pillar, index) => (
+                <PillarCard key={pillar.id} pillar={pillar} index={index} />
+              ))}
+            </div>
+          </div>
+        </Section>
+
+        {/* About Section */}
+        <Section id="nosotros">
+          <div className="container">
+            <div className="grid lg:grid-cols-2 gap-10 md:gap-16 items-center">
+              <div className="text-center lg:text-left">
+                <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6">
                   Que es <span className="gradient-text">Atlas One</span>
                 </h2>
               </div>
-              <div>
-                <p className="text-lg text-[var(--foreground-muted)] mb-6 leading-relaxed">
-                  Atlas One es una firma de desarrollo tecnologico enfocada en disenar y construir
-                  sistemas digitales modernos, escalables y alineados al negocio real.
+              <div className="text-center lg:text-left">
+                <p className="text-base md:text-lg text-[var(--foreground-muted)] mb-5 leading-relaxed">
+                  Atlas One es una firma de desarrollo tecnologico enfocada en disenar y construir sistemas digitales modernos, escalables y alineados al negocio real.
                 </p>
-                <p className="text-lg text-[var(--foreground-muted)] leading-relaxed">
-                  No vendemos productos genericos ni software cerrado. Creamos soluciones a medida
-                  que integran software, automatizacion e inteligencia artificial.
+                <p className="text-base md:text-lg text-[var(--foreground-muted)] leading-relaxed">
+                  No vendemos productos genericos ni software cerrado. Creamos soluciones a medida que integran software, automatizacion e inteligencia artificial.
                 </p>
               </div>
             </div>
@@ -379,47 +418,42 @@ export default function Home() {
         </Section>
 
         {/* Services Section */}
-        <Section id="servicios">
+        <Section id="servicios" dark>
           <div className="container">
-            <div className="text-center mb-20">
-              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6">
-                Nuestras <span className="gradient-text">soluciones</span>
+            <div className="text-center mb-12 md:mb-16">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4">
+                Nuestras <span className="gradient-text">Soluciones</span>
               </h2>
-              <p className="text-lg text-[var(--foreground-muted)] max-w-2xl mx-auto">
+              <p className="text-base md:text-lg text-[var(--foreground-muted)] max-w-2xl mx-auto">
                 Tecnologia disenada para escalar tu negocio
               </p>
             </div>
 
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">
               {services.map((service, index) => (
-                <ServiceCard key={service.title} {...service} index={index} />
+                <ServiceCard key={service.title} service={service} index={index} />
               ))}
             </div>
           </div>
         </Section>
 
         {/* Process Section */}
-        <Section id="proceso" dark>
+        <Section id="proceso">
           <div className="container">
-            <div className="text-center mb-20">
-              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6">
-                Como <span className="gradient-text">trabajamos</span>
+            <div className="text-center mb-12 md:mb-16">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4">
+                Como <span className="gradient-text">Trabajamos</span>
               </h2>
             </div>
 
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 mb-20">
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 md:gap-8 mb-12 md:mb-16">
               {processSteps.map((step, index) => (
-                <ProcessStep
-                  key={step.number}
-                  {...step}
-                  isLast={index === processSteps.length - 1}
-                  index={index}
-                />
+                <ProcessStep key={step.number} step={step} isLast={index === processSteps.length - 1} index={index} />
               ))}
             </div>
 
             <div className="text-center">
-              <p className="text-xl md:text-2xl text-[var(--foreground-muted)] font-medium italic max-w-3xl mx-auto">
+              <p className="text-lg md:text-xl text-[var(--foreground-muted)] font-medium italic max-w-3xl mx-auto">
                 &ldquo;No desarrollamos por desarrollar. Construimos sistemas que funcionan en el mundo real.&rdquo;
               </p>
             </div>
@@ -427,26 +461,26 @@ export default function Home() {
         </Section>
 
         {/* Why Atlas One Section */}
-        <Section>
+        <Section dark>
           <div className="container">
-            <div className="grid lg:grid-cols-2 gap-16 items-center">
-              <div>
-                <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-12">
+            <div className="grid lg:grid-cols-2 gap-10 md:gap-16 items-center">
+              <div className="text-center lg:text-left">
+                <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-8 md:mb-10">
                   Por que <span className="gradient-text">Atlas One</span>
                 </h2>
 
-                <ul className="space-y-5">
+                <ul className="space-y-4 inline-block text-left">
                   {differentiators.map((item, index) => (
                     <li key={index} className="flex items-center gap-4">
-                      <div className="w-2 h-2 rounded-full bg-[var(--accent-primary)] flex-shrink-0 shadow-[0_0_10px_var(--accent-primary)]" />
-                      <span className="text-lg text-[var(--foreground-muted)]">{item}</span>
+                      <div className="w-2 h-2 rounded-full bg-[var(--accent-primary)] flex-shrink-0" style={{ boxShadow: "0 0 10px var(--accent-primary)" }} />
+                      <span className="text-base md:text-lg text-[var(--foreground-muted)]">{item}</span>
                     </li>
                   ))}
                 </ul>
               </div>
 
-              <div className="quote-block">
-                <blockquote className="text-xl md:text-2xl text-white font-medium leading-relaxed">
+              <div className="quote-block text-center lg:text-left">
+                <blockquote className="text-lg md:text-xl text-white font-medium leading-relaxed">
                   &ldquo;Si un sistema no escala, no es una solucion. En Atlas One construimos pensando en el futuro.&rdquo;
                 </blockquote>
               </div>
@@ -455,17 +489,17 @@ export default function Home() {
         </Section>
 
         {/* Target Audience Section */}
-        <Section dark>
+        <Section>
           <div className="container">
-            <div className="text-center mb-16">
-              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6">
-                Para quienes <span className="gradient-text">trabajamos</span>
+            <div className="text-center mb-12 md:mb-16">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4">
+                Para quienes <span className="gradient-text">Trabajamos</span>
               </h2>
             </div>
 
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5 max-w-5xl mx-auto">
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-5 max-w-4xl mx-auto">
               {targetAudience.map((audience, index) => (
-                <div key={index} className="glass-card p-6 text-center">
+                <div key={index} className="glass-card p-5 text-center">
                   <p className="text-white font-medium">{audience}</p>
                 </div>
               ))}
@@ -474,26 +508,19 @@ export default function Home() {
         </Section>
 
         {/* Final CTA Section */}
-        <Section id="contacto" className="relative">
-          <div className="absolute inset-0 overflow-hidden">
-            <div className="wave-container">
-              <div className="wave wave-1" style={{ opacity: 0.3 }} />
-              <div className="wave wave-2" style={{ opacity: 0.2 }} />
-            </div>
-          </div>
-
-          <div className="container relative z-10">
+        <Section id="contacto" dark>
+          <div className="container">
             <div className="text-center max-w-3xl mx-auto">
-              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4">
                 Que sistema podriamos <span className="gradient-text">construir juntos</span>?
               </h2>
-              <p className="text-xl text-[var(--foreground-muted)] mb-4">
+              <p className="text-lg md:text-xl text-[var(--foreground-muted)] mb-3">
                 Contanos tu idea, problema o proceso.
               </p>
-              <p className="text-xl text-[var(--foreground-muted)] mb-12">
+              <p className="text-lg md:text-xl text-[var(--foreground-muted)] mb-10">
                 Nosotros lo convertimos en software.
               </p>
-              <a href="#" className="btn-primary text-lg px-12 py-5">
+              <a href="#" className="btn-primary text-base md:text-lg px-10 py-4">
                 Iniciar proyecto con Atlas One
               </a>
             </div>
@@ -501,10 +528,26 @@ export default function Home() {
         </Section>
 
         {/* Footer */}
-        <footer className="py-16 border-t border-[rgba(56,189,248,0.1)]">
+        <footer className="py-12 md:py-16 border-t border-[var(--border-color)]">
           <div className="container">
-            <div className="text-center">
-              <p className="text-[var(--foreground-muted)] mb-4">
+            <div className="flex flex-col items-center text-center">
+              {/* Logo */}
+              <div className="flex items-center gap-3 mb-6">
+                <Image src="/atlas-logo.svg" alt="Atlas One" width={32} height={32} />
+                <span className="text-white font-semibold text-lg">Atlas One</span>
+              </div>
+
+              {/* Social Links */}
+              <div className="flex items-center gap-3 mb-6">
+                {socialLinks.map((link) => (
+                  <a key={link.name} href={link.url} target="_blank" rel="noopener noreferrer" className="social-link" aria-label={link.name}>
+                    <Icon type={link.icon} className="w-5 h-5" />
+                  </a>
+                ))}
+              </div>
+
+              {/* Text */}
+              <p className="text-[var(--foreground-muted)] mb-2">
                 Atlas One · Software · Automatizacion · Inteligencia Artificial
               </p>
               <p className="text-white font-medium">
