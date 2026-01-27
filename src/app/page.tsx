@@ -170,22 +170,24 @@ function Icon({ type, className = "w-7 h-7" }: { type: string; className?: strin
     ),
     instagram: (
       <svg viewBox="0 0 24 24" fill="currentColor" className={className}>
-        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
       </svg>
     ),
     linkedin: (
       <svg viewBox="0 0 24 24" fill="currentColor" className={className}>
-        <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+        <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
       </svg>
     ),
     x: (
       <svg viewBox="0 0 24 24" fill="currentColor" className={className}>
-        <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+        <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
       </svg>
     ),
   };
   return <>{icons[type] || icons.code}</>;
 }
+
+// ============ COMPONENTS ============
 
 // ============ COMPONENTS ============
 
@@ -199,30 +201,35 @@ function Navigation() {
 
   return (
     <nav className={`nav ${visible ? "nav-visible" : "nav-hidden"} ${scrolled ? "nav-blur" : ""} ${mounted ? "animate-slide-down" : "opacity-0"}`}>
-      <div className="container flex items-center justify-between h-16 md:h-20">
-        <a href="#" className="flex items-center gap-2 md:gap-3">
-          <Image src="/atlas-logo.svg" alt="Atlas One" width={36} height={36} className="w-8 h-8 md:w-9 md:h-9" />
-          <span className="text-white font-semibold text-base md:text-lg tracking-tight">Atlas One</span>
+      <div className="container flex items-center justify-between h-20 md:h-24">
+        {/* Logo */}
+        <a href="#" className="flex items-center gap-3">
+          <Image src="/logo-atlas.png" alt="Atlas One" width={40} height={40} className="w-10 h-10 md:w-12 md:h-12 object-contain" />
+          <span className="text-white font-bold text-lg md:text-xl tracking-tight hidden sm:block">ATLAS ONE</span>
         </a>
 
-        <div className="hidden md:flex items-center gap-1">
-          <a href="#" className="nav-link">Inicio</a>
-          <a href="#pilares" className="nav-link">Pilares</a>
-          <a href="#servicios" className="nav-link">Servicios</a>
-          <a href="#nosotros" className="nav-link">Nosotros</a>
-          <a href="#contacto" className="nav-link">Contacto</a>
+        {/* Centered Links */}
+        <div className="hidden md:flex items-center gap-8 absolute left-1/2 -translate-x-1/2">
+          <a href="#" className="nav-link">Home</a>
+          <a href="#pilares" className="nav-link">Solutions</a>
+          <a href="#nosotros" className="nav-link">About</a>
+          <a href="#contacto" className="nav-link">Contact</a>
         </div>
 
-        <div className="flex items-center gap-3">
-          <div className="hidden sm:flex items-center gap-2">
-            {socialLinks.map((link) => (
-              <a key={link.name} href={link.url} target="_blank" rel="noopener noreferrer" className="social-link !w-9 !h-9" aria-label={link.name}>
-                <Icon type={link.icon} className="w-4 h-4" />
-              </a>
-            ))}
-          </div>
-          <a href="#contacto" className="btn-primary text-sm py-2.5 px-5 hidden sm:flex">
-            Iniciar proyecto
+        {/* Right Actions */}
+        <div className="flex items-center gap-4">
+          {/* Search Icon Placeholder */}
+          <button className="text-[var(--foreground-muted)] hover:text-white transition-colors hidden lg:block">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5">
+              <path strokeLinecap="round" strokeLinejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
+            </svg>
+          </button>
+
+          <a href="#contacto" className="btn-primary py-2 px-6 text-sm">
+            Sign up
+          </a>
+          <a href="#" className="text-sm font-medium text-[var(--foreground-muted)] hover:text-white transition-colors hidden sm:block">
+            Log in
           </a>
         </div>
       </div>
@@ -233,9 +240,18 @@ function Navigation() {
 function HeroBackground() {
   return (
     <div className="hero-bg">
-      <div className="glow-orb glow-orb-1" />
-      <div className="glow-orb glow-orb-2" />
-      <div className="glow-orb glow-orb-3" />
+      {/* Deep Space Background */}
+      <div className="absolute inset-0 bg-[#020609]" />
+
+      {/* Glowing Orbs */}
+      <div className="glow-orb glow-orb-1 opacity-40" />
+      <div className="glow-orb glow-orb-2 opacity-30" />
+
+      {/* Bottom Wave Effect */}
+      <div className="absolute bottom-0 left-0 right-0 h-[40vh] bg-gradient-to-t from-[#00E5FF]/20 via-transparent to-transparent opacity-60 mix-blend-screen" />
+      <div className="wave-line wave-1" />
+      <div className="wave-line wave-2" />
+      <div className="wave-line wave-3" />
     </div>
   );
 }
@@ -323,56 +339,42 @@ export default function Home() {
 
       <main className="min-h-screen bg-[var(--background)]">
         {/* Hero Section */}
-        <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden px-6">
+        <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden px-4 pt-20">
           <HeroBackground />
 
-          <div className="relative z-10 text-center max-w-4xl mx-auto">
-            {/* Logo */}
-            <div className={`logo-wrapper mb-8 md:mb-10 ${mounted ? "animate-fade-in" : "opacity-0"}`}>
-              <div className="logo-glow" />
+          <div className="relative z-10 text-center max-w-5xl mx-auto flex flex-col items-center">
+
+            {/* Giant Glowing Logo */}
+            <div className={`relative mb-12 ${mounted ? "animate-fade-in" : "opacity-0"}`}>
+              <div className="absolute inset-0 bg-[#00E5FF] blur-[100px] opacity-20 rounded-full scale-150" />
               <Image
-                src="/atlas-logo.svg"
-                alt="Atlas One"
-                width={140}
-                height={140}
-                className="logo-image w-28 h-28 md:w-36 md:h-36"
+                src="/logo-atlas.png"
+                alt="Atlas One Hero Logo"
+                width={300}
+                height={300}
+                className="relative w-48 h-48 sm:w-64 sm:h-64 md:w-80 md:h-80 object-contain drop-shadow-[0_0_50px_rgba(0,229,255,0.5)]"
                 priority
               />
             </div>
 
-            {/* Brand name */}
-            <h2 className={`text-[var(--accent-primary)] text-xl md:text-2xl font-bold tracking-wider mb-6 ${mounted ? "animate-fade-in-up delay-1" : "opacity-0"}`}>
-              ATLAS ONE
-            </h2>
-
             {/* Headline */}
-            <h1 className={`text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-[1.15] ${mounted ? "animate-fade-in-up delay-2" : "opacity-0"}`}>
-              Construimos software.
+            <h1 className={`text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-[1.1] tracking-tight ${mounted ? "animate-fade-in-up delay-1" : "opacity-0"}`}>
+              Innovating Data & Technology
               <br />
-              Automatizamos procesos.
-              <br />
-              <span className="gradient-text">Creamos sistemas inteligentes.</span>
+              <span className="font-light text-[var(--foreground-muted)] block mt-2 md:mt-4">For Real-World Decisions</span>
             </h1>
 
-            {/* Subheadline */}
-            <p className={`text-base md:text-lg text-[var(--foreground-muted)] mb-10 max-w-2xl mx-auto leading-relaxed ${mounted ? "animate-fade-in-up delay-3" : "opacity-0"}`}>
-              Desarrollamos soluciones digitales a medida: software, aplicaciones, CRM, automatizaciones y agentes de inteligencia artificial para empresas que buscan escalar sin friccion.
+            {/* Subtext */}
+            <p className={`text-lg md:text-xl text-[var(--foreground-muted)] mb-10 max-w-2xl mx-auto leading-relaxed ${mounted ? "animate-fade-in-up delay-2" : "opacity-0"}`}>
+              Build, analyze and scale with a data-first infrastructure.
             </p>
 
-            {/* CTAs */}
-            <div className={`flex flex-col sm:flex-row gap-4 justify-center ${mounted ? "animate-fade-in-up delay-4" : "opacity-0"}`}>
-              <a href="#contacto" className="btn-primary">
-                Iniciar proyecto
-              </a>
-              <a href="#pilares" className="btn-secondary">
-                Ver soluciones
+            {/* CTA */}
+            <div className={`${mounted ? "animate-fade-in-up delay-3" : "opacity-0"}`}>
+              <a href="#contacto" className="btn-primary text-base md:text-lg px-12 py-4 shadow-[0_0_40px_rgba(0,229,255,0.3)] hover:shadow-[0_0_60px_rgba(0,229,255,0.5)]">
+                Get Started
               </a>
             </div>
-          </div>
-
-          {/* Scroll indicator */}
-          <div className={`absolute bottom-8 left-1/2 -translate-x-1/2 ${mounted ? "animate-fade-in delay-5" : "opacity-0"}`}>
-            <div className="w-px h-12 bg-gradient-to-b from-transparent via-[var(--accent-primary)] to-transparent opacity-40" />
           </div>
         </section>
 
