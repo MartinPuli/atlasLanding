@@ -419,32 +419,38 @@ h6 {
 
 .section {
   position: relative;
-  padding: 120px 0;
+  padding: 140px 0;
   overflow: hidden;
 }
 
 @media (max-width: 768px) {
   .section {
-    padding: 80px 0;
+    padding: 100px 0;
   }
 }
 
 .container {
   width: 100%;
-  max-width: 1200px;
+  max-width: 1280px;
   margin: 0 auto;
-  padding: 0 24px;
+  padding: 0 32px;
 }
 
 @media (min-width: 640px) {
   .container {
-    padding: 0 32px;
+    padding: 0 48px;
   }
 }
 
 @media (min-width: 1024px) {
   .container {
-    padding: 0 48px;
+    padding: 0 64px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .container {
+    padding: 0 80px;
   }
 }
 
