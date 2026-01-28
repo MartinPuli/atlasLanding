@@ -385,7 +385,7 @@ export default function Home() {
               </p>
             </div>
 
-            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-10 w-full max-w-7xl mx-auto">
+            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-12 md:gap-16 w-full max-w-7xl mx-auto">
               {pillars.map((pillar, index) => (
                 <PillarCard key={pillar.id} pillar={pillar} index={index} />
               ))}
@@ -400,7 +400,7 @@ export default function Home() {
               Donde la mayoría de los <span className="gradient-text">sistemas fallan</span>
             </h2>
 
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10 mb-20 max-w-6xl mx-auto w-full">
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-12 md:gap-16 mb-28 max-w-6xl mx-auto w-full">
               {[
                 "Procesos manuales que no escalan",
                 "Herramientas desconectadas entre sí",
@@ -434,7 +434,7 @@ export default function Home() {
               <p className="text-xl text-[var(--foreground-muted)] max-w-2xl mx-auto">Diseñamos arquitecturas que crecen con el negocio.</p>
             </div>
 
-            <div className="arch-stack max-w-2xl mx-auto space-y-4">
+            <div className="arch-stack max-w-2xl mx-auto space-y-8">
               {[
                 { name: "Integraciones", sub: "APIs & External Systems" },
                 { name: "Inteligencia Artificial", sub: "Agents & Models" },
@@ -462,7 +462,7 @@ export default function Home() {
               <p className="text-xl text-[var(--foreground-muted)]">Soluciones concretas para problemas reales.</p>
             </div>
 
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10 w-full max-w-7xl">
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-12 md:gap-16 w-full max-w-7xl">
               {[
                 {
                   title: "Unificar ventas, soporte y operaciones",
@@ -506,7 +506,7 @@ export default function Home() {
               </p>
             </div>
 
-            <div className="timeline-track grid grid-cols-1 md:grid-cols-4 gap-12 w-full max-w-6xl">
+            <div className="timeline-track grid grid-cols-1 md:grid-cols-4 gap-16 md:gap-20 w-full max-w-6xl">
               {[
                 { title: "Sistema Base", desc: "Digitalización core" },
                 { title: "Automatización", desc: "Eficiencia operativa" },
