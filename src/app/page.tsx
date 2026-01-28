@@ -255,15 +255,15 @@ function PillarCard({ pillar, index }: { pillar: typeof pillars[0]; index: numbe
   return (
     <div
       ref={ref}
-      className={`pillar-card p-6 md:p-8 ${isVisible ? "animate-fade-in-up" : "opacity-0"}`}
-      style={{ animationDelay: `${index * 100}ms` }}
+      className={`pillar-card p-8 md:p-10 lg:p-12 ${isVisible ? "animate-fade-in-up" : "opacity-0"}`}
+      style={{ animationDelay: `${index * 150}ms` }}
     >
-      <div className="icon-glow mb-5">
-        <Icon type={pillar.icon} className="w-10 h-10" />
+      <div className="icon-glow mb-8">
+        <Icon type={pillar.icon} className="w-12 h-12" />
       </div>
-      <p className="text-[var(--accent-primary)] text-sm font-medium mb-2">{pillar.name}</p>
-      <h3 className="text-xl md:text-2xl font-bold text-white mb-3">{pillar.title}</h3>
-      <p className="text-[var(--foreground-muted)] leading-relaxed">{pillar.description}</p>
+      <p className="text-[var(--accent-primary)] text-sm font-semibold mb-3 tracking-wide uppercase">{pillar.name}</p>
+      <h3 className="text-2xl md:text-3xl font-bold text-white mb-5">{pillar.title}</h3>
+      <p className="text-[var(--foreground-muted)] leading-relaxed text-lg">{pillar.description}</p>
     </div>
   );
 }
@@ -400,7 +400,7 @@ export default function Home() {
               Donde la mayoría de los <span className="gradient-text">sistemas fallan</span>
             </h2>
 
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-12 md:gap-16 mb-28 max-w-6xl mx-auto w-full">
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10 md:gap-12 mb-28 max-w-6xl mx-auto w-full">
               {[
                 "Procesos manuales que no escalan",
                 "Herramientas desconectadas entre sí",
@@ -409,17 +409,27 @@ export default function Home() {
                 "Datos que no generan decisiones",
                 "IA usada solo como marketing"
               ].map((item, i) => (
-                <div key={i} className="glass-card p-8 flex items-center justify-center min-h-[140px] hover:scale-105 transition-transform duration-300">
-                  <p className="text-xl text-[var(--foreground-muted)] font-medium">{item}</p>
+                <div
+                  key={i}
+                  className="glass-card p-10 md:p-12 flex items-center justify-center min-h-[180px] hover:scale-105 hover:border-[var(--accent-primary)]/40 transition-all duration-500 animate-fade-in-up"
+                  style={{ animationDelay: `${i * 100}ms` }}
+                >
+                  <p className="text-xl md:text-2xl text-[var(--foreground-muted)] font-medium text-center leading-relaxed">{item}</p>
                 </div>
               ))}
             </div>
 
-            <div className="p-10 border border-[var(--accent-primary)]/20 bg-[var(--accent-primary)]/5 rounded-3xl max-w-4xl mx-auto backdrop-blur-md shadow-[0_0_30px_rgba(0,229,255,0.1)]">
-              <p className="text-2xl md:text-3xl text-white font-medium leading-relaxed">
+            <div className="p-12 md:p-16 border border-[var(--accent-primary)]/20 bg-[var(--accent-primary)]/5 rounded-3xl max-w-4xl mx-auto backdrop-blur-md shadow-[0_0_40px_rgba(0,229,255,0.15)] animate-fade-in-up" style={{ animationDelay: '600ms' }}>
+              <p className="text-2xl md:text-3xl text-white font-medium leading-relaxed mb-8">
                 El problema no es la falta de tecnología.<br />
                 <span className="text-[var(--accent-primary)] mt-4 block font-bold">El problema es tener tecnología que no trabaja para vos.</span>
               </p>
+              <a href="#contacto" className="btn-secondary inline-flex items-center gap-2 group">
+                Hablemos de tu negocio
+                <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
+              </a>
             </div>
           </div>
         </Section>
@@ -434,7 +444,7 @@ export default function Home() {
               <p className="text-xl text-[var(--foreground-muted)] max-w-2xl mx-auto">Diseñamos arquitecturas que crecen con el negocio.</p>
             </div>
 
-            <div className="arch-stack max-w-2xl mx-auto space-y-8">
+            <div className="arch-stack max-w-3xl mx-auto space-y-6 w-full">
               {[
                 { name: "Integraciones", sub: "APIs & External Systems" },
                 { name: "Inteligencia Artificial", sub: "Agents & Models" },
@@ -443,12 +453,23 @@ export default function Home() {
                 { name: "Backend", sub: "Logic & Security" },
                 { name: "Frontend", sub: "UI/UX Interface" }
               ].map((layer, i) => (
-                <div key={i} className="arch-layer group cursor-default p-6 md:p-8">
-                  <h3 className="text-2xl text-white font-bold group-hover:text-[var(--accent-primary)] transition-colors">{layer.name}</h3>
-                  <p className="text-sm md:text-base text-[var(--foreground-muted)] uppercase tracking-widest mt-2 opacity-70">{layer.sub}</p>
+                <div
+                  key={i}
+                  className="arch-layer group cursor-default p-8 md:p-10 animate-fade-in-up"
+                  style={{ animationDelay: `${i * 100}ms` }}
+                >
+                  <h3 className="text-2xl md:text-3xl text-white font-bold group-hover:text-[var(--accent-primary)] transition-colors">{layer.name}</h3>
+                  <p className="text-base md:text-lg text-[var(--foreground-muted)] uppercase tracking-widest mt-3 opacity-70">{layer.sub}</p>
                 </div>
               ))}
             </div>
+
+            <a href="#contacto" className="btn-primary mt-20 inline-flex items-center gap-3 text-lg animate-fade-in-up" style={{ animationDelay: '700ms' }}>
+              Diseñemos tu arquitectura
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
+            </a>
           </div>
         </Section>
 
@@ -462,7 +483,7 @@ export default function Home() {
               <p className="text-xl text-[var(--foreground-muted)]">Soluciones concretas para problemas reales.</p>
             </div>
 
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-12 md:gap-16 w-full max-w-7xl">
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10 md:gap-12 w-full max-w-7xl">
               {[
                 {
                   title: "Unificar ventas, soporte y operaciones",
@@ -480,19 +501,30 @@ export default function Home() {
                   bullets: ["Decisiones más rápidas", "Escalabilidad", "Inteligencia aplicada"]
                 }
               ].map((card, i) => (
-                <div key={i} className="usp-card text-center flex flex-col items-center p-8 md:p-10">
-                  <h3 className="text-2xl md:text-3xl font-bold text-white mb-4 leading-snug">{card.title}</h3>
-                  <p className="text-[var(--foreground-muted)] mb-8 text-lg">{card.desc}</p>
-                  <ul className="space-y-3 w-full text-left bg-white/5 p-6 rounded-xl">
+                <div
+                  key={i}
+                  className="usp-card text-center flex flex-col items-center p-10 md:p-12 rounded-2xl animate-fade-in-up hover:scale-[1.02] transition-transform duration-500"
+                  style={{ animationDelay: `${i * 150}ms` }}
+                >
+                  <h3 className="text-2xl md:text-3xl font-bold text-white mb-6 leading-snug">{card.title}</h3>
+                  <p className="text-[var(--foreground-muted)] mb-10 text-lg leading-relaxed">{card.desc}</p>
+                  <ul className="space-y-4 w-full text-left bg-white/5 p-8 rounded-xl">
                     {card.bullets.map((b, j) => (
-                      <li key={j} className="flex items-center gap-3 text-base font-medium text-[var(--accent-secondary)]">
-                        <span className="w-2 h-2 rounded-full bg-[var(--accent-secondary)] shrink-0" /> {b}
+                      <li key={j} className="flex items-center gap-4 text-lg font-medium text-[var(--accent-secondary)]">
+                        <span className="w-3 h-3 rounded-full bg-[var(--accent-secondary)] shrink-0 shadow-[0_0_10px_var(--accent-secondary)]" /> {b}
                       </li>
                     ))}
                   </ul>
                 </div>
               ))}
             </div>
+
+            <a href="#contacto" className="btn-primary mt-20 inline-flex items-center gap-3 text-lg animate-fade-in-up" style={{ animationDelay: '500ms' }}>
+              Ver cómo aplicarlo a mi negocio
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
+            </a>
           </div>
         </Section>
 
@@ -506,15 +538,20 @@ export default function Home() {
               </p>
             </div>
 
-            <div className="timeline-track grid grid-cols-1 md:grid-cols-4 gap-16 md:gap-20 w-full max-w-6xl">
+            <div className="timeline-track grid grid-cols-1 md:grid-cols-4 gap-12 md:gap-16 w-full max-w-6xl">
               {[
-                { title: "Sistema Base", desc: "Digitalización core" },
-                { title: "Automatización", desc: "Eficiencia operativa" },
-                { title: "Inteligencia Artificial", desc: "Capacidades cognitivas" },
-                { title: "Optimización Continua", desc: "Escala infinita" }
+                { title: "Sistema Base", desc: "Digitalización core", num: "01" },
+                { title: "Automatización", desc: "Eficiencia operativa", num: "02" },
+                { title: "Inteligencia Artificial", desc: "Capacidades cognitivas", num: "03" },
+                { title: "Optimización Continua", desc: "Escala infinita", num: "04" }
               ].map((stage, i) => (
-                <div key={i} className="timeline-node flex flex-col items-center px-4">
-                  <h4 className="text-white font-bold text-2xl mb-3">{stage.title}</h4>
+                <div
+                  key={i}
+                  className="timeline-node flex flex-col items-center px-6 py-10 glass-card rounded-2xl animate-fade-in-up hover:scale-105 transition-transform duration-500"
+                  style={{ animationDelay: `${i * 150}ms` }}
+                >
+                  <span className="text-[var(--accent-primary)] text-5xl font-bold mb-4 opacity-30">{stage.num}</span>
+                  <h4 className="text-white font-bold text-2xl md:text-3xl mb-4">{stage.title}</h4>
                   <p className="text-[var(--foreground-muted)] text-lg">{stage.desc}</p>
                 </div>
               ))}
@@ -523,33 +560,48 @@ export default function Home() {
         </Section>
 
         {/* SECTION 5: PHILOSOPHY */}
-        <Section id="philosophy" dark className="py-36 md:py-48">
+        <Section id="philosophy" dark className="py-40 md:py-56">
           <div className="container relative z-10 flex flex-col items-center justify-center text-center">
-            <h2 className="text-4xl md:text-7xl font-bold text-white mb-16 leading-tight max-w-5xl">
+            <h2 className="text-4xl md:text-7xl font-bold text-white mb-16 leading-tight max-w-5xl animate-fade-in-up">
               La tecnología no debería complicar.<br />
-              <span className="opacity-40 block mt-4">Debería desaparecer y dejar que el negocio fluye.</span>
+              <span className="opacity-40 block mt-6">Debería desaparecer y dejar que el negocio fluye.</span>
             </h2>
-            <p className="text-2xl text-[var(--accent-primary)] font-medium">
+            <p className="text-2xl md:text-3xl text-[var(--accent-primary)] font-medium mb-16 animate-fade-in-up" style={{ animationDelay: '200ms' }}>
               En Atlas One, la tecnología es un medio, no un fin.
             </p>
+            <a href="#contacto" className="btn-primary text-xl px-14 py-6 animate-fade-in-up group" style={{ animationDelay: '400ms' }}>
+              Empezá tu transformación
+              <svg className="w-6 h-6 ml-3 inline-block group-hover:translate-x-2 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
+            </a>
           </div>
         </Section>
 
         {/* FINAL CTA SECTION */}
-        <Section id="contacto" className="py-28 md:py-36">
+        <Section id="contacto" className="py-36 md:py-48">
           <div className="container relative z-10 flex flex-col items-center">
-            <div className="text-center max-w-4xl">
-              <h2 className="text-4xl md:text-6xl font-bold text-white mb-10">
+            <div className="text-center max-w-5xl p-12 md:p-20 rounded-3xl border border-[var(--accent-primary)]/20 bg-gradient-to-b from-[var(--accent-primary)]/5 to-transparent backdrop-blur-lg">
+              <h2 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-12 animate-fade-in-up">
                 ¿Qué sistema podríamos <span className="gradient-text">construir juntos</span>?
               </h2>
-              <p className="text-xl md:text-2xl text-[var(--foreground-muted)] mb-4">
+              <p className="text-xl md:text-2xl text-[var(--foreground-muted)] mb-6 animate-fade-in-up" style={{ animationDelay: '100ms' }}>
                 Contanos tu idea, problema o proceso.
               </p>
-              <p className="text-xl md:text-2xl text-[var(--foreground-muted)] mb-12">
+              <p className="text-xl md:text-2xl text-white font-medium mb-16 animate-fade-in-up" style={{ animationDelay: '200ms' }}>
                 Nosotros lo convertimos en software.
               </p>
-              <a href="mailto:atlasonecontact@gmail.com?subject=Iniciar%20proyecto%20-%20Atlas%20One" target="_blank" rel="noopener noreferrer" className="btn-primary text-xl px-12 py-5 shadow-2xl hover:scale-105 transition-transform duration-300 inline-block">
+              <a
+                href="mailto:atlasonecontact@gmail.com?subject=Iniciar%20proyecto%20-%20Atlas%20One"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-primary text-xl md:text-2xl px-16 py-6 shadow-[0_0_60px_rgba(0,229,255,0.4)] hover:shadow-[0_0_80px_rgba(0,229,255,0.6)] hover:scale-105 transition-all duration-500 inline-flex items-center gap-4 animate-fade-in-up group"
+                style={{ animationDelay: '300ms' }}
+              >
                 Iniciar proyecto con Atlas One
+                <svg className="w-6 h-6 group-hover:translate-x-2 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
               </a>
             </div>
           </div>
