@@ -2,8 +2,9 @@
 
 :root {
   --background: #030B12;
-  --background-secondary: #051219;
-  --background-card: rgba(5, 18, 25, 0.7);
+  --background-secondary: rgba(5, 18, 25, 0.4);
+  /* Translucent */
+  --background-card: rgba(5, 18, 25, 0.4);
   --foreground: #FFFFFF;
   --foreground-muted: #8BA3B8;
   --accent-primary: #00E5FF;
@@ -28,10 +29,13 @@
 
 html {
   scroll-behavior: smooth;
+  background-color: #030B12;
+  /* Fallback background */
 }
 
 body {
-  background: var(--background);
+  background: transparent;
+  /* Allow fixed background at z-index -1 to be visible */
   color: var(--foreground);
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   line-height: 1.6;
@@ -768,12 +772,14 @@ h6 {
   transform: translate(-50%, -50%) scale(1.1);
   width: 100vw;
   height: 100vh;
+  object-fit: contain;
+  /* Changed from cover to contain to ensure full globe is visible if desired, or cover if we want immersion */
   object-fit: cover;
-  opacity: 0.15;
-  /* Very subtle */
+  opacity: 0.3;
+  /* Increased opacity for visibility */
   mix-blend-mode: screen;
   filter: contrast(1.2) brightness(1.2);
-  animation: bg-drift 30s ease-in-out infinite alternate;
+  /* Animation removed here to be controlled by JS */
 }
 
 @keyframes bg-drift {

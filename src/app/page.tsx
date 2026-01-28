@@ -201,11 +201,17 @@ function Navigation() {
 
   return (
     <nav className={`nav ${visible ? "nav-visible" : "nav-hidden"} ${scrolled ? "nav-blur" : ""} ${mounted ? "animate-slide-down" : "opacity-0"}`}>
-      <div className="container flex items-center justify-between h-20 md:h-24">
+      <div className="container flex items-center justify-between h-20 md:h-24 relative">
         {/* Logo */}
         <a href="#" className="flex items-center gap-3">
           <Image src="/logo-atlas.png" alt="Atlas One" width={40} height={40} className="w-10 h-10 md:w-12 md:h-12 object-contain" />
-          <span className="text-white font-bold text-lg md:text-xl tracking-tight hidden sm:block">ATLAS ONE</span>
+          <Image
+            src="/nombre-atlas-horizontal.png"
+            alt="Atlas One"
+            width={140}
+            height={40}
+            className="h-6 md:h-8 w-auto object-contain hidden sm:block"
+          />
         </a>
 
         {/* Centered Links */}
@@ -309,7 +315,7 @@ function Section({ children, className = "", id, dark = false }: { children: Rea
     <section
       ref={ref}
       id={id}
-      className={`section ${dark ? "bg-[var(--background-secondary)]" : ""} ${className}`}
+      className={`section ${dark ? "bg-[var(--background-secondary)]" : ""} ${className} relative z-10`}
       style={{ opacity: isVisible ? 1 : 0, transition: "opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1)" }}
     >
       {children}
@@ -321,24 +327,37 @@ function Section({ children, className = "", id, dark = false }: { children: Rea
 
 export default function Home() {
   const [mounted, setMounted] = useState(false);
+  const bgRef = useRef<HTMLImageElement>(null);
 
   useEffect(() => {
     setMounted(true);
+
+    const handleScroll = () => {
+      if (!bgRef.current) return;
+      const rotateValue = window.scrollY * 0.2; // Adjust speed as needed
+      // Apply rotation. Preserve the scale and centering translate.
+      bgRef.current.style.transform = `translate(-50%, -50%) scale(1.1) rotate(${rotateValue}deg)`;
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   return (
     <>
       <Navigation />
 
-      <main className="min-h-screen bg-[var(--background)]">
+      <main className="min-h-screen">
         {/* Global Background Texture (Fixed for all non-hero sections) */}
-        <div className="globe-bg-wrapper">
+        <div className="globe-bg-wrapper pointer-events-none">
           <Image
+            ref={bgRef}
             src="/atlas-bg.jpg"
             alt="Background Texture"
             fill
             className="globe-image"
             priority
+            style={{ animation: 'none' }} // Disable CSS animation to allow scroll control
           />
         </div>
 
