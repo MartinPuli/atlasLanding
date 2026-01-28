@@ -218,19 +218,12 @@ function Navigation() {
 
         {/* Right Actions */}
         <div className="flex items-center gap-4">
-          {/* Search Icon Placeholder */}
-          <button className="text-[var(--foreground-muted)] hover:text-white transition-colors hidden lg:block">
+          {/* Search Icon */}
+          <button className="text-[var(--foreground-muted)] hover:text-white transition-colors">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5">
               <path strokeLinecap="round" strokeLinejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
             </svg>
           </button>
-
-          <a href="#contacto" className="btn-primary py-2 px-6 text-sm">
-            Sign up
-          </a>
-          <a href="#" className="text-sm font-medium text-[var(--foreground-muted)] hover:text-white transition-colors hidden sm:block">
-            Log in
-          </a>
         </div>
       </div>
     </nav>
@@ -380,19 +373,19 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Pillars Section - INCREASED PADDING */}
-        <Section id="pilares" className="py-24 md:py-32">
-          <div className="container relative z-10">
-            <div className="text-center mb-20">
-              <h2 className="text-4xl md:text-6xl font-bold text-white mb-6">
+        {/* Pillars Section */}
+        <Section id="pilares" className="py-28 md:py-36">
+          <div className="container relative z-10 flex flex-col items-center">
+            <div className="text-center mb-24 max-w-4xl">
+              <h2 className="text-4xl md:text-6xl font-bold text-white mb-8">
                 Nuestros <span className="gradient-text">4 Pilares</span>
               </h2>
-              <p className="text-xl md:text-2xl text-[var(--foreground-muted)] max-w-3xl mx-auto">
+              <p className="text-xl md:text-2xl text-[var(--foreground-muted)]">
                 La base de nuestra tecnología para transformar tu negocio.
               </p>
             </div>
 
-            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-10">
+            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-10 w-full max-w-7xl mx-auto">
               {pillars.map((pillar, index) => (
                 <PillarCard key={pillar.id} pillar={pillar} index={index} />
               ))}
@@ -401,13 +394,13 @@ export default function Home() {
         </Section>
 
         {/* SECTION 1: PROBLEMS WE SOLVE - CENTERED & SPACIOUS */}
-        <Section id="problems" dark className="py-24 md:py-32">
+        <Section id="problems" dark className="py-28 md:py-36">
           <div className="container relative z-10 flex flex-col items-center text-center">
-            <h2 className="text-3xl md:text-5xl font-bold text-white mb-16 leading-tight max-w-4xl">
+            <h2 className="text-3xl md:text-5xl font-bold text-white mb-20 leading-tight max-w-4xl">
               Donde la mayoría de los <span className="gradient-text">sistemas fallan</span>
             </h2>
 
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16 max-w-6xl mx-auto w-full">
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10 mb-20 max-w-6xl mx-auto w-full">
               {[
                 "Procesos manuales que no escalan",
                 "Herramientas desconectadas entre sí",
@@ -432,9 +425,9 @@ export default function Home() {
         </Section>
 
         {/* SECTION 2: SYSTEM ARCHITECTURE - CENTERED */}
-        <Section id="architecture" className="py-24 md:py-32">
-          <div className="container relative z-10 text-center">
-            <div className="mb-20">
+        <Section id="architecture" className="py-28 md:py-36">
+          <div className="container relative z-10 text-center flex flex-col items-center">
+            <div className="mb-24 max-w-4xl">
               <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">
                 Pensamos en sistemas, <span className="gradient-text">no en funcionalidades</span>
               </h2>
@@ -460,16 +453,16 @@ export default function Home() {
         </Section>
 
         {/* SECTION 3: USE CASES - CENTERED */}
-        <Section id="use-cases" dark className="py-24 md:py-32">
-          <div className="container relative z-10 text-center">
-            <div className="mb-20">
-              <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">
+        <Section id="use-cases" dark className="py-28 md:py-36">
+          <div className="container relative z-10 text-center flex flex-col items-center">
+            <div className="mb-24 max-w-4xl">
+              <h2 className="text-3xl md:text-5xl font-bold text-white mb-8">
                 Casos de <span className="gradient-text">Uso Real</span>
               </h2>
-              <p className="text-xl text-[var(--foreground-muted)] max-w-3xl mx-auto">Soluciones concretas para problemas reales.</p>
+              <p className="text-xl text-[var(--foreground-muted)]">Soluciones concretas para problemas reales.</p>
             </div>
 
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10">
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10 w-full max-w-7xl">
               {[
                 {
                   title: "Unificar ventas, soporte y operaciones",
@@ -504,16 +497,16 @@ export default function Home() {
         </Section>
 
         {/* SECTION 4: SCALABILITY JOURNEY - CENTERED */}
-        <Section id="timeline" className="py-24 md:py-32">
-          <div className="container relative z-10 text-center">
-            <div className="mb-24">
-              <p className="text-2xl md:text-3xl text-white font-medium max-w-4xl mx-auto leading-relaxed">
+        <Section id="timeline" className="py-28 md:py-36">
+          <div className="container relative z-10 text-center flex flex-col items-center">
+            <div className="mb-28 max-w-4xl">
+              <p className="text-2xl md:text-3xl text-white font-medium leading-relaxed">
                 "El sistema que construimos hoy no es el que vas a usar mañana.
                 <span className="block text-[var(--foreground-muted)] mt-4">Y eso está bien. Lo diseñamos para evolucionar."</span>
               </p>
             </div>
 
-            <div className="timeline-track grid grid-cols-1 md:grid-cols-4 gap-12">
+            <div className="timeline-track grid grid-cols-1 md:grid-cols-4 gap-12 w-full max-w-6xl">
               {[
                 { title: "Sistema Base", desc: "Digitalización core" },
                 { title: "Automatización", desc: "Eficiencia operativa" },
@@ -530,9 +523,9 @@ export default function Home() {
         </Section>
 
         {/* SECTION 5: PHILOSOPHY */}
-        <Section id="philosophy" dark className="py-32 md:py-40">
+        <Section id="philosophy" dark className="py-36 md:py-48">
           <div className="container relative z-10 flex flex-col items-center justify-center text-center">
-            <h2 className="text-4xl md:text-7xl font-bold text-white mb-12 leading-tight max-w-5xl">
+            <h2 className="text-4xl md:text-7xl font-bold text-white mb-16 leading-tight max-w-5xl">
               La tecnología no debería complicar.<br />
               <span className="opacity-40 block mt-4">Debería desaparecer y dejar que el negocio fluye.</span>
             </h2>
@@ -543,10 +536,10 @@ export default function Home() {
         </Section>
 
         {/* FINAL CTA SECTION */}
-        <Section id="contacto" className="py-24 md:py-32">
-          <div className="container relative z-10">
-            <div className="text-center max-w-4xl mx-auto">
-              <h2 className="text-4xl md:text-6xl font-bold text-white mb-8">
+        <Section id="contacto" className="py-28 md:py-36">
+          <div className="container relative z-10 flex flex-col items-center">
+            <div className="text-center max-w-4xl">
+              <h2 className="text-4xl md:text-6xl font-bold text-white mb-10">
                 ¿Qué sistema podríamos <span className="gradient-text">construir juntos</span>?
               </h2>
               <p className="text-xl md:text-2xl text-[var(--foreground-muted)] mb-4">
