@@ -349,7 +349,7 @@ export default function Home() {
           />
         </div>
 
-        {/* Hero Section (Remains unchanged, has its own background) */}
+        {/* Hero Section (Remains unchanged) */}
         <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden px-4 pt-20 z-10">
           <HeroBackground />
           <div className="relative z-10 text-center max-w-5xl mx-auto flex flex-col items-center">
@@ -364,35 +364,35 @@ export default function Home() {
                 priority
               />
             </div>
-            <h1 className={`text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-[1.1] tracking-tight ${mounted ? "animate-fade-in-up delay-1" : "opacity-0"}`}>
+            <h1 className={`text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-8 leading-[1.1] tracking-tight ${mounted ? "animate-fade-in-up delay-1" : "opacity-0"}`}>
               Innovating Data & Technology
               <br />
-              <span className="font-light text-[var(--foreground-muted)] block mt-2 md:mt-4">For Real-World Decisions</span>
+              <span className="font-light text-[var(--foreground-muted)] block mt-4 md:mt-6">For Real-World Decisions</span>
             </h1>
-            <p className={`text-lg md:text-xl text-[var(--foreground-muted)] mb-10 max-w-2xl mx-auto leading-relaxed ${mounted ? "animate-fade-in-up delay-2" : "opacity-0"}`}>
+            <p className={`text-lg md:text-xl text-[var(--foreground-muted)] mb-12 max-w-2xl mx-auto leading-relaxed ${mounted ? "animate-fade-in-up delay-2" : "opacity-0"}`}>
               Build, analyze and scale with a data-first infrastructure.
             </p>
             <div className={`${mounted ? "animate-fade-in-up delay-3" : "opacity-0"}`}>
-              <a href="mailto:atlasonecontact@gmail.com?subject=Iniciar%20proyecto%20-%20Atlas%20One" target="_blank" rel="noopener noreferrer" className="btn-primary text-base md:text-lg px-12 py-4 shadow-[0_0_40px_rgba(0,229,255,0.3)] hover:shadow-[0_0_60px_rgba(0,229,255,0.5)]">
+              <a href="mailto:atlasonecontact@gmail.com?subject=Iniciar%20proyecto%20-%20Atlas%20One" className="btn-primary text-lg md:text-xl px-14 py-5 shadow-[0_0_40px_rgba(0,229,255,0.3)] hover:shadow-[0_0_60px_rgba(0,229,255,0.5)]">
                 Get Started
               </a>
             </div>
           </div>
         </section>
 
-        {/* Pillars Section - CENTERED & FOCUSED */}
-        <Section id="pilares">
+        {/* Pillars Section - INCREASED PADDING */}
+        <Section id="pilares" className="py-24 md:py-32">
           <div className="container relative z-10">
-            <div className="text-center mb-16">
-              <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">
+            <div className="text-center mb-20">
+              <h2 className="text-4xl md:text-6xl font-bold text-white mb-6">
                 Nuestros <span className="gradient-text">4 Pilares</span>
               </h2>
-              <p className="text-xl text-[var(--foreground-muted)] max-w-3xl mx-auto">
+              <p className="text-xl md:text-2xl text-[var(--foreground-muted)] max-w-3xl mx-auto">
                 La base de nuestra tecnología para transformar tu negocio.
               </p>
             </div>
 
-            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-10">
               {pillars.map((pillar, index) => (
                 <PillarCard key={pillar.id} pillar={pillar} index={index} />
               ))}
@@ -400,14 +400,14 @@ export default function Home() {
           </div>
         </Section>
 
-        {/* SECTION 1: PROBLEMS WE SOLVE - CENTERED */}
-        <Section id="problems" dark>
+        {/* SECTION 1: PROBLEMS WE SOLVE - CENTERED & SPACIOUS */}
+        <Section id="problems" dark className="py-24 md:py-32">
           <div className="container relative z-10 flex flex-col items-center text-center">
-            <h2 className="text-3xl md:text-5xl font-bold text-white mb-10 leading-tight">
+            <h2 className="text-3xl md:text-5xl font-bold text-white mb-16 leading-tight max-w-4xl">
               Donde la mayoría de los <span className="gradient-text">sistemas fallan</span>
             </h2>
 
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12 max-w-6xl mx-auto">
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16 max-w-6xl mx-auto w-full">
               {[
                 "Procesos manuales que no escalan",
                 "Herramientas desconectadas entre sí",
@@ -416,32 +416,32 @@ export default function Home() {
                 "Datos que no generan decisiones",
                 "IA usada solo como marketing"
               ].map((item, i) => (
-                <div key={i} className="glass-card p-6 flex items-center justify-center min-h-[100px]">
-                  <p className="text-lg text-[var(--foreground-muted)] font-medium">{item}</p>
+                <div key={i} className="glass-card p-8 flex items-center justify-center min-h-[140px] hover:scale-105 transition-transform duration-300">
+                  <p className="text-xl text-[var(--foreground-muted)] font-medium">{item}</p>
                 </div>
               ))}
             </div>
 
-            <div className="p-8 border border-[var(--accent-primary)]/20 bg-[var(--accent-primary)]/5 rounded-2xl max-w-3xl mx-auto backdrop-blur-sm">
-              <p className="text-2xl text-white font-medium">
+            <div className="p-10 border border-[var(--accent-primary)]/20 bg-[var(--accent-primary)]/5 rounded-3xl max-w-4xl mx-auto backdrop-blur-md shadow-[0_0_30px_rgba(0,229,255,0.1)]">
+              <p className="text-2xl md:text-3xl text-white font-medium leading-relaxed">
                 El problema no es la falta de tecnología.<br />
-                <span className="text-[var(--accent-primary)] mt-2 block">El problema es tener tecnología que no trabaja para vos.</span>
+                <span className="text-[var(--accent-primary)] mt-4 block font-bold">El problema es tener tecnología que no trabaja para vos.</span>
               </p>
             </div>
           </div>
         </Section>
 
         {/* SECTION 2: SYSTEM ARCHITECTURE - CENTERED */}
-        <Section id="architecture">
+        <Section id="architecture" className="py-24 md:py-32">
           <div className="container relative z-10 text-center">
-            <div className="mb-16">
-              <h2 className="text-3xl md:text-5xl font-bold text-white mb-4">
+            <div className="mb-20">
+              <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">
                 Pensamos en sistemas, <span className="gradient-text">no en funcionalidades</span>
               </h2>
-              <p className="text-[var(--foreground-muted)] text-lg">Diseñamos arquitecturas que crecen con el negocio.</p>
+              <p className="text-xl text-[var(--foreground-muted)] max-w-2xl mx-auto">Diseñamos arquitecturas que crecen con el negocio.</p>
             </div>
 
-            <div className="arch-stack max-w-2xl mx-auto">
+            <div className="arch-stack max-w-2xl mx-auto space-y-4">
               {[
                 { name: "Integraciones", sub: "APIs & External Systems" },
                 { name: "Inteligencia Artificial", sub: "Agents & Models" },
@@ -450,9 +450,9 @@ export default function Home() {
                 { name: "Backend", sub: "Logic & Security" },
                 { name: "Frontend", sub: "UI/UX Interface" }
               ].map((layer, i) => (
-                <div key={i} className="arch-layer group cursor-default">
-                  <h3 className="text-xl text-white font-bold group-hover:text-[var(--accent-primary)] transition-colors">{layer.name}</h3>
-                  <p className="text-sm text-[var(--foreground-muted)] uppercase tracking-widest mt-1 opacity-70">{layer.sub}</p>
+                <div key={i} className="arch-layer group cursor-default p-6 md:p-8">
+                  <h3 className="text-2xl text-white font-bold group-hover:text-[var(--accent-primary)] transition-colors">{layer.name}</h3>
+                  <p className="text-sm md:text-base text-[var(--foreground-muted)] uppercase tracking-widest mt-2 opacity-70">{layer.sub}</p>
                 </div>
               ))}
             </div>
@@ -460,15 +460,16 @@ export default function Home() {
         </Section>
 
         {/* SECTION 3: USE CASES - CENTERED */}
-        <Section id="use-cases" dark>
+        <Section id="use-cases" dark className="py-24 md:py-32">
           <div className="container relative z-10 text-center">
-            <div className="mb-16">
-              <h2 className="text-3xl md:text-5xl font-bold text-white">
+            <div className="mb-20">
+              <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">
                 Casos de <span className="gradient-text">Uso Real</span>
               </h2>
+              <p className="text-xl text-[var(--foreground-muted)] max-w-3xl mx-auto">Soluciones concretas para problemas reales.</p>
             </div>
 
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10">
               {[
                 {
                   title: "Unificar ventas, soporte y operaciones",
@@ -486,13 +487,13 @@ export default function Home() {
                   bullets: ["Decisiones más rápidas", "Escalabilidad", "Inteligencia aplicada"]
                 }
               ].map((card, i) => (
-                <div key={i} className="usp-card text-left">
-                  <h3 className="text-2xl font-bold text-white mb-4 leading-snug">{card.title}</h3>
-                  <p className="text-[var(--foreground-muted)] mb-6 text-lg">{card.desc}</p>
-                  <ul className="space-y-2">
+                <div key={i} className="usp-card text-center flex flex-col items-center p-8 md:p-10">
+                  <h3 className="text-2xl md:text-3xl font-bold text-white mb-4 leading-snug">{card.title}</h3>
+                  <p className="text-[var(--foreground-muted)] mb-8 text-lg">{card.desc}</p>
+                  <ul className="space-y-3 w-full text-left bg-white/5 p-6 rounded-xl">
                     {card.bullets.map((b, j) => (
-                      <li key={j} className="flex items-center gap-2 text-sm font-medium text-[var(--accent-secondary)]">
-                        <span className="w-1.5 h-1.5 rounded-full bg-[var(--accent-secondary)]" /> {b}
+                      <li key={j} className="flex items-center gap-3 text-base font-medium text-[var(--accent-secondary)]">
+                        <span className="w-2 h-2 rounded-full bg-[var(--accent-secondary)] shrink-0" /> {b}
                       </li>
                     ))}
                   </ul>
@@ -503,25 +504,25 @@ export default function Home() {
         </Section>
 
         {/* SECTION 4: SCALABILITY JOURNEY - CENTERED */}
-        <Section id="timeline">
+        <Section id="timeline" className="py-24 md:py-32">
           <div className="container relative z-10 text-center">
-            <div className="mb-16">
-              <p className="text-2xl text-white font-medium max-w-3xl mx-auto">
+            <div className="mb-24">
+              <p className="text-2xl md:text-3xl text-white font-medium max-w-4xl mx-auto leading-relaxed">
                 "El sistema que construimos hoy no es el que vas a usar mañana.
-                <span className="block text-[var(--foreground-muted)] mt-2">Y eso está bien. Lo diseñamos para evolucionar."</span>
+                <span className="block text-[var(--foreground-muted)] mt-4">Y eso está bien. Lo diseñamos para evolucionar."</span>
               </p>
             </div>
 
-            <div className="timeline-track grid grid-cols-1 md:grid-cols-4 gap-8">
+            <div className="timeline-track grid grid-cols-1 md:grid-cols-4 gap-12">
               {[
                 { title: "Sistema Base", desc: "Digitalización core" },
                 { title: "Automatización", desc: "Eficiencia operativa" },
                 { title: "Inteligencia Artificial", desc: "Capacidades cognitivas" },
                 { title: "Optimización Continua", desc: "Escala infinita" }
               ].map((stage, i) => (
-                <div key={i} className="timeline-node flex flex-col items-center">
-                  <h4 className="text-white font-bold text-xl mb-2">{stage.title}</h4>
-                  <p className="text-[var(--foreground-muted)]">{stage.desc}</p>
+                <div key={i} className="timeline-node flex flex-col items-center px-4">
+                  <h4 className="text-white font-bold text-2xl mb-3">{stage.title}</h4>
+                  <p className="text-[var(--foreground-muted)] text-lg">{stage.desc}</p>
                 </div>
               ))}
             </div>
@@ -529,32 +530,32 @@ export default function Home() {
         </Section>
 
         {/* SECTION 5: PHILOSOPHY */}
-        <Section id="philosophy" dark>
-          <div className="container relative z-10 flex flex-col items-center justify-center text-center py-20">
-            <h2 className="text-4xl md:text-6xl font-bold text-white mb-8 leading-tight">
+        <Section id="philosophy" dark className="py-32 md:py-40">
+          <div className="container relative z-10 flex flex-col items-center justify-center text-center">
+            <h2 className="text-4xl md:text-7xl font-bold text-white mb-12 leading-tight max-w-5xl">
               La tecnología no debería complicar.<br />
-              <span className="opacity-50">Debería desaparecer y dejar que el negocio fluya.</span>
+              <span className="opacity-40 block mt-4">Debería desaparecer y dejar que el negocio fluye.</span>
             </h2>
-            <p className="text-xl text-[var(--accent-primary)] font-medium">
+            <p className="text-2xl text-[var(--accent-primary)] font-medium">
               En Atlas One, la tecnología es un medio, no un fin.
             </p>
           </div>
         </Section>
 
         {/* FINAL CTA SECTION */}
-        <Section id="contacto">
+        <Section id="contacto" className="py-24 md:py-32">
           <div className="container relative z-10">
-            <div className="text-center max-w-3xl mx-auto">
-              <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">
+            <div className="text-center max-w-4xl mx-auto">
+              <h2 className="text-4xl md:text-6xl font-bold text-white mb-8">
                 ¿Qué sistema podríamos <span className="gradient-text">construir juntos</span>?
               </h2>
-              <p className="text-lg md:text-xl text-[var(--foreground-muted)] mb-3">
+              <p className="text-xl md:text-2xl text-[var(--foreground-muted)] mb-4">
                 Contanos tu idea, problema o proceso.
               </p>
-              <p className="text-lg md:text-xl text-[var(--foreground-muted)] mb-10">
+              <p className="text-xl md:text-2xl text-[var(--foreground-muted)] mb-12">
                 Nosotros lo convertimos en software.
               </p>
-              <a href="mailto:atlasonecontact@gmail.com?subject=Iniciar%20proyecto%20-%20Atlas%20One" target="_blank" rel="noopener noreferrer" className="btn-primary text-base md:text-lg px-10 py-4">
+              <a href="mailto:atlasonecontact@gmail.com?subject=Iniciar%20proyecto%20-%20Atlas%20One" target="_blank" rel="noopener noreferrer" className="btn-primary text-xl px-12 py-5 shadow-2xl hover:scale-105 transition-transform duration-300 inline-block">
                 Iniciar proyecto con Atlas One
               </a>
             </div>
