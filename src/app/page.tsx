@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 
-// ============ CONTENT DICTIONARY ============
+// ============ CONTENT DICTIONARY (ENGAGING COPY) ============
 
 const content = {
   en: {
@@ -15,79 +15,80 @@ const content = {
     },
     hero: {
       title: "Innovating Data & Technology",
-      subtitle: "For Real-World Decisions",
-      description: "Build, analyze and scale with a data-first infrastructure.",
-      cta: "Get Started",
+      subtitle: "Decisions. Real-Time. Real Impact.",
+      description: "Stop guessing. Start building. We architect the data infrastructure that powers your next big leap.",
+      cta: "Start Building",
     },
     pillars: {
-      title: "Our 4 Pillars",
-      subtitle: "The foundation of our technology to transform your business.",
+      title: "Our Core Power",
+      subtitle: "The engine behind your business transformation.",
       items: [
-        { title: "Artificial Intelligence", desc: "AI agents for sales, support, analysis, and operations integrated into your systems." },
-        { title: "Custom Software", desc: "Internal systems, web platforms, dashboards, APIs, and integrations designed for your business." },
-        { title: "Digital Security", desc: "Comprehensive protection, security audits, monitoring, and threat response for your infrastructure." },
-        { title: "Data & Intelligence", desc: "Dashboards, automated reporting, data visualization, and Business Intelligence for informed decisions." }
+        { title: "Artificial Intelligence", desc: "Not just a buzzword. We deploy autonomous agents that sell, support, and analyze for you 24/7." },
+        { title: "Custom Software", desc: "Forget cookie-cutter apps. We forge internal systems and platforms that fit your operation like a glove." },
+        { title: "Digital Security", desc: "Your fortress. We implement military-grade automated defense to protect your most valuable asset: data." },
+        { title: "Data & Intelligence", desc: "Turn noise into signal. Interactive dashboards that reveal the hidden opportunities in your numbers." }
       ]
     },
     problems: {
-      title: "Where most systems fail",
+      title: "Why Do Most Systems Fail?",
       items: [
-        "Manual processes that don't scale",
-        "Disconnected tools",
-        "Generic CRMs nobody adopts",
-        "Operations dependent on key people",
-        "Data that generates no decisions",
-        "AI used only for marketing"
+        "Manual spreadsheets that break",
+        "Tools that don't talk to each other",
+        "Expensive CRMs that nobody uses",
+        "Key knowledge trapped in heads",
+        "Data that looks nice but says nothing",
+        "AI used as a toy, not a tool"
       ],
-      insight: "The problem isn't lack of technology.",
-      insightBold: "The problem is technology that doesn't work for you.",
-      cta: "Let's talk about your business"
+      insight: "It's not about buying more software.",
+      insightBold: "It's about architecture that actually works.",
+      cta: "Fix Your Infrastructure"
     },
     architecture: {
-      title: "We think in systems, not just features",
-      subtitle: "Designing architectures that grow with your business.",
-      cta: "Design your architecture"
+      title: "We Don't Just Write Code. We Build Systems.",
+      subtitle: "A scalable ecosystem where every component amplifies the others.",
+      cta: "See The Blueprint"
     },
     useCases: {
-      title: "Real Use Cases",
-      subtitle: "Concrete solutions for real problems.",
+      title: "Real Impact in the Wild",
+      subtitle: "Solutions that paid for themselves.",
       items: [
         {
-          title: "Unify sales, support & operations",
-          desc: "Centralize key information in a single connected ecosystem.",
-          bullets: ["Less friction", "More control", "Real-time info"]
+          title: "Unified Command Center",
+          desc: "Sales, support, and operations in one heartbeat.",
+          bullets: ["Zero friction", "Total visibility", "Instant reaction"]
         },
         {
-          title: "Automate critical processes",
-          desc: "Replace repetitive manual tasks with intelligent workflows.",
-          bullets: ["Less manual work", "Fewer errors", "More efficiency"]
+          title: "Intelligent Autopilot",
+          desc: "Routine tasks marked 'Done' before you even wake up.",
+          bullets: ["Manual work deleted", "Human error: 0%", "Efficiency: 100%"]
         },
         {
-          title: "Integrate AI into real business",
-          desc: "Implement agents that assist, analyze, and execute concrete actions.",
-          bullets: ["Faster decisions", "Scalability", "Applied intelligence"]
+          title: "AI That Actually Works",
+          desc: "Agents that handle complex customer flows autonomously.",
+          bullets: ["Infinite scale", "Instant answers", "Revenue growth"]
         }
       ],
-      cta: "See how to apply it"
+      cta: "Apply This to My Business"
     },
     timeline: {
-      quote: "The system we build today isn't the one you'll use tomorrow.",
-      quoteSub: "And that's okay. We design it to evolve.",
+      quote: "Software shouldn't rust.",
+      quoteSub: "We build living systems designed to evolve with you.",
       stages: [
-        { title: "Base System", desc: "Core digitization" },
-        { title: "Automation", desc: "Operational efficiency" },
-        { title: "Artificial Intelligence", desc: "Cognitive capabilities" },
-        { title: "Continuous Optimization", desc: "Infinite scale" }
+        { title: "Foundation", desc: "Digital Core" },
+        { title: "Automation", desc: "Speed & Flow" },
+        { title: "Intelligence", desc: "Cognitive Layer" },
+        { title: "Evolution", desc: "Limitless Scale" }
       ]
     },
     philosophy: {
-      title: "Technology shouldn't complicate.",
-      subtitle: "It should disappear and let business flow.",
-      text: "At Atlas One, technology is a means, not an end.",
-      cta: "Start your transformation"
+      title: "Technology Should Be Invisible.",
+      subtitle: "When it works perfectly, you don't notice it. You just grow.",
+      text: "We make the complex simple.",
+      cta: "Begin Transformation"
     },
     footer: {
-      tagline: "We build systems that scale."
+      tagline: "Building the future of your business, line by line.",
+      rights: "© 2025 Atlas One. All rights reserved."
     }
   },
   es: {
@@ -99,84 +100,85 @@ const content = {
     },
     hero: {
       title: "Innovando en Datos y Tecnología",
-      subtitle: "Para Decisiones Reales",
-      description: "Construí, analizá y escalá con una infraestructura centrada en datos.",
+      subtitle: "Decisiones Reales. Impacto Real.",
+      description: "Dejá de adivinar. Empezá a construir. Diseñamos la infraestructura de datos que impulsa tu próximo gran salto.",
       cta: "Empezar Ahora",
     },
     pillars: {
-      title: "Nuestros 4 Pilares",
-      subtitle: "La base de nuestra tecnología para transformar tu negocio.",
+      title: "Nuestro Motor",
+      subtitle: "La tecnología que impulsa tu transformación.",
       items: [
-        { title: "Inteligencia Artificial", desc: "Agentes de IA para ventas, soporte, análisis, operaciones y toma de decisiones integrados a tus sistemas." },
-        { title: "Software a Medida", desc: "Sistemas internos, plataformas web, dashboards, APIs e integraciones diseñadas para tu negocio." },
-        { title: "Seguridad Digital", desc: "Protección integral, auditorías de seguridad, monitoreo y respuesta ante amenazas para tu infraestructura." },
-        { title: "Datos e Inteligencia", desc: "Dashboards, reportes automatizados, visualización de datos y Business Intelligence para decisiones informadas." }
+        { title: "Inteligencia Artificial", desc: "No es solo hype. Desplegamos agentes autónomos que venden, asisten y analizan por vos 24/7." },
+        { title: "Software a Medida", desc: "Olvidate de las apps genéricas. Forjamos sistemas y plataformas que le calzan a tu operación como un guante." },
+        { title: "Seguridad Digital", desc: "Tu fortaleza. Implementamos defensa automatizada de grado militar para proteger tu activo más valioso: los datos." },
+        { title: "Datos e Inteligencia", desc: "Transformamos ruido en señales. Dashboards interactivos que revelan las oportunidades ocultas en tus números." }
       ]
     },
     problems: {
-      title: "Donde la mayoría de los sistemas fallan",
+      title: "¿Por Qué Fallan los Sistemas?",
       items: [
-        "Procesos manuales que no escalan",
-        "Herramientas desconectadas entre sí",
-        "CRM genéricos que nadie adopta",
-        "Operaciones que dependen de personas clave",
-        "Datos que no generan decisiones",
-        "IA usada solo como marketing"
+        "Planillas manuales que se rompen",
+        "Herramientas desconectadas",
+        "CRMs caros que nadie usa",
+        "Conocimiento atrapado en personas",
+        "Datos lindos que no dicen nada",
+        "IA usada como juguete, no herramienta"
       ],
-      insight: "El problema no es la falta de tecnología.",
-      insightBold: "El problema es tener tecnología que no trabaja para vos.",
-      cta: "Hablemos de tu negocio"
+      insight: "No se trata de comprar más software.",
+      insightBold: "Se trata de una arquitectura que funcione.",
+      cta: "Arreglemos tu Infraestructura"
     },
     architecture: {
-      title: "Pensamos en sistemas, no en funcionalidades",
-      subtitle: "Diseñamos arquitecturas que crecen con el negocio.",
-      cta: "Diseñemos tu arquitectura"
+      title: "No Solo Escribimos Código. Construimos Sistemas.",
+      subtitle: "Un ecosistema escalable donde cada componente potencia al otro.",
+      cta: "Ver el Diseño"
     },
     useCases: {
-      title: "Casos de Uso Real",
-      subtitle: "Soluciones concretas para problemas reales.",
+      title: "Impacto Real en la Cancha",
+      subtitle: "Soluciones que se pagaron solas.",
       items: [
         {
-          title: "Unificar ventas, soporte y operaciones",
-          desc: "Centralizamos la información clave en un solo ecosistema conectado.",
-          bullets: ["Menos fricción", "Más control", "Información en tiempo real"]
+          title: "Centro de Comando Unificado",
+          desc: "Ventas, soporte y operaciones en un solo latido.",
+          bullets: ["Cero fricción", "Visibilidad total", "Reacción instantánea"]
         },
         {
-          title: "Automatizar procesos críticos",
-          desc: "Reemplazamos tareas manuales repetitivas con flujos de trabajo inteligentes.",
-          bullets: ["Menos tareas manuales", "Menos errores", "Más eficiencia"]
+          title: "Piloto Automático Inteligente",
+          desc: "Tareas de rutina marcadas como 'Listo' antes de que te despiertes.",
+          bullets: ["Trabajo manual eliminado", "Error humano: 0%", "Eficiencia: 100%"]
         },
         {
-          title: "Integrar IA al negocio real",
-          desc: "Implementamos agentes que asisten, analizan y ejecutan acciones concretas.",
-          bullets: ["Decisiones más rápidas", "Escalabilidad", "Inteligencia aplicada"]
+          title: "IA Que Realmente Sirve",
+          desc: "Agentes que manejan flujos complejos de clientes autónomamente.",
+          bullets: ["Escala infinita", "Respuestas al instante", "Crecimiento de ingresos"]
         }
       ],
-      cta: "Ver cómo aplicarlo a mi negocio"
+      cta: "Aplicar esto a mi negocio"
     },
     timeline: {
-      quote: "El sistema que construimos hoy no es el que vas a usar mañana.",
-      quoteSub: "Y eso está bien. Lo diseñamos para evolucionar.",
+      quote: "El software no debería oxidarse.",
+      quoteSub: "Construimos sistemas vivos diseñados para evolucionar con vos.",
       stages: [
-        { title: "Sistema Base", desc: "Digitalización core" },
-        { title: "Automatización", desc: "Eficiencia operativa" },
-        { title: "Inteligencia Artificial", desc: "Capacidades cognitivas" },
-        { title: "Optimización Continua", desc: "Escala infinita" }
+        { title: "Cimientos", desc: "Núcleo Digital" },
+        { title: "Automatización", desc: "Velocidad y Flujo" },
+        { title: "Inteligencia", desc: "Capa Cognitiva" },
+        { title: "Evolución", desc: "Escala Sin Límites" }
       ]
     },
     philosophy: {
-      title: "La tecnología no debería complicar.",
-      subtitle: "Debería desaparecer y dejar que el negocio fluye.",
-      text: "En Atlas One, la tecnología es un medio, no un fin.",
-      cta: "Empezá tu transformación"
+      title: "La Tecnología Debería Ser Invisible.",
+      subtitle: "Cuando funciona perfecto, no la notás. Solo crecés.",
+      text: "Hacemos simple lo complejo.",
+      cta: "Iniciar Transformación"
     },
     footer: {
-      tagline: "Construimos sistemas que escalan."
+      tagline: "Construyendo el futuro de tu negocio, línea por línea.",
+      rights: "© 2025 Atlas One. Todos los derechos reservados."
     }
   }
 };
 
-// ============ ICONS ============
+// ============ ICONS & FLAGS ============
 
 function Icon({ type, className = "w-7 h-7" }: { type: string; className?: string }) {
   const icons: Record<string, React.ReactNode> = {
@@ -190,9 +192,30 @@ function Icon({ type, className = "w-7 h-7" }: { type: string; className?: strin
     chart: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className={className}><path strokeLinecap="round" strokeLinejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 013 19.875v-6.75zM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V8.625zM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V4.125z" /></svg>,
     instagram: <svg viewBox="0 0 24 24" fill="currentColor" className={className}><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" /></svg>,
     linkedin: <svg viewBox="0 0 24 24" fill="currentColor" className={className}><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" /></svg>,
-    x: <svg viewBox="0 0 24 24" fill="currentColor" className={className}><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" /></svg>,
   };
   return <>{icons[type] || icons.code}</>;
+}
+
+function FlagUS({ className }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 60 30" className={className} xmlns="http://www.w3.org/2000/svg">
+      <rect width="60" height="30" fill="#b22234" />
+      <path d="M0,4h60v4h-60M0,12h60v4h-60M0,20h60v4h-60" fill="#fff" />
+      <rect width="24" height="15" fill="#3c3b6e" />
+      <path d="M2 2h2v2h-2zM6 2h2v2h-2zM10 2h2v2h-2zM14 2h2v2h-2zM18 2h2v2h-2zM22 2h2v2h-2zM4 6h2v2h-2zM8 6h2v2h-2zM12 6h2v2h-2zM16 6h2v2h-2zM20 6h2v2h-2zM2 10h2v2h-2zM6 10h2v2h-2zM10 10h2v2h-2zM14 10h2v2h-2zM18 10h2v2h-2zM22 10h2v2h-2z" fill="#fff" />
+    </svg>
+  );
+}
+
+function FlagAR({ className }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 30 20" className={className} xmlns="http://www.w3.org/2000/svg">
+      <rect width="30" height="20" fill="#fff" />
+      <rect width="30" height="6" fill="#74acdf" />
+      <rect y="14" width="30" height="6" fill="#74acdf" />
+      <circle cx="15" cy="10" r="2" fill="#f6b40e" />
+    </svg>
+  );
 }
 
 // ============ HOOKS ============
@@ -257,7 +280,7 @@ function Navigation({ lang, setLang }: { lang: 'en' | 'es', setLang: (l: 'en' | 
     <nav className={`nav ${visible ? "nav-visible" : "nav-hidden"} ${scrolled ? "nav-blur" : ""} ${mounted ? "animate-slide-down" : "opacity-0"}`}>
       <div className="container flex items-center justify-between h-20 md:h-24 relative">
         {/* Logo */}
-        <a href="#" className="flex items-center gap-3">
+        <a href="#" className="flex items-center gap-3 active:scale-95 transition-transform">
           <Image src="/logo-atlas.png" alt="Atlas One" width={40} height={40} className="w-10 h-10 md:w-12 md:h-12 object-contain" />
           <Image
             src="/nombre-atlas-horizontal.png"
@@ -280,11 +303,16 @@ function Navigation({ lang, setLang }: { lang: 'en' | 'es', setLang: (l: 'en' | 
         <div className="flex items-center gap-4">
           <button
             onClick={() => setLang(lang === 'en' ? 'es' : 'en')}
-            className="flex items-center gap-2 px-3 py-1 rounded-full border border-white/10 hover:border-white/30 transition-all bg-white/5 backdrop-blur-sm"
+            className="flex items-center gap-3 px-4 py-2 rounded-full border border-white/10 hover:border-white/30 transition-all bg-white/5 backdrop-blur-sm group hover:bg-white/10"
+            title="Switch Language"
           >
-            <span className={`text-sm font-medium ${lang === 'en' ? 'text-white' : 'text-gray-400'}`}>EN</span>
-            <div className="w-[1px] h-3 bg-white/20"></div>
-            <span className={`text-sm font-medium ${lang === 'es' ? 'text-white' : 'text-gray-400'}`}>ES</span>
+            <div className={`transition-opacity duration-300 ${lang === 'en' ? 'opacity-100' : 'opacity-40 group-hover:opacity-70'}`}>
+              <FlagUS className="w-6 h-4 shadow-sm" />
+            </div>
+            <div className="w-[1px] h-4 bg-white/20"></div>
+            <div className={`transition-opacity duration-300 ${lang === 'es' ? 'opacity-100' : 'opacity-40 group-hover:opacity-70'}`}>
+              <FlagAR className="w-6 h-4 shadow-sm" />
+            </div>
           </button>
         </div>
       </div>
@@ -421,7 +449,6 @@ export default function Home() {
               {t.problems.title}
             </h2>
 
-            {/* Readability Fix: Updated logic already applied in previous step, kept here */}
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12 mb-32 max-w-7xl mx-auto w-full">
               {t.problems.items.map((item, i) => (
                 <div
@@ -469,6 +496,52 @@ export default function Home() {
             </div>
           </div>
         </Section>
+
+        {/* NEW SOCIAL FOOTER */}
+        <footer className="py-20 md:py-24 border-t border-[var(--border-color)] bg-[#020609] relative overflow-hidden">
+          {/* Subtle Glow at bottom */}
+          <div className="absolute bottom-0 left-0 right-0 h-[200px] bg-gradient-to-t from-[#00E5FF]/5 to-transparent pointer-events-none" />
+
+          <div className="container relative z-10">
+            <div className="flex flex-col items-center text-center">
+              {/* BRANDING */}
+              <div className="mb-10 group cursor-default">
+                <div className="flex items-center justify-center gap-4 mb-4">
+                  <Image src="/logo-atlas.png" alt="Atlas One" width={60} height={60} className="w-16 h-16 object-contain group-hover:scale-110 transition-transform duration-500 drop-shadow-[0_0_20px_rgba(0,229,255,0.3)]" />
+                  <Image src="/nombre-atlas-horizontal.png" alt="Atlas One" width={200} height={50} className="h-10 w-auto object-contain opacity-90 group-hover:opacity-100 transition-opacity" />
+                </div>
+                <p className="text-[var(--foreground-muted)] max-w-md mx-auto text-lg leading-relaxed">
+                  {t.footer.tagline}
+                </p>
+              </div>
+
+              {/* SOCIAL ICONS */}
+              <div className="flex items-center gap-8 mb-12">
+                {[
+                  { name: "Instagram", url: "https://www.instagram.com/atlasone.arg/", icon: "instagram" },
+                  { name: "LinkedIn", url: "https://www.linkedin.com/company/atlas-one-erp-ar/", icon: "linkedin" },
+                  { name: "X", url: "https://x.com/atlasonearg", icon: "x" }
+                ].map((link) => (
+                  <a
+                    key={link.name}
+                    href={link.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="p-4 rounded-full bg-white/5 border border-white/10 hover:border-[var(--accent-primary)] hover:bg-[var(--accent-primary)]/10 hover:text-[var(--accent-primary)] transition-all duration-300 group"
+                    aria-label={link.name}
+                  >
+                    <Icon type={link.icon} className="w-6 h-6 group-hover:scale-110 transition-transform" />
+                  </a>
+                ))}
+              </div>
+
+              {/* COPYRIGHT */}
+              <div className="text-[var(--foreground-muted)] text-sm font-medium opacity-60">
+                {t.footer.rights}
+              </div>
+            </div>
+          </div>
+        </footer>
 
       </main>
     </>
