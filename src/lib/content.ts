@@ -65,6 +65,38 @@ export const content = {
         { title: "Evolution", desc: "Limitless Scale" },
       ],
     },
+    about: {
+      title: "Who We Are",
+      subtitle: "The team behind your digital transformation",
+      intro: "We're not just developers. We're entrepreneurs who understand the daily struggles of running a business.",
+      story: "We've seen it firsthand: the endless spreadsheets, the tools that promise everything and deliver nothing, the hours lost to processes that should take minutes. We've been in your shoes.",
+      vision: {
+        title: "Our Vision",
+        desc: "We believe SMBs deserve the same technological power as large corporations. That's why we build solutions that are accessible, scalable, and actually work.",
+      },
+      mission: {
+        title: "Our Mission",
+        desc: "To eliminate the friction between your ideas and their execution. To turn complexity into simplicity. To give you back the time you lose fighting with systems that should serve you.",
+      },
+      values: [
+        {
+          title: "We Think Ahead",
+          desc: "Every solution we build is designed to grow with you. We don't solve today's problems creating tomorrow's limitations.",
+          icon: "rocket",
+        },
+        {
+          title: "We Understand Your Pain",
+          desc: "We've lived the chaos of broken processes. We know what it's like to lose clients because of slow responses or outdated systems.",
+          icon: "heart",
+        },
+        {
+          title: "We Build to Last",
+          desc: "No patches or quick fixes. We architect robust systems that become the backbone of your operation.",
+          icon: "shield",
+        },
+      ],
+      cta: "Let's Talk About Your Business",
+    },
     footer: {
       tagline: "Building the future of your business, line by line.",
       rights: "© 2025 Atlas One. All rights reserved.",
@@ -133,6 +165,38 @@ export const content = {
         { title: "Inteligencia", desc: "Capa Cognitiva" },
         { title: "Evolución", desc: "Escala Sin Límites" },
       ],
+    },
+    about: {
+      title: "Quiénes Somos",
+      subtitle: "El equipo detrás de tu transformación digital",
+      intro: "No somos solo desarrolladores. Somos emprendedores que entienden las luchas diarias de hacer crecer un negocio.",
+      story: "Lo vivimos en carne propia: las planillas interminables, las herramientas que prometen todo y no entregan nada, las horas perdidas en procesos que deberían tomar minutos. Estuvimos en tu lugar.",
+      vision: {
+        title: "Nuestra Visión",
+        desc: "Creemos que las PyMEs merecen el mismo poder tecnológico que las grandes corporaciones. Por eso construimos soluciones accesibles, escalables y que realmente funcionan.",
+      },
+      mission: {
+        title: "Nuestra Misión",
+        desc: "Eliminar la fricción entre tus ideas y su ejecución. Transformar la complejidad en simplicidad. Devolverte el tiempo que perdés peleando con sistemas que deberían servirte.",
+      },
+      values: [
+        {
+          title: "Pensamos a Futuro",
+          desc: "Cada solución que construimos está diseñada para crecer con vos. No resolvemos los problemas de hoy creando las limitaciones de mañana.",
+          icon: "rocket",
+        },
+        {
+          title: "Entendemos tu Dolor",
+          desc: "Vivimos el caos de los procesos rotos. Sabemos lo que es perder clientes por respuestas lentas o sistemas desactualizados.",
+          icon: "heart",
+        },
+        {
+          title: "Construimos para Durar",
+          desc: "Nada de parches ni soluciones rápidas. Arquitectamos sistemas robustos que se convierten en la columna vertebral de tu operación.",
+          icon: "shield",
+        },
+      ],
+      cta: "Hablemos de tu Negocio",
     },
     footer: {
       tagline: "Construyendo el futuro de tu negocio, línea por línea.",

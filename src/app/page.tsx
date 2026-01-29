@@ -11,6 +11,7 @@ import { SectionHeader } from "@/components/ui/SectionHeader";
 import { GlassCard } from "@/components/ui/GlassCard";
 import { Button } from "@/components/ui/Button";
 import { useNavScroll } from "@/hooks/useNavScroll";
+import { AboutSection } from "@/components/sections/AboutSection";
 
 // ============ NAVIGATION ============
 function Navigation({ lang, setLang }: { lang: Language; setLang: (l: Language) => void }) {
@@ -40,7 +41,7 @@ function Navigation({ lang, setLang }: { lang: Language; setLang: (l: Language) 
           <div className="hidden md:flex items-center gap-2 lg:gap-4">
             <a href="#" className="nav-link">{t.home}</a>
             <a href="#pilares" className="nav-link">{t.solutions}</a>
-            <a href="#problems" className="nav-link">{t.about}</a>
+            <a href="#about" className="nav-link">{t.about}</a>
             <a href="#footer" className="nav-link">{t.contact}</a>
           </div>
 
@@ -373,6 +374,7 @@ export default function Home() {
       <PillarsSection lang={lang} />
       <ProblemsSection lang={lang} />
       <TimelineSection lang={lang} />
+      <AboutSection lang={lang} />
       <FooterSection lang={lang} />
     </main>
   );
