@@ -42,9 +42,25 @@ function usePrefersReducedMotion() {
 function Navigation({ lang, setLang }: { lang: Language; setLang: (l: Language) => void }) {
   const { visible, scrolled } = useNavScroll();
   const [mounted, setMounted] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
+  const menuButtonRef = useRef<HTMLButtonElement>(null);
+  const firstLinkRef = useRef<HTMLAnchorElement>(null);
+  const hasToggledMenuRef = useRef(false);
   const t = content[lang].nav;
+  const mobileMenuId = "mobile-navigation";
 
   useEffect(() => { setMounted(true); }, []);
+  useEffect(() => {
+    if (!hasToggledMenuRef.current) {
+      hasToggledMenuRef.current = true;
+      return;
+    }
+    if (menuOpen) {
+      firstLinkRef.current?.focus();
+    } else {
+      menuButtonRef.current?.focus();
+    }
+  }, [menuOpen]);
 
   return (
     <nav className={`
@@ -62,23 +78,92 @@ function Navigation({ lang, setLang }: { lang: Language; setLang: (l: Language) 
             <Image src="/nombre-atlas-horizontal.png" alt="Atlas One" width={140} height={36} className="h-6 sm:h-8 w-auto object-contain hidden sm:block" />
           </a>
 
-          {/* Desktop Nav */}
-          <div className="hidden md:flex items-center gap-2 lg:gap-4">
-            <a href="#" className="nav-link">{t.home}</a>
-            <a href="#ecosystem" className="nav-link">{t.solutions}</a>
-            <a href="#about" className="nav-link">{t.about}</a>
-            <a href="#footer" className="nav-link">{t.contact}</a>
-          </div>
+          <div className="flex items-center gap-3 sm:gap-4">
+            {/* Desktop Nav */}
+            <div className="hidden md:flex items-center gap-2 lg:gap-4">
+              <a href="#" className="nav-link">{t.home}</a>
+              <a href="#ecosystem" className="nav-link">{t.solutions}</a>
+              <a href="#about" className="nav-link">{t.about}</a>
+              <a href="#footer" className="nav-link">{t.contact}</a>
+            </div>
 
-          {/* Lang Toggle */}
-          <button
-            onClick={() => setLang(lang === "en" ? "es" : "en")}
-            className="flex items-center gap-3 px-4 py-2 rounded-full border border-white/10 hover:border-white/30 transition-all bg-white/5 hover:bg-white/10"
-          >
-            <FlagUS className={`w-6 h-4 transition-opacity ${lang === "en" ? "opacity-100" : "opacity-40"}`} />
-            <div className="w-px h-4 bg-white/20" />
-            <FlagAR className={`w-6 h-4 transition-opacity ${lang === "es" ? "opacity-100" : "opacity-40"}`} />
-          </button>
+            {/* Mobile Nav Toggle */}
+            <button
+              ref={menuButtonRef}
+              type="button"
+              className="md:hidden flex items-center justify-center w-11 h-11 rounded-full border border-white/10 hover:border-white/30 transition-all bg-white/5 hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400/60"
+              aria-expanded={menuOpen}
+              aria-controls={mobileMenuId}
+              aria-label={menuOpen ? "Cerrar menú" : "Abrir menú"}
+              onClick={() => setMenuOpen((prev) => !prev)}
+            >
+              <span className="sr-only">{menuOpen ? "Cerrar menú" : "Abrir menú"}</span>
+              <span className="relative w-5 h-5">
+                <span className={`absolute left-0 top-1 w-5 h-0.5 bg-white transition-transform duration-300 ${menuOpen ? "translate-y-2 rotate-45" : ""}`} />
+                <span className={`absolute left-0 top-2.5 w-5 h-0.5 bg-white transition-opacity duration-300 ${menuOpen ? "opacity-0" : "opacity-100"}`} />
+                <span className={`absolute left-0 top-4 w-5 h-0.5 bg-white transition-transform duration-300 ${menuOpen ? "-translate-y-2 -rotate-45" : ""}`} />
+              </span>
+            </button>
+
+            {/* Lang Toggle */}
+            <button
+              onClick={() => setLang(lang === "en" ? "es" : "en")}
+              className="flex items-center gap-3 px-4 py-2 rounded-full border border-white/10 hover:border-white/30 transition-all bg-white/5 hover:bg-white/10"
+            >
+              <FlagUS className={`w-6 h-4 transition-opacity ${lang === "en" ? "opacity-100" : "opacity-40"}`} />
+              <div className="w-px h-4 bg-white/20" />
+              <FlagAR className={`w-6 h-4 transition-opacity ${lang === "es" ? "opacity-100" : "opacity-40"}`} />
+            </button>
+          </div>
+        </div>
+
+        {/* Mobile Nav Panel */}
+        <div
+          id={mobileMenuId}
+          className={`md:hidden overflow-hidden transition-all duration-300 ease-out ${menuOpen ? "max-h-64 opacity-100" : "max-h-0 opacity-0 pointer-events-none"}`}
+          aria-hidden={!menuOpen}
+          onKeyDown={(event) => {
+            if (event.key === "Escape") {
+              event.preventDefault();
+              setMenuOpen(false);
+            }
+          }}
+        >
+          <div className="mt-2 rounded-2xl border border-white/10 bg-[#0B0F1A]/95 backdrop-blur-lg px-4 py-4 flex flex-col gap-2 shadow-[0_12px_40px_rgba(0,0,0,0.35)]">
+            <a
+              ref={firstLinkRef}
+              href="#"
+              className="nav-link"
+              tabIndex={menuOpen ? 0 : -1}
+              onClick={() => setMenuOpen(false)}
+            >
+              {t.home}
+            </a>
+            <a
+              href="#ecosystem"
+              className="nav-link"
+              tabIndex={menuOpen ? 0 : -1}
+              onClick={() => setMenuOpen(false)}
+            >
+              {t.solutions}
+            </a>
+            <a
+              href="#about"
+              className="nav-link"
+              tabIndex={menuOpen ? 0 : -1}
+              onClick={() => setMenuOpen(false)}
+            >
+              {t.about}
+            </a>
+            <a
+              href="#footer"
+              className="nav-link"
+              tabIndex={menuOpen ? 0 : -1}
+              onClick={() => setMenuOpen(false)}
+            >
+              {t.contact}
+            </a>
+          </div>
         </div>
       </Container>
     </nav>
