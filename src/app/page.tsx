@@ -199,12 +199,15 @@ function EcosystemSection({ lang }: { lang: Language }) {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {t.items.map((item, index) => (
-            <GlassCard key={index} className="group relative overflow-hidden flex flex-col items-start h-full">
+            <GlassCard
+              key={index}
+              className="group relative overflow-hidden flex flex-col items-center text-center md:items-start md:text-left h-full"
+            >
               {/* Hover Grad */}
               <div className="absolute inset-0 bg-gradient-to-br from-cyan-400/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
 
               {/* Content */}
-              <div className="relative z-10 flex flex-col items-start h-full w-full">
+              <div className="relative z-10 flex flex-col items-center text-center md:items-start md:text-left h-full w-full">
                 <div className="mb-6 p-3 bg-white/5 rounded-2xl group-hover:scale-110 transition-transform duration-500 border border-white/10 group-hover:border-cyan-400/30 group-hover:shadow-[0_0_20px_rgba(0,229,255,0.2)]">
                   <Icon type={item.icon} className="w-8 h-8 text-cyan-400" />
                 </div>
