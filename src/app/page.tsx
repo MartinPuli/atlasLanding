@@ -1,49 +1,104 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
 import Image from "next/image";
 
 type Language = "en" | "es";
 
 const content = {
   en: {
-    nav: { home: "Home", solutions: "Solutions", about: "About", contact: "Contact" },
+    nav: { 
+      home: "Home", 
+      about: "About Us", 
+      solutions: "Solutions", 
+      method: "Method",
+      contact: "Contact" 
+    },
     hero: {
-      title: "Innovating Data & Technology",
-      subtitle: "Decisions. Real-Time. Real Impact.",
-      description: "Stop guessing. Start building. We architect the data infrastructure that powers your next big leap.",
-      cta: "Start Building",
+      badge: "Technology & Data Innovation",
+      title: "We Build the Future",
+      titleHighlight: "of Your Business",
+      subtitle: "Real Decisions. Real Impact.",
+      description: "Stop guessing. Start building. We architect the data infrastructure and intelligent systems that power your next big leap.",
+      cta: "Start Your Transformation",
+      ctaSecondary: "Learn More",
     },
     about: {
       title: "Who We Are",
-      description: "We are Atlas One, a team obsessed with transforming chaos into clarity. We don't just build software—we engineer ecosystems that grow with your ambition.",
+      subtitle: "Your Strategic Technology Partner",
+      description: "We are Atlas One, a team of engineers, data scientists, and strategists obsessed with transforming chaos into clarity.",
+      paragraphs: [
+        "Founded with the mission of democratizing access to enterprise-grade technology, we believe every ambitious business deserves the digital infrastructure that was once reserved for tech giants.",
+        "We don't just build software—we engineer living ecosystems that evolve with your ambition. Every line of code we write is designed to scale, every system we deploy is built to last.",
+        "Our approach combines cutting-edge technology with deep business understanding. We speak both languages: the language of innovation and the language of results.",
+      ],
+      stats: [
+        { value: "50+", label: "Projects Delivered" },
+        { value: "99.9%", label: "System Uptime" },
+        { value: "24/7", label: "Support Available" },
+        { value: "3x", label: "Average ROI" },
+      ],
     },
     ecosystem: {
       title: "Our Ecosystem",
-      subtitle: "Four pillars powering your transformation.",
+      subtitle: "Four pillars powering your digital transformation.",
       items: [
-        { title: "Artificial Intelligence", desc: "We deploy autonomous agents that sell, support, and analyze for you 24/7.", icon: "ai" },
-        { title: "Custom Software", desc: "Internal systems and platforms that fit your operation like a glove.", icon: "code" },
-        { title: "Digital Security", desc: "Military-grade automated defense to protect your most valuable asset.", icon: "shield" },
-        { title: "Data Intelligence", desc: "Interactive dashboards that reveal hidden opportunities in your data.", icon: "chart" },
+        { 
+          title: "Artificial Intelligence", 
+          desc: "We deploy autonomous AI agents that sell, support, and analyze for you around the clock. From intelligent chatbots to predictive analytics—your business never sleeps.", 
+          icon: "ai",
+          features: ["24/7 AI Agents", "Predictive Analytics", "Natural Language Processing"]
+        },
+        { 
+          title: "Custom Software", 
+          desc: "Bespoke internal systems and platforms tailored to your unique operations. No more adapting to generic tools—your software adapts to you.", 
+          icon: "code",
+          features: ["Tailored Solutions", "Seamless Integration", "Scalable Architecture"]
+        },
+        { 
+          title: "Digital Security", 
+          desc: "Military-grade automated defense systems to protect your most valuable digital assets. Prevention, detection, and response—all automated.", 
+          icon: "shield",
+          features: ["Threat Detection", "Automated Response", "Compliance Ready"]
+        },
+        { 
+          title: "Data Intelligence", 
+          desc: "Transform raw data into strategic insights with interactive dashboards that reveal hidden opportunities and drive informed decisions.", 
+          icon: "chart",
+          features: ["Real-time Dashboards", "Business Intelligence", "Data Visualization"]
+        },
       ],
     },
     problems: {
-      title: "Why Systems Fail",
-      items: ["Manual spreadsheets", "Disconnected tools", "Unused expensive CRMs", "Knowledge silos", "Meaningless data", "AI as toy, not tool"],
+      title: "Why Traditional Systems Fail",
+      subtitle: "Sound familiar?",
+      items: [
+        { text: "Manual spreadsheets everywhere", icon: "❌" },
+        { text: "Disconnected tools that don't talk", icon: "🔌" },
+        { text: "Expensive CRMs gathering dust", icon: "💸" },
+        { text: "Knowledge trapped in silos", icon: "🏢" },
+        { text: "Data without meaning", icon: "📊" },
+        { text: "AI used as a toy, not a tool", icon: "🤖" },
+      ],
       insight: "It's not about buying more software.",
-      insightBold: "It's about architecture that works.",
-      cta: "Fix Your Infrastructure",
+      insightBold: "It's about architecture that actually works.",
     },
     timeline: {
+      title: "Our Method",
       quote: "Software shouldn't rust.",
-      quoteSub: "We build living systems designed to evolve with you.",
+      quoteSub: "We build living systems designed to evolve alongside your business.",
       stages: [
-        { title: "Foundation", desc: "Digital Core" },
-        { title: "Automation", desc: "Speed & Flow" },
-        { title: "Intelligence", desc: "Cognitive Layer" },
-        { title: "Evolution", desc: "Limitless Scale" },
+        { title: "Foundation", desc: "Digital Core Architecture", detail: "We analyze your current state and design a solid, scalable foundation." },
+        { title: "Automation", desc: "Speed & Workflow Optimization", detail: "We eliminate manual processes and create intelligent workflows." },
+        { title: "Intelligence", desc: "Cognitive Layer Integration", detail: "We add AI and analytics to transform data into decisions." },
+        { title: "Evolution", desc: "Continuous Growth & Scale", detail: "Your systems grow with you, adapting to new challenges." },
       ],
+    },
+    cta: {
+      title: "Ready to Transform Your Business?",
+      subtitle: "Let's build something extraordinary together.",
+      description: "Schedule a free consultation and discover how Atlas One can accelerate your digital transformation.",
+      button: "Start Your Journey",
     },
     footer: {
       tagline: "Building the future of your business, line by line.",
@@ -51,43 +106,98 @@ const content = {
     },
   },
   es: {
-    nav: { home: "Inicio", solutions: "Soluciones", about: "Nosotros", contact: "Contacto" },
+    nav: { 
+      home: "Inicio", 
+      about: "Nosotros", 
+      solutions: "Soluciones", 
+      method: "Método",
+      contact: "Contacto" 
+    },
     hero: {
-      title: "Innovando en Datos y Tecnología",
+      badge: "Innovación en Tecnología y Datos",
+      title: "Construimos el Futuro",
+      titleHighlight: "de Tu Negocio",
       subtitle: "Decisiones Reales. Impacto Real.",
-      description: "Dejá de adivinar. Empezá a construir. Diseñamos la infraestructura de datos que impulsa tu próximo gran salto.",
-      cta: "Empezar Ahora",
+      description: "Dejá de adivinar. Empezá a construir. Diseñamos la infraestructura de datos y sistemas inteligentes que impulsan tu próximo gran salto.",
+      cta: "Comenzá Tu Transformación",
+      ctaSecondary: "Conocé Más",
     },
     about: {
       title: "Quiénes Somos",
-      description: "Somos Atlas One, un equipo obsesionado con transformar el caos en claridad. No solo construimos software—diseñamos ecosistemas que crecen con tu ambición.",
+      subtitle: "Tu Socio Estratégico en Tecnología",
+      description: "Somos Atlas One, un equipo de ingenieros, científicos de datos y estrategas obsesionados con transformar el caos en claridad.",
+      paragraphs: [
+        "Fundados con la misión de democratizar el acceso a tecnología de nivel empresarial, creemos que todo negocio ambicioso merece la infraestructura digital que antes estaba reservada para gigantes tecnológicos.",
+        "No solo construimos software—diseñamos ecosistemas vivos que evolucionan con tu ambición. Cada línea de código que escribimos está diseñada para escalar, cada sistema que desplegamos está construido para durar.",
+        "Nuestro enfoque combina tecnología de vanguardia con profundo entendimiento de negocios. Hablamos ambos idiomas: el de la innovación y el de los resultados.",
+      ],
+      stats: [
+        { value: "50+", label: "Proyectos Entregados" },
+        { value: "99.9%", label: "Tiempo Activo" },
+        { value: "24/7", label: "Soporte Disponible" },
+        { value: "3x", label: "ROI Promedio" },
+      ],
     },
     ecosystem: {
       title: "Nuestro Ecosistema",
-      subtitle: "Cuatro pilares que impulsan tu transformación.",
+      subtitle: "Cuatro pilares que impulsan tu transformación digital.",
       items: [
-        { title: "Inteligencia Artificial", desc: "Desplegamos agentes autónomos que venden, asisten y analizan por vos 24/7.", icon: "ai" },
-        { title: "Software a Medida", desc: "Sistemas y plataformas que le calzan a tu operación como un guante.", icon: "code" },
-        { title: "Seguridad Digital", desc: "Defensa automatizada de grado militar para proteger tu activo más valioso.", icon: "shield" },
-        { title: "Inteligencia de Datos", desc: "Dashboards interactivos que revelan oportunidades ocultas en tus datos.", icon: "chart" },
+        { 
+          title: "Inteligencia Artificial", 
+          desc: "Desplegamos agentes de IA autónomos que venden, asisten y analizan por vos las 24 horas. Desde chatbots inteligentes hasta analítica predictiva—tu negocio nunca duerme.", 
+          icon: "ai",
+          features: ["Agentes IA 24/7", "Analítica Predictiva", "Procesamiento de Lenguaje"]
+        },
+        { 
+          title: "Software a Medida", 
+          desc: "Sistemas internos y plataformas hechas a medida para tus operaciones únicas. No más adaptarte a herramientas genéricas—tu software se adapta a vos.", 
+          icon: "code",
+          features: ["Soluciones a Medida", "Integración Perfecta", "Arquitectura Escalable"]
+        },
+        { 
+          title: "Seguridad Digital", 
+          desc: "Sistemas de defensa automatizados de grado militar para proteger tus activos digitales más valiosos. Prevención, detección y respuesta—todo automatizado.", 
+          icon: "shield",
+          features: ["Detección de Amenazas", "Respuesta Automática", "Cumplimiento Normativo"]
+        },
+        { 
+          title: "Inteligencia de Datos", 
+          desc: "Transformá datos crudos en insights estratégicos con dashboards interactivos que revelan oportunidades ocultas e impulsan decisiones informadas.", 
+          icon: "chart",
+          features: ["Dashboards en Tiempo Real", "Business Intelligence", "Visualización de Datos"]
+        },
       ],
     },
     problems: {
-      title: "Por Qué Fallan los Sistemas",
-      items: ["Planillas manuales", "Herramientas desconectadas", "CRMs caros sin uso", "Conocimiento aislado", "Datos sin sentido", "IA como juguete"],
+      title: "Por Qué Fallan los Sistemas Tradicionales",
+      subtitle: "¿Te suena familiar?",
+      items: [
+        { text: "Planillas manuales por todos lados", icon: "❌" },
+        { text: "Herramientas desconectadas", icon: "🔌" },
+        { text: "CRMs caros juntando polvo", icon: "💸" },
+        { text: "Conocimiento atrapado en silos", icon: "🏢" },
+        { text: "Datos sin significado", icon: "📊" },
+        { text: "IA usada como juguete, no herramienta", icon: "🤖" },
+      ],
       insight: "No se trata de comprar más software.",
-      insightBold: "Se trata de arquitectura que funcione.",
-      cta: "Arreglá tu Infraestructura",
+      insightBold: "Se trata de arquitectura que realmente funcione.",
     },
     timeline: {
+      title: "Nuestro Método",
       quote: "El software no debería oxidarse.",
-      quoteSub: "Construimos sistemas vivos diseñados para evolucionar con vos.",
+      quoteSub: "Construimos sistemas vivos diseñados para evolucionar junto a tu negocio.",
       stages: [
-        { title: "Cimientos", desc: "Núcleo Digital" },
-        { title: "Automatización", desc: "Velocidad y Flujo" },
-        { title: "Inteligencia", desc: "Capa Cognitiva" },
-        { title: "Evolución", desc: "Escala Sin Límites" },
+        { title: "Cimientos", desc: "Arquitectura del Núcleo Digital", detail: "Analizamos tu estado actual y diseñamos una base sólida y escalable." },
+        { title: "Automatización", desc: "Velocidad y Optimización de Flujos", detail: "Eliminamos procesos manuales y creamos flujos de trabajo inteligentes." },
+        { title: "Inteligencia", desc: "Integración de Capa Cognitiva", detail: "Agregamos IA y analítica para transformar datos en decisiones." },
+        { title: "Evolución", desc: "Crecimiento y Escala Continua", detail: "Tus sistemas crecen con vos, adaptándose a nuevos desafíos." },
       ],
+    },
+    cta: {
+      title: "¿Listo para Transformar Tu Negocio?",
+      subtitle: "Construyamos algo extraordinario juntos.",
+      description: "Agendá una consulta gratuita y descubrí cómo Atlas One puede acelerar tu transformación digital.",
+      button: "Comenzá Tu Camino",
     },
     footer: {
       tagline: "Construyendo el futuro de tu negocio, línea por línea.",
@@ -118,28 +228,27 @@ function Icon({ type, size = 32 }: { type: string; size?: number }) {
 
 function FlagUS() {
   return (
-    <svg viewBox="0 0 60 30" style={{ width: 24, height: 16 }}>
+    <svg viewBox="0 0 60 30" style={{ width: 24, height: 16, borderRadius: 2 }}>
       <rect width="60" height="30" fill="#b22234" />
-      <path d="M0,4h60v4h-60M0,12h60v4h-60M0,20h60v4h-60" fill="#fff" />
-      <rect width="24" height="15" fill="#3c3b6e" />
+      <path d="M0,3.5h60M0,8.5h60M0,13.5h60M0,18.5h60M0,23.5h60M0,28.5h60" stroke="#fff" strokeWidth="2.3" />
+      <rect width="24" height="16" fill="#3c3b6e" />
     </svg>
   );
 }
 
 function FlagAR() {
   return (
-    <svg viewBox="0 0 30 20" style={{ width: 24, height: 16 }}>
+    <svg viewBox="0 0 30 20" style={{ width: 24, height: 16, borderRadius: 2 }}>
       <rect width="30" height="20" fill="#fff" />
-      <rect width="30" height="6" fill="#74acdf" />
-      <rect y="14" width="30" height="6" fill="#74acdf" />
-      <circle cx="15" cy="10" r="2" fill="#f6b40e" />
+      <rect width="30" height="6.67" fill="#74acdf" />
+      <rect y="13.33" width="30" height="6.67" fill="#74acdf" />
+      <circle cx="15" cy="10" r="2.5" fill="#f6b40e" />
     </svg>
   );
 }
 
 // ===== STYLES =====
 const styles = {
-  // Layout
   container: {
     width: "100%",
     maxWidth: 1200,
@@ -154,25 +263,29 @@ const styles = {
     padding: "0 24px",
   } as React.CSSProperties,
 
-  // Sections
   section: {
     width: "100%",
-    padding: "120px 0",
+    padding: "140px 0",
+    position: "relative" as const,
+    zIndex: 1,
   } as React.CSSProperties,
 
-  sectionDark: {
+  sectionTransparent: {
     width: "100%",
-    padding: "120px 0",
-    backgroundColor: "#020609",
+    padding: "140px 0",
+    position: "relative" as const,
+    zIndex: 1,
+    backgroundColor: "rgba(3, 11, 18, 0.85)",
+    backdropFilter: "blur(10px)",
   } as React.CSSProperties,
 
-  // Text
   heading1: {
-    fontSize: "clamp(2.5rem, 6vw, 4.5rem)",
-    fontWeight: 700,
+    fontSize: "clamp(2.5rem, 6vw, 5rem)",
+    fontWeight: 800,
     color: "#ffffff",
     marginBottom: 24,
-    lineHeight: 1.1,
+    lineHeight: 1.05,
+    letterSpacing: "-0.02em",
   } as React.CSSProperties,
 
   heading2: {
@@ -187,22 +300,23 @@ const styles = {
     fontSize: "clamp(1.25rem, 3vw, 1.75rem)",
     color: "#00E5FF",
     marginBottom: 24,
-    fontWeight: 300,
+    fontWeight: 400,
   } as React.CSSProperties,
 
   bodyText: {
     fontSize: "clamp(1rem, 2vw, 1.25rem)",
     color: "#8BA3B8",
-    lineHeight: 1.7,
+    lineHeight: 1.8,
     maxWidth: 700,
     margin: "0 auto",
   } as React.CSSProperties,
 
-  // Buttons
   btnPrimary: {
-    display: "inline-block",
-    padding: "18px 48px",
-    background: "linear-gradient(135deg, #00E5FF, #00BCD4)",
+    display: "inline-flex",
+    alignItems: "center",
+    gap: 12,
+    padding: "20px 48px",
+    background: "linear-gradient(135deg, #00E5FF 0%, #00BCD4 100%)",
     color: "#030B12",
     fontWeight: 700,
     fontSize: 18,
@@ -210,35 +324,38 @@ const styles = {
     textDecoration: "none",
     border: "none",
     cursor: "pointer",
-    boxShadow: "0 0 40px rgba(0, 229, 255, 0.4)",
+    boxShadow: "0 0 50px rgba(0, 229, 255, 0.5), 0 20px 40px rgba(0, 0, 0, 0.3)",
+    transition: "all 0.3s ease",
   } as React.CSSProperties,
 
   btnSecondary: {
-    display: "inline-block",
-    padding: "16px 40px",
+    display: "inline-flex",
+    alignItems: "center",
+    gap: 8,
+    padding: "18px 40px",
     background: "transparent",
     color: "#00E5FF",
-    fontWeight: 700,
+    fontWeight: 600,
     fontSize: 16,
     borderRadius: 16,
     textDecoration: "none",
-    border: "2px solid #00E5FF",
+    border: "2px solid rgba(0, 229, 255, 0.5)",
     cursor: "pointer",
+    transition: "all 0.3s ease",
   } as React.CSSProperties,
 
-  // Cards
   card: {
     padding: 32,
     borderRadius: 24,
     background: "rgba(255, 255, 255, 0.03)",
-    border: "1px solid rgba(255, 255, 255, 0.1)",
-    transition: "all 0.3s ease",
+    border: "1px solid rgba(255, 255, 255, 0.08)",
+    backdropFilter: "blur(10px)",
+    transition: "all 0.4s ease",
   } as React.CSSProperties,
 
-  // Grid
   grid4: {
     display: "grid",
-    gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr))",
+    gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
     gap: 24,
   } as React.CSSProperties,
 
@@ -247,29 +364,36 @@ const styles = {
     gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))",
     gap: 16,
   } as React.CSSProperties,
-
-  // Flex
-  flexCenter: {
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-  } as React.CSSProperties,
-
-  textCenter: {
-    textAlign: "center" as const,
-  },
 };
+
+// ===== ROTATING PLANET BACKGROUND =====
+function RotatingPlanet() {
+  return (
+    <div className="rotating-planet">
+      <Image 
+        src="/atlas-bg.jpg" 
+        alt="" 
+        width={900} 
+        height={900} 
+        style={{ 
+          width: "100%", 
+          height: "100%", 
+          objectFit: "contain",
+        }} 
+        priority 
+      />
+    </div>
+  );
+}
 
 // ===== NAVIGATION =====
 function Navigation({ lang, setLang }: { lang: Language; setLang: (l: Language) => void }) {
   const [scrolled, setScrolled] = useState(false);
   const t = content[lang].nav;
 
-  useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 50);
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  if (typeof window !== "undefined") {
+    window.addEventListener("scroll", () => setScrolled(window.scrollY > 50), { passive: true });
+  }
 
   return (
     <nav style={{
@@ -277,25 +401,44 @@ function Navigation({ lang, setLang }: { lang: Language; setLang: (l: Language) 
       top: 0,
       left: 0,
       right: 0,
-      zIndex: 50,
-      padding: "16px 0",
+      zIndex: 100,
+      padding: scrolled ? "12px 0" : "20px 0",
       backgroundColor: scrolled ? "rgba(3, 11, 18, 0.95)" : "transparent",
       backdropFilter: scrolled ? "blur(20px)" : "none",
       borderBottom: scrolled ? "1px solid rgba(0, 229, 255, 0.1)" : "none",
       transition: "all 0.3s ease",
     }}>
       <div style={{ ...styles.container, display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-        <a href="#" style={{ display: "flex", alignItems: "center", gap: 12, textDecoration: "none" }}>
-          <Image src="/logo-atlas.png" alt="Atlas One" width={48} height={48} />
-          <span style={{ fontSize: 20, fontWeight: 700, color: "#fff" }}>Atlas One</span>
+        <a href="#hero" style={{ display: "flex", alignItems: "center", gap: 12, textDecoration: "none" }}>
+          <Image src="/logo-atlas.png" alt="Atlas One" width={44} height={44} style={{ filter: "drop-shadow(0 0 20px rgba(0,229,255,0.5))" }} />
+          <span style={{ fontSize: 20, fontWeight: 700, color: "#fff", letterSpacing: "-0.02em" }}>Atlas One</span>
         </a>
 
-        <div style={{ display: "flex", alignItems: "center", gap: 32 }}>
-          <div style={{ display: "flex", gap: 24 }}>
-            <a href="#" style={{ color: "#8BA3B8", textDecoration: "none" }}>{t.home}</a>
-            <a href="#ecosystem" style={{ color: "#8BA3B8", textDecoration: "none" }}>{t.solutions}</a>
-            <a href="#about" style={{ color: "#8BA3B8", textDecoration: "none" }}>{t.about}</a>
-            <a href="#footer" style={{ color: "#8BA3B8", textDecoration: "none" }}>{t.contact}</a>
+        <div style={{ display: "flex", alignItems: "center", gap: 40 }}>
+          <div style={{ display: "flex", gap: 32 }}>
+            {[
+              { href: "#hero", label: t.home },
+              { href: "#about", label: t.about },
+              { href: "#ecosystem", label: t.solutions },
+              { href: "#method", label: t.method },
+              { href: "#contact", label: t.contact },
+            ].map((link) => (
+              <a 
+                key={link.href}
+                href={link.href} 
+                style={{ 
+                  color: "#8BA3B8", 
+                  textDecoration: "none",
+                  fontSize: 15,
+                  fontWeight: 500,
+                  transition: "color 0.2s ease",
+                }}
+                onMouseEnter={(e) => e.currentTarget.style.color = "#00E5FF"}
+                onMouseLeave={(e) => e.currentTarget.style.color = "#8BA3B8"}
+              >
+                {link.label}
+              </a>
+            ))}
           </div>
 
           <button
@@ -306,14 +449,15 @@ function Navigation({ lang, setLang }: { lang: Language; setLang: (l: Language) 
               gap: 8,
               padding: "8px 16px",
               borderRadius: 999,
-              border: "1px solid rgba(255,255,255,0.2)",
+              border: "1px solid rgba(255,255,255,0.15)",
               background: "rgba(255,255,255,0.05)",
               cursor: "pointer",
+              transition: "all 0.2s ease",
             }}
           >
-            <span style={{ opacity: lang === "en" ? 1 : 0.4 }}><FlagUS /></span>
-            <span style={{ color: "#666" }}>|</span>
-            <span style={{ opacity: lang === "es" ? 1 : 0.4 }}><FlagAR /></span>
+            <span style={{ opacity: lang === "en" ? 1 : 0.4, transition: "opacity 0.2s" }}><FlagUS /></span>
+            <span style={{ color: "#444", fontSize: 12 }}>|</span>
+            <span style={{ opacity: lang === "es" ? 1 : 0.4, transition: "opacity 0.2s" }}><FlagAR /></span>
           </button>
         </div>
       </div>
@@ -326,55 +470,152 @@ function HeroSection({ lang }: { lang: Language }) {
   const t = content[lang].hero;
 
   return (
-    <section style={{
+    <section id="hero" style={{
       minHeight: "100vh",
       display: "flex",
       alignItems: "center",
       justifyContent: "center",
       position: "relative",
       overflow: "hidden",
-      backgroundColor: "#010408",
+      backgroundColor: "transparent",
     }}>
-      {/* Background */}
-      <div style={{ position: "absolute", inset: 0, display: "flex", alignItems: "center", justifyContent: "center" }}>
-        <Image src="/atlas-bg.jpg" alt="" width={1000} height={1000} style={{ width: "80vh", height: "80vh", objectFit: "contain", opacity: 0.4 }} priority />
-      </div>
-
-      {/* Glow */}
-      <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, height: 400, background: "linear-gradient(to top, rgba(0,229,255,0.15), transparent)" }} />
+      {/* Radial glow from center */}
+      <div style={{
+        position: "absolute",
+        top: "50%",
+        left: "50%",
+        transform: "translate(-50%, -50%)",
+        width: "120%",
+        height: "120%",
+        background: "radial-gradient(ellipse at center, rgba(0,229,255,0.08) 0%, transparent 60%)",
+        pointerEvents: "none",
+      }} />
 
       {/* Content */}
-      <div style={{ ...styles.containerSm, position: "relative", zIndex: 10, textAlign: "center", paddingTop: 100, paddingBottom: 100 }}>
-        <div style={{ marginBottom: 48 }}>
-          <Image src="/logo-atlas.png" alt="Atlas One" width={200} height={200} style={{ filter: "drop-shadow(0 0 60px rgba(0,229,255,0.6))" }} priority />
+      <div style={{ ...styles.containerSm, position: "relative", zIndex: 10, textAlign: "center", paddingTop: 120, paddingBottom: 120 }}>
+        {/* Badge */}
+        <div style={{
+          display: "inline-block",
+          padding: "10px 24px",
+          borderRadius: 999,
+          background: "rgba(0, 229, 255, 0.1)",
+          border: "1px solid rgba(0, 229, 255, 0.3)",
+          marginBottom: 40,
+        }}>
+          <span style={{ color: "#00E5FF", fontSize: 14, fontWeight: 600, letterSpacing: "0.05em", textTransform: "uppercase" }}>
+            {t.badge}
+          </span>
         </div>
 
-        <h1 style={styles.heading1}>{t.title}</h1>
-        <p style={styles.subtitle}>{t.subtitle}</p>
-        <p style={{ ...styles.bodyText, marginBottom: 48 }}>{t.description}</p>
+        {/* Logo - CENTERED */}
+        <div style={{ 
+          display: "flex", 
+          justifyContent: "center", 
+          alignItems: "center",
+          marginBottom: 48 
+        }} className="floating">
+          <Image 
+            src="/logo-atlas.png" 
+            alt="Atlas One" 
+            width={180} 
+            height={180} 
+            style={{ filter: "drop-shadow(0 0 80px rgba(0,229,255,0.6))" }} 
+            className="glowing"
+            priority 
+          />
+        </div>
 
-        <a href="mailto:atlasonecontact@gmail.com" style={styles.btnPrimary}>{t.cta}</a>
+        {/* Title */}
+        <h1 style={styles.heading1}>
+          {t.title}<br/>
+          <span className="shimmer-text">{t.titleHighlight}</span>
+        </h1>
+        
+        <p style={{ ...styles.subtitle, marginBottom: 24 }}>{t.subtitle}</p>
+        <p style={{ ...styles.bodyText, marginBottom: 48, maxWidth: 600 }}>{t.description}</p>
+
+        {/* CTAs */}
+        <div style={{ display: "flex", gap: 20, justifyContent: "center", flexWrap: "wrap" }}>
+          <a href="#contact" style={styles.btnPrimary}>
+            {t.cta}
+            <span style={{ fontSize: 20 }}>→</span>
+          </a>
+          <a href="#about" style={styles.btnSecondary}>{t.ctaSecondary}</a>
+        </div>
       </div>
+
+      {/* Bottom gradient */}
+      <div style={{
+        position: "absolute",
+        bottom: 0,
+        left: 0,
+        right: 0,
+        height: 200,
+        background: "linear-gradient(to top, rgba(3,11,18,0.9), transparent)",
+        pointerEvents: "none",
+      }} />
     </section>
   );
 }
 
-// ===== ABOUT =====
+// ===== ABOUT (EXPANDED) =====
 function AboutSection({ lang }: { lang: Language }) {
   const t = content[lang].about;
 
   return (
-    <section id="about" style={{ ...styles.section, backgroundColor: "#030B12" }}>
-      {/* Top line */}
-      <div style={{ width: 1, height: 80, background: "linear-gradient(to bottom, transparent, rgba(0,229,255,0.5), transparent)", margin: "0 auto 60px" }} />
+    <section id="about" style={styles.sectionTransparent}>
+      <div style={styles.container}>
+        {/* Header */}
+        <div style={{ textAlign: "center", marginBottom: 60 }}>
+          <h2 style={styles.heading2}>{t.title}</h2>
+          <p style={{ fontSize: 22, color: "#00E5FF", marginBottom: 24 }}>{t.subtitle}</p>
+          <p style={{ ...styles.bodyText, maxWidth: 800 }}>{t.description}</p>
+        </div>
 
-      <div style={{ ...styles.containerSm, textAlign: "center" }}>
-        <h2 style={styles.heading2}>{t.title}</h2>
-        <p style={styles.bodyText}>{t.description}</p>
+        {/* Paragraphs */}
+        <div style={{ maxWidth: 900, margin: "0 auto 80px", display: "grid", gap: 32 }}>
+          {t.paragraphs.map((p, i) => (
+            <div key={i} style={{ display: "flex", gap: 24, alignItems: "flex-start" }}>
+              <div style={{
+                width: 48,
+                height: 48,
+                borderRadius: 12,
+                background: "rgba(0, 229, 255, 0.1)",
+                border: "1px solid rgba(0, 229, 255, 0.3)",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                flexShrink: 0,
+              }}>
+                <span style={{ color: "#00E5FF", fontSize: 20, fontWeight: 700 }}>{i + 1}</span>
+              </div>
+              <p style={{ fontSize: 17, color: "#B8C9D9", lineHeight: 1.8, margin: 0 }}>{p}</p>
+            </div>
+          ))}
+        </div>
+
+        {/* Stats */}
+        <div style={{
+          display: "grid",
+          gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))",
+          gap: 24,
+          maxWidth: 1000,
+          margin: "0 auto",
+        }}>
+          {t.stats.map((stat, i) => (
+            <div key={i} style={{
+              padding: 32,
+              borderRadius: 20,
+              background: "rgba(0, 229, 255, 0.05)",
+              border: "1px solid rgba(0, 229, 255, 0.15)",
+              textAlign: "center",
+            }}>
+              <div style={{ fontSize: 48, fontWeight: 800, color: "#00E5FF", marginBottom: 8 }}>{stat.value}</div>
+              <div style={{ fontSize: 15, color: "#8BA3B8", fontWeight: 500 }}>{stat.label}</div>
+            </div>
+          ))}
+        </div>
       </div>
-
-      {/* Bottom line */}
-      <div style={{ width: 1, height: 80, background: "linear-gradient(to bottom, transparent, rgba(0,229,255,0.5), transparent)", margin: "60px auto 0" }} />
     </section>
   );
 }
@@ -384,9 +625,8 @@ function EcosystemSection({ lang }: { lang: Language }) {
   const t = content[lang].ecosystem;
 
   return (
-    <section id="ecosystem" style={styles.sectionDark}>
+    <section id="ecosystem" style={styles.sectionTransparent}>
       <div style={styles.container}>
-        {/* Header */}
         <div style={{ textAlign: "center", marginBottom: 80 }}>
           <h2 style={{ ...styles.heading2, background: "linear-gradient(135deg, #00E5FF, #00BCD4)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>
             {t.title}
@@ -394,15 +634,41 @@ function EcosystemSection({ lang }: { lang: Language }) {
           <p style={{ fontSize: 20, color: "#8BA3B8" }}>{t.subtitle}</p>
         </div>
 
-        {/* Cards */}
         <div style={styles.grid4}>
           {t.items.map((item, i) => (
-            <div key={i} style={{ ...styles.card, textAlign: "center" }}>
-              <div style={{ width: 72, height: 72, borderRadius: 20, background: "rgba(0,229,255,0.1)", display: "flex", alignItems: "center", justifyContent: "center", margin: "0 auto 24px", color: "#00E5FF" }}>
-                <Icon type={item.icon} size={36} />
+            <div key={i} style={{ 
+              ...styles.card, 
+              textAlign: "left",
+              display: "flex",
+              flexDirection: "column",
+              gap: 20,
+            }}>
+              <div style={{ 
+                width: 64, 
+                height: 64, 
+                borderRadius: 16, 
+                background: "linear-gradient(135deg, rgba(0,229,255,0.15), rgba(0,229,255,0.05))", 
+                display: "flex", 
+                alignItems: "center", 
+                justifyContent: "center", 
+                color: "#00E5FF" 
+              }}>
+                <Icon type={item.icon} size={32} />
               </div>
-              <h3 style={{ fontSize: 22, fontWeight: 700, color: "#fff", marginBottom: 12 }}>{item.title}</h3>
-              <p style={{ fontSize: 15, color: "#8BA3B8", lineHeight: 1.6 }}>{item.desc}</p>
+              <h3 style={{ fontSize: 22, fontWeight: 700, color: "#fff", margin: 0 }}>{item.title}</h3>
+              <p style={{ fontSize: 15, color: "#8BA3B8", lineHeight: 1.7, margin: 0 }}>{item.desc}</p>
+              <div style={{ display: "flex", flexWrap: "wrap", gap: 8, marginTop: "auto" }}>
+                {item.features.map((f, j) => (
+                  <span key={j} style={{
+                    padding: "6px 12px",
+                    borderRadius: 8,
+                    background: "rgba(0, 229, 255, 0.08)",
+                    color: "#00E5FF",
+                    fontSize: 12,
+                    fontWeight: 500,
+                  }}>{f}</span>
+                ))}
+              </div>
             </div>
           ))}
         </div>
@@ -416,58 +682,151 @@ function ProblemsSection({ lang }: { lang: Language }) {
   const t = content[lang].problems;
 
   return (
-    <section id="problems" style={{ ...styles.section, backgroundColor: "#030B12" }}>
+    <section id="problems" style={styles.sectionTransparent}>
       <div style={styles.container}>
-        {/* Header */}
         <div style={{ textAlign: "center", marginBottom: 60 }}>
           <h2 style={styles.heading2}>{t.title}</h2>
+          <p style={{ fontSize: 18, color: "#8BA3B8" }}>{t.subtitle}</p>
         </div>
 
-        {/* Problems Grid */}
-        <div style={{ ...styles.grid3, marginBottom: 80 }}>
+        <div style={{ ...styles.grid3, marginBottom: 80, maxWidth: 900, margin: "0 auto 80px" }}>
           {t.items.map((item, i) => (
-            <div key={i} style={{ ...styles.card, textAlign: "center", padding: 24 }}>
-              <p style={{ fontSize: 16, color: "#ccc" }}>{item}</p>
+            <div key={i} style={{ 
+              ...styles.card, 
+              padding: 24,
+              display: "flex",
+              alignItems: "center",
+              gap: 16,
+            }}>
+              <span style={{ fontSize: 24 }}>{item.icon}</span>
+              <p style={{ fontSize: 15, color: "#ccc", margin: 0 }}>{item.text}</p>
             </div>
           ))}
         </div>
 
-        {/* Insight Box */}
-        <div style={{ maxWidth: 700, margin: "0 auto", padding: 48, borderRadius: 32, background: "linear-gradient(to bottom, rgba(0,229,255,0.1), transparent)", border: "1px solid rgba(0,229,255,0.2)", textAlign: "center" }}>
+        <div style={{ 
+          maxWidth: 700, 
+          margin: "0 auto", 
+          padding: 56, 
+          borderRadius: 32, 
+          background: "linear-gradient(135deg, rgba(0,229,255,0.1), rgba(0,229,255,0.02))", 
+          border: "1px solid rgba(0,229,255,0.2)", 
+          textAlign: "center" 
+        }}>
           <p style={{ fontSize: 22, color: "#fff", marginBottom: 16 }}>{t.insight}</p>
-          <p style={{ fontSize: 28, fontWeight: 700, color: "#00E5FF", marginBottom: 32 }}>{t.insightBold}</p>
-          <a href="#footer" style={styles.btnSecondary}>{t.cta}</a>
+          <p style={{ fontSize: 32, fontWeight: 700, color: "#00E5FF", margin: 0 }}>{t.insightBold}</p>
         </div>
       </div>
     </section>
   );
 }
 
-// ===== TIMELINE =====
+// ===== TIMELINE/METHOD =====
 function TimelineSection({ lang }: { lang: Language }) {
   const t = content[lang].timeline;
 
   return (
-    <section style={styles.sectionDark}>
+    <section id="method" style={styles.sectionTransparent}>
       <div style={styles.container}>
-        {/* Quote */}
         <div style={{ textAlign: "center", marginBottom: 80 }}>
+          <h2 style={styles.heading2}>{t.title}</h2>
           <blockquote style={{ fontSize: "clamp(1.5rem, 4vw, 2.5rem)", fontWeight: 700, color: "#fff", marginBottom: 16 }}>
             &ldquo;<span style={{ color: "#00E5FF" }}>{t.quote}</span>&rdquo;
           </blockquote>
           <p style={{ fontSize: 18, color: "#8BA3B8" }}>{t.quoteSub}</p>
         </div>
 
-        {/* Stages */}
-        <div style={styles.grid4}>
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))", gap: 32 }}>
           {t.stages.map((stage, i) => (
-            <div key={i} style={{ textAlign: "center" }}>
-              <div style={{ width: 80, height: 80, borderRadius: "50%", border: "2px solid rgba(0,229,255,0.3)", display: "flex", alignItems: "center", justifyContent: "center", margin: "0 auto 20px", background: "#030B12" }}>
-                <span style={{ fontSize: 32, fontWeight: 700, color: "#00E5FF" }}>{i + 1}</span>
+            <div key={i} style={{ position: "relative" }}>
+              <div style={{ textAlign: "center" }}>
+                <div style={{ 
+                  width: 80, 
+                  height: 80, 
+                  borderRadius: "50%", 
+                  border: "2px solid rgba(0,229,255,0.4)",
+                  background: "rgba(3,11,18,0.8)",
+                  display: "flex", 
+                  alignItems: "center", 
+                  justifyContent: "center", 
+                  margin: "0 auto 24px",
+                  boxShadow: "0 0 30px rgba(0,229,255,0.2)",
+                }}>
+                  <span style={{ fontSize: 32, fontWeight: 800, color: "#00E5FF" }}>{i + 1}</span>
+                </div>
+                <h3 style={{ fontSize: 22, fontWeight: 700, color: "#fff", marginBottom: 8 }}>{stage.title}</h3>
+                <p style={{ fontSize: 14, color: "#00E5FF", marginBottom: 12, fontWeight: 500 }}>{stage.desc}</p>
+                <p style={{ fontSize: 14, color: "#8BA3B8", lineHeight: 1.6 }}>{stage.detail}</p>
               </div>
-              <h3 style={{ fontSize: 20, fontWeight: 700, color: "#fff", marginBottom: 8 }}>{stage.title}</h3>
-              <p style={{ fontSize: 15, color: "#8BA3B8" }}>{stage.desc}</p>
             </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// ===== FINAL CTA =====
+function CTASection({ lang }: { lang: Language }) {
+  const t = content[lang].cta;
+
+  return (
+    <section id="contact" style={{
+      ...styles.sectionTransparent,
+      padding: "160px 0",
+    }}>
+      <div style={{ ...styles.containerSm, textAlign: "center" }}>
+        <h2 style={{ ...styles.heading2, fontSize: "clamp(2rem, 5vw, 3.5rem)", marginBottom: 16 }}>{t.title}</h2>
+        <p style={{ fontSize: 24, color: "#00E5FF", marginBottom: 24 }}>{t.subtitle}</p>
+        <p style={{ ...styles.bodyText, marginBottom: 48, maxWidth: 600 }}>{t.description}</p>
+
+        <div style={{ display: "flex", gap: 20, justifyContent: "center", flexWrap: "wrap" }}>
+          <a 
+            href="mailto:atlasonecontact@gmail.com" 
+            style={{
+              ...styles.btnPrimary,
+              padding: "24px 56px",
+              fontSize: 20,
+            }}
+          >
+            {t.button}
+            <span style={{ fontSize: 24 }}>→</span>
+          </a>
+        </div>
+
+        {/* Social */}
+        <div style={{ marginTop: 80, display: "flex", alignItems: "center", justifyContent: "center", gap: 24 }}>
+          {socialLinks.map((social, i) => (
+            <a
+              key={i}
+              href={social.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{ 
+                width: 56, 
+                height: 56, 
+                borderRadius: 16, 
+                background: "rgba(255,255,255,0.05)", 
+                border: "1px solid rgba(255,255,255,0.1)", 
+                display: "flex", 
+                alignItems: "center", 
+                justifyContent: "center", 
+                color: "#8BA3B8", 
+                textDecoration: "none",
+                transition: "all 0.3s ease",
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.borderColor = "rgba(0,229,255,0.5)";
+                e.currentTarget.style.color = "#00E5FF";
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.borderColor = "rgba(255,255,255,0.1)";
+                e.currentTarget.style.color = "#8BA3B8";
+              }}
+              aria-label={social.name}
+            >
+              <Icon type={social.icon} size={24} />
+            </a>
           ))}
         </div>
       </div>
@@ -480,38 +839,23 @@ function FooterSection({ lang }: { lang: Language }) {
   const t = content[lang].footer;
 
   return (
-    <footer id="footer" style={{ padding: "100px 0", backgroundColor: "#010408", borderTop: "1px solid rgba(0,229,255,0.1)" }}>
-      <div style={{ ...styles.containerSm, textAlign: "center" }}>
-        {/* Brand */}
-        <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 16, marginBottom: 24 }}>
-          <Image src="/logo-atlas.png" alt="Atlas One" width={56} height={56} />
-          <span style={{ fontSize: 24, fontWeight: 700, color: "#fff" }}>Atlas One</span>
+    <footer style={{ 
+      padding: "60px 0", 
+      backgroundColor: "rgba(1, 4, 8, 0.95)", 
+      borderTop: "1px solid rgba(0,229,255,0.1)",
+      position: "relative",
+      zIndex: 1,
+    }}>
+      <div style={{ ...styles.container, display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: 24 }}>
+        <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
+          <Image src="/logo-atlas.png" alt="Atlas One" width={40} height={40} />
+          <div>
+            <span style={{ fontSize: 18, fontWeight: 700, color: "#fff" }}>Atlas One</span>
+            <p style={{ fontSize: 13, color: "#666", margin: 0 }}>{t.tagline}</p>
+          </div>
         </div>
 
-        {/* Tagline */}
-        <p style={{ fontSize: 18, color: "#8BA3B8", marginBottom: 40, maxWidth: 500, margin: "0 auto 40px" }}>{t.tagline}</p>
-
-        {/* Social */}
-        <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 16, marginBottom: 40 }}>
-          {socialLinks.map((social, i) => (
-            <a
-              key={i}
-              href={social.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              style={{ width: 56, height: 56, borderRadius: 16, background: "rgba(255,255,255,0.05)", border: "1px solid rgba(255,255,255,0.1)", display: "flex", alignItems: "center", justifyContent: "center", color: "#8BA3B8", textDecoration: "none" }}
-              aria-label={social.name}
-            >
-              <Icon type={social.icon} size={24} />
-            </a>
-          ))}
-        </div>
-
-        {/* Divider */}
-        <div style={{ width: 200, height: 1, background: "linear-gradient(to right, transparent, rgba(255,255,255,0.2), transparent)", margin: "0 auto 24px" }} />
-
-        {/* Copyright */}
-        <p style={{ fontSize: 14, color: "#666" }}>{t.rights}</p>
+        <p style={{ fontSize: 13, color: "#555" }}>{t.rights}</p>
       </div>
     </footer>
   );
@@ -522,13 +866,24 @@ export default function Home() {
   const [lang, setLang] = useState<Language>("es");
 
   return (
-    <main style={{ minHeight: "100vh", backgroundColor: "#030B12", color: "#fff" }}>
+    <main style={{ 
+      minHeight: "100vh", 
+      backgroundColor: "#030B12", 
+      color: "#fff",
+      position: "relative",
+      overflow: "hidden",
+    }}>
+      {/* Rotating Planet Background - FIXED */}
+      <RotatingPlanet />
+      
+      {/* Content */}
       <Navigation lang={lang} setLang={setLang} />
       <HeroSection lang={lang} />
       <AboutSection lang={lang} />
       <EcosystemSection lang={lang} />
       <ProblemsSection lang={lang} />
       <TimelineSection lang={lang} />
+      <CTASection lang={lang} />
       <FooterSection lang={lang} />
     </main>
   );
