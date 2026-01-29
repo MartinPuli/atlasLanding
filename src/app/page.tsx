@@ -340,7 +340,7 @@ function Navigation({ lang, setLang }: { lang: Language; setLang: (l: Language) 
             <Image src="/logo-atlas.png" alt="Atlas One" width={40} height={40} className="drop-shadow-[0_0_20px_rgba(0,229,255,0.5)]" />
             {/* Horizontal name - hidden on mobile */}
             <Image
-              src="/nombre-atlas-horizontal.png"
+              src="/nombre.png"
               alt="Atlas One"
               width={140}
               height={35}
@@ -757,7 +757,7 @@ function FooterSection({ lang }: { lang: Language }) {
         <div className="flex flex-col items-center gap-5">
           <Image src="/logo-atlas.png" alt="Atlas One" width={80} height={80} className="drop-shadow-[0_0_40px_rgba(0,229,255,0.6)]" />
           <Image
-            src="/nombre-atlas-horizontal.png"
+            src="/nombre.png"
             alt="Atlas One"
             width={180}
             height={45}
