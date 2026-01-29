@@ -1,0 +1,33 @@
+{
+  "name": "Atlas One - Software, IA y Ciberseguridad",
+  "short_name": "Atlas One",
+  "description": "Soluciones tecnologicas integrales: Atlas IA, Atlas Software, Atlas Analytics y Atlas Cybersecurity para empresas en Argentina y Latinoamerica.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#010408",
+  "theme_color": "#00E5FF",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/logo-atlas.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/logo-atlas.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": [
+    "business",
+    "productivity",
+    "utilities"
+  ],
+  "lang": "es-AR",
+  "dir": "ltr",
+  "scope": "/",
+  "prefer_related_applications": false
+}
