@@ -45,6 +45,32 @@ export const content = {
         },
       ],
     },
+    pillars: {
+      title: "Our Strategic Pillars",
+      subtitle: "What turns vision into momentum.",
+      items: [
+        {
+          title: "Architecture",
+          desc: "Design systems that scale cleanly and stay resilient.",
+          icon: "code",
+        },
+        {
+          title: "Automation",
+          desc: "Streamline workflows to unlock speed and precision.",
+          icon: "ai",
+        },
+        {
+          title: "Intelligence",
+          desc: "Make data actionable with analytics that guide decisions.",
+          icon: "chart",
+        },
+        {
+          title: "Security",
+          desc: "Protect critical operations with proactive defenses.",
+          icon: "shield",
+        },
+      ],
+    },
 
     problems: {
       title: "Why Do Most Systems Fail?",
@@ -115,6 +141,32 @@ export const content = {
         {
           title: "Atlas Cybersecurity",
           desc: "Protección blindada para tus activos digitales en un mundo impredecible.",
+          icon: "shield",
+        },
+      ],
+    },
+    pillars: {
+      title: "Nuestros Pilares Estratégicos",
+      subtitle: "Lo que transforma visión en impulso.",
+      items: [
+        {
+          title: "Arquitectura",
+          desc: "Diseñamos sistemas que escalan con solidez.",
+          icon: "code",
+        },
+        {
+          title: "Automatización",
+          desc: "Optimizamos flujos para ganar velocidad y precisión.",
+          icon: "ai",
+        },
+        {
+          title: "Inteligencia",
+          desc: "Convertimos datos en decisiones claras.",
+          icon: "chart",
+        },
+        {
+          title: "Seguridad",
+          desc: "Protegemos operaciones críticas con defensas proactivas.",
           icon: "shield",
         },
       ],
