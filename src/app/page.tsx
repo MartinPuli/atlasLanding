@@ -24,6 +24,10 @@ const content = {
       cta: "Start Your Transformation",
       ctaSecondary: "Learn More",
     },
+    ctaSecondary: {
+      title: "Stop letting inefficiencies drain your profit.",
+      subtitle: "Automate your workflows today."
+    },
     about: {
       title: "Who We Are",
       subtitle: "Driven by AI & Robotics Passion",
@@ -126,102 +130,106 @@ const content = {
     },
     hero: {
       title: "Construimos el Futuro",
-      titleHighlight: "de Tu Negocio",
-      subtitle: "Decisiones Reales. Impacto Real.",
+      titleHighlight: "de Tu Empresa",
+      subtitle: "Infraestructura Digital para Pymes y Corporaciones.",
       description:
-        "Dejá de adivinar. Empezá a construir. Diseñamos la infraestructura de datos y sistemas inteligentes que impulsan tu próximo gran salto.",
-      cta: "Comenzá Tu Transformación",
-      ctaSecondary: "Conocé Más",
+        "Dejá de operar con sistemas del pasado. Atlas One diseña la arquitectura de datos, automatización e IA que tu negocio necesita para escalar sin fricción.",
+      cta: "Agendá Tu Diagnóstico",
+      ctaSecondary: "Explorar Ecosistema",
+    },
+    ctaSecondary: {
+      title: "Dejá que las ineficiencias drenen tu rentabilidad.",
+      subtitle: "Automatizá tus flujos de trabajo hoy mismo."
     },
     about: {
-      title: "Quiénes Somos",
-      subtitle: "Apasionados por la IA y la Robótica",
+      title: "Más que Software. Socios de Crecimiento.",
+      subtitle: "Ingeniería aplicada a resultados de negocio.",
       paragraphs: [
-        "Estamos obsesionados con la Inteligencia Artificial y la Robótica. Cada herramienta que ofrecemos nació de nuestra propia necesidad de innovar más rápido, trabajar más inteligentemente y eliminar fricciones.",
-        "Lo que construimos para vos lo probamos primero en nosotros mismos. Nuestros agentes de IA gestionan nuestros proyectos, nuestros dashboards de analítica guían nuestras decisiones, y nuestras automatizaciones nos mantienen operando 24/7.",
-        "Cuando trabajás con nosotros, no estás recibiendo teoría sin probar—estás obteniendo soluciones que ya demostraron su valor en el mundo real, empezando por el nuestro.",
+        "No somos una agencia web. Somos una consultora de ingeniería de software obsesionada con la eficiencia operativa. Entendemos que en el mundo empresarial actual, la velocidad y la precisión son moneda corriente.",
+        "Probamos cada solución internamente antes de implementarla. Nuestros propios agentes de IA gestionan nuestras operaciones 24/7, permitiéndonos enfocarnos en lo que importa: tu estrategia.",
+        "Trabajar con Atlas One significa integrar un equipo elít de ingeniería a tu empresa, sin el costo de contratar un departamento de IT interno.",
       ],
     },
     ecosystem: {
-      title: "Nuestro Ecosistema",
-      subtitle: "Cuatro pilares que impulsan tu transformación digital.",
+      title: "Soluciones de Grado Corporativo",
+      subtitle: "Un ecosistema integral para digitalizar cada aspecto de tu operación.",
       items: [
         {
           title: "Atlas IA",
-          desc: "Desplegamos agentes de IA autónomos que venden, asisten y analizan por vos las 24 horas. Desde chatbots inteligentes hasta analítica predictiva—tu negocio nunca duerme.",
+          desc: "Agentes autónomos que atienden clientes, califican leads y ejecutan tareas repetitivas 24/7. Reducí costos operativos aumentando la disponibilidad.",
           icon: "ai",
-          features: ["Agentes IA 24/7", "Analítica Predictiva", "Procesamiento de Lenguaje"],
+          features: ["Atención 24/7", "Ventas Automáticas", "Procesamiento de Voz/Texto"],
         },
         {
           title: "Atlas Software",
-          desc: "Sistemas internos y plataformas hechas a medida para tus operaciones únicas. No más adaptarte a herramientas genéricas—tu software se adapta a vos.",
+          desc: "Plataformas web y móviles robustas, diseñadas para soportar alta carga y escalar con tu negocio. Olvidate de soluciones 'enlatadas' que te limitan.",
           icon: "code",
-          features: ["Soluciones a Medida", "Integración Perfecta", "Arquitectura Escalable"],
+          features: ["Plataformas SaaS", "Apps Corporativas", "APIs Personalizadas"],
         },
         {
           title: "Atlas Cybersecurity",
-          desc: "Sistemas de defensa automatizados de grado militar para proteger tus activos digitales más valiosos. Prevención, detección y respuesta—todo automatizado.",
+          desc: "Protección proactiva de tus activos digitales y datos sensibles. Cumplimiento normativo y protocolos de seguridad bancaria para tu tranquilidad.",
           icon: "shield",
-          features: ["Detección de Amenazas", "Respuesta Automática", "Cumplimiento Normativo"],
+          features: ["Auditoría de Seguridad", "Protección de Datos", "Monitoreo 24/7"],
         },
         {
           title: "Atlas Analytics",
-          desc: "Transformá datos crudos en insights estratégicos con dashboards interactivos que revelan oportunidades ocultas e impulsan decisiones informadas.",
+          desc: "Tableros de control en tiempo real que unifican tus datos. Visualizá KPIs financieros y operativos para tomar decisiones basadas en evidencia, no intuición.",
           icon: "chart",
-          features: ["Dashboards en Tiempo Real", "Business Intelligence", "Visualización de Datos"],
+          features: ["Tableros Ejecutivos", "Reportes Automáticos", "Unificación de Datos"],
         },
       ],
     },
     problems: {
-      title: "Por Qué Fallan los Sistemas Tradicionales",
-      subtitle: "¿Te suena familiar?",
+      title: "¿Tu Empresa Tiene un Techo de Cristal?",
+      subtitle: "Los síntomas de una infraestructura digital obsoleta limitan tu facturación.",
       items: [
-        { text: "Planillas manuales por todos lados", icon: "file" },
-        { text: "Herramientas desconectadas", icon: "disconnect" },
-        { text: "CRMs caros juntando polvo", icon: "money" },
-        { text: "Conocimiento atrapado en silos", icon: "lock" },
-        { text: "Datos sin significado", icon: "chartDown" },
-        { text: "IA usada como juguete, no herramienta", icon: "robot" },
+        { text: "Procesos manuales propensos a error humano", icon: "file" },
+        { text: "Sistemas desconectados que duplican trabajo", icon: "disconnect" },
+        { text: "Pérdida de oportunidades por respuesta lenta", icon: "money" },
+        { text: "Datos dispersos imposible de analizar", icon: "chartDown" },
+        { text: "Dependencia crítica de personal clave", icon: "lock" },
+        { text: "Tecnología que genera gastos, no inversión", icon: "robot" },
       ],
-      insight: "No se trata de comprar más software.",
-      insightBold: "Se trata de arquitectura que realmente funcione.",
+      insight: "El problema no es tu equipo.",
+      insightBold: "El problema es que operan con herramientas del siglo pasado.",
     },
     timeline: {
-      title: "Nuestro Método",
-      quote: "El software no debería oxidarse.",
-      quoteSub: "Construimos sistemas vivos diseñados para evolucionar junto a tu negocio.",
+      title: "Metodología Atlas",
+      quote: "Ingeniería sobre Improvisación.",
+      quoteSub: "Un proceso estructurado para garantizar ROI desde el día uno.",
       stages: [
         {
-          title: "Cimientos",
-          desc: "Arquitectura del Núcleo Digital",
-          detail: "Analizamos tu estado actual y diseñamos una base sólida y escalable.",
+          title: "Auditoría",
+          desc: "Diagnóstico Profundo",
+          detail: "Evaluamos tu infraestructura actual y detectamos cuellos de botella.",
         },
         {
-          title: "Automatización",
-          desc: "Velocidad y Optimización de Flujos",
-          detail: "Eliminamos procesos manuales y creamos flujos de trabajo inteligentes.",
+          title: "Arquitectura",
+          desc: "Diseño de Solución",
+          detail: "Planificamos la infraestructura digital escalable que tu negocio requiere.",
         },
         {
-          title: "Inteligencia",
-          desc: "Integración de Capa Cognitiva",
-          detail: "Agregamos IA y analítica para transformar datos en decisiones.",
+          title: "Implementación",
+          desc: "Desarrollo Ágil",
+          detail: "Ejecutamos con sprints rápidos, mostrando avances funcionales semana a semana.",
         },
         {
-          title: "Evolución",
-          desc: "Crecimiento y Escala Continua",
-          detail: "Tus sistemas crecen con vos, adaptándose a nuevos desafíos.",
+          title: "Escalado",
+          desc: "Soporte y Evolución",
+          detail: "Monitoreamos el rendimiento y optimizamos continuamente el sistema.",
         },
       ],
     },
     cta: {
-      title: "¿Listo para Transformar Tu Negocio?",
-      subtitle: "Construyamos algo extraordinario juntos.",
+      title: "¿Listo para Escalar tu Operación?",
+      subtitle: "La transformación digital empieza hoy.",
       description:
-        "Agendá una consulta gratuita y descubrí cómo Atlas One puede acelerar tu transformación digital.",
-      button: "Comenzá Tu Camino",
+        "No dejes que la competencia te supere por tecnología. Agendá una consultoría estratégica gratuita y modernizá tu empresa.",
+      button: "Solicitar Consultoría",
     },
     footer: {
-      tagline: "Construyendo el futuro de tu negocio, línea por línea.",
+      tagline: "Ingeniería de software de alto impacto para empresas ambiciosas.",
       rights: "© 2026 Atlas One. Todos los derechos reservados.",
     },
   },
@@ -281,7 +289,18 @@ function FlagAR() {
 /* ========== COMPONENTS ========== */
 
 // Animation Wrapper
-function FadeIn({ children, delay = 0 }: { children: React.ReactNode; delay?: number }) {
+// Animation Wrapper with Direction
+function FadeIn({
+  children,
+  delay = 0,
+  direction = 'up',
+  className = ""
+}: {
+  children: React.ReactNode;
+  delay?: number;
+  direction?: 'up' | 'down' | 'left' | 'right' | 'none';
+  className?: string;
+}) {
   const [isVisible, setIsVisible] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
 
@@ -292,23 +311,71 @@ function FadeIn({ children, delay = 0 }: { children: React.ReactNode; delay?: nu
           setIsVisible(true);
         }
       },
-      { threshold: 0.1 }
+      { threshold: 0.1, rootMargin: "50px" }
     );
     if (ref.current) observer.observe(ref.current);
     return () => observer.disconnect();
   }, []);
 
+  const getTransform = () => {
+    if (!isVisible) {
+      switch (direction) {
+        case 'up': return "translateY(30px)";
+        case 'down': return "translateY(-30px)";
+        case 'left': return "translateX(30px)";
+        case 'right': return "translateX(-30px)";
+        default: return "none";
+      }
+    }
+    return "translate(0)";
+  };
+
   return (
     <div
       ref={ref}
+      className={className}
       style={{
         opacity: isVisible ? 1 : 0,
-        transform: isVisible ? "translateY(0)" : "translateY(20px)",
-        transition: `opacity 0.6s ease-out ${delay}s, transform 0.6s ease-out ${delay}s`,
+        transform: getTransform(),
+        transition: `opacity 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) ${delay}s, transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) ${delay}s`,
       }}
     >
       {children}
     </div>
+  );
+}
+
+function ScrollIndicator() {
+  return (
+    <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-60 animate-bounce-slow pointer-events-none z-20">
+      <div className="w-[1px] h-12 bg-gradient-to-b from-transparent via-[#00E5FF] to-transparent" />
+      <Icon type="chartDown" size={20} />
+    </div>
+  );
+}
+
+function CTAStrip({ lang }: { lang: Language }) {
+  const t = content[lang].ctaSecondary; // We'll add this to content object
+
+  return (
+    <section className="relative z-10 py-16 bg-[#00E5FF] text-[#030B12]">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 flex flex-col md:flex-row items-center justify-between gap-8">
+        <div className="text-center md:text-left">
+          <h3 className="text-2xl sm:text-3xl font-bold mb-2">
+            {lang === 'en' ? "Stop letting inefficiencies drain your profit." : "Dejá que las ineficiencias drenen tu rentabilidad."}
+          </h3>
+          <p className="text-lg opacity-80 font-medium">
+            {lang === 'en' ? "Automate your workflows today." : "Automatizá tus flujos de trabajo hoy mismo."}
+          </p>
+        </div>
+        <a
+          href="mailto:atlasonecontact@gmail.com?subject=Solicitud%20de%20Demo%20-%20%5BNombre%20Empresa%5D&body=Hola%20Germ%C3%A1n%20de%20Atlas%20One%2C%0A%0AMi%20nombre%20es%20%5BNombre%5D%20de%20%5BNombre%20Empresa%5D%20del%20nicho%20%5BNombre%20nicho%5D.%0A%0ATengo%20el%20problema%20de%20que%20%5BProblema%5D%20y%20quiero%20agendar%20una%20demo%20para%20el%20d%C3%ADa%20%5BD%C3%ADa%5D.%0A%0ASaludos%2C%0A%5BNombre%5D"
+          className="whitespace-nowrap px-8 py-4 bg-[#030B12] text-white font-bold text-lg rounded-xl hover:scale-105 hover:shadow-2xl transition-all"
+        >
+          {lang === 'en' ? "Book a Demo" : "Agendar Demo"}
+        </a>
+      </div>
+    </section>
   );
 }
 
@@ -413,7 +480,7 @@ function Navigation({ lang, setLang }: { lang: Language; setLang: (l: Language) 
             ))}
             {/* CTA in mobile menu */}
             <a
-              href="mailto:atlasonecontact@gmail.com"
+              href="mailto:atlasonecontact@gmail.com?subject=Contacto%20desde%20Web%20-%20%5BNombre%20Empresa%5D&body=Hola%20Germ%C3%A1n%20de%20Atlas%20One%2C%0A%0AMi%20nombre%20es%20%5BNombre%5D%20de%20%5BNombre%20Empresa%5D%20del%20nicho%20%5BNombre%20nicho%5D.%0A%0ATengo%20el%20problema%20de%20que%20%5BProblema%5D%20y%20me%20gustar%C3%ADa%20m%C3%A1s%20informaci%C3%B3n.%0A%0ASaludos%2C%0A%5BNombre%5D"
               onClick={() => setMobileMenuOpen(false)}
               className="mt-4 px-8 py-3 bg-gradient-to-r from-[#00E5FF] to-[#00BCD4] text-[#030B12] font-bold rounded-xl shadow-[0_0_30px_rgba(0,229,255,0.4)]"
             >
@@ -438,15 +505,10 @@ function HeroSection({ lang }: { lang: Language }) {
     const animate = () => {
       if (!planetRef.current) return;
 
-      const currentScrollY = window.scrollY;
-      const scrollDelta = currentScrollY - lastScrollY.current;
-
-      // Continuous slow rotation + scroll-based rotation
-      // Scroll down = rotate right (positive), scroll up = rotate left (negative)
-      rotationRef.current += 0.05 + (scrollDelta * 0.1);
+      // Constant slow rotation, independent of scroll
+      rotationRef.current += 0.05;
 
       planetRef.current.style.transform = `translate(-50%, -50%) rotate(${rotationRef.current}deg)`;
-      lastScrollY.current = currentScrollY;
 
       animationId = requestAnimationFrame(animate);
     };
@@ -514,7 +576,7 @@ function HeroSection({ lang }: { lang: Language }) {
 
         <FadeIn delay={0.6}>
           <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center">
-            <a href="mailto:atlasonecontact@gmail.com" className="px-8 sm:px-10 py-4 sm:py-5 bg-gradient-to-r from-[#00E5FF] to-[#00BCD4] text-[#030B12] font-bold text-lg sm:text-xl rounded-2xl shadow-[0_0_50px_rgba(0,229,255,0.4)] hover:shadow-[0_0_80px_rgba(0,229,255,0.6)] hover:-translate-y-1 transition-all">
+            <a href="mailto:atlasonecontact@gmail.com?subject=Consulta%20desde%20Web%20-%20%5BNombre%20Empresa%5D&body=Hola%20Germ%C3%A1n%20de%20Atlas%20One%2C%0A%0AMi%20nombre%20es%20%5BNombre%5D%20de%20%5BNombre%20Empresa%5D%20del%20nicho%20%5BNombre%20nicho%5D.%0A%0ATengo%20el%20problema%20de%20que%20%5BProblema%5D%20y%20quiero%20transformar%20mi%20negocio.%0A%0ASaludos%2C%0A%5BNombre%5D" className="px-8 sm:px-10 py-4 sm:py-5 bg-gradient-to-r from-[#00E5FF] to-[#00BCD4] text-[#030B12] font-bold text-lg sm:text-xl rounded-2xl shadow-[0_0_50px_rgba(0,229,255,0.4)] hover:shadow-[0_0_80px_rgba(0,229,255,0.6)] hover:-translate-y-1 transition-all">
               {t.cta} →
             </a>
             <a href="#about" className="px-8 sm:px-10 py-4 sm:py-5 bg-transparent text-[#00E5FF] font-bold text-lg sm:text-xl border border-[#00E5FF]/50 rounded-2xl hover:bg-[#00E5FF]/10 transition-all">
@@ -522,6 +584,8 @@ function HeroSection({ lang }: { lang: Language }) {
             </a>
           </div>
         </FadeIn>
+
+        {/* ScrollIndicator Removed */}
       </div>
     </section>
   );
@@ -569,78 +633,82 @@ function EcosystemSection({ lang }: { lang: Language }) {
   ];
 
   return (
-    <section id="ecosystem" className="relative z-10 py-20 sm:py-32 bg-gradient-to-b from-[#0A0F18]/60 to-[#050810]/60 backdrop-blur-md border-t border-white/5">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6">
-        <div className="text-center mb-12 sm:mb-20">
-          <FadeIn>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#00E5FF] to-[#00BCD4] mb-4">
-              {t.title}
-            </h2>
-            <p className="text-lg sm:text-xl text-[#8BA3B8]">{t.subtitle}</p>
-          </FadeIn>
-        </div>
+    <>
+      <section id="ecosystem" className="relative z-10 py-20 sm:py-32 bg-gradient-to-b from-[#0A0F18]/60 to-[#050810]/60 backdrop-blur-md border-t border-white/5">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6">
+          <div className="text-center mb-12 sm:mb-20">
+            <FadeIn>
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#00E5FF] to-[#00BCD4] mb-4">
+                {t.title}
+              </h2>
+              <p className="text-lg sm:text-xl text-[#8BA3B8]">{t.subtitle}</p>
+            </FadeIn>
+          </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
-          {t.items.map((item, i) => {
-            const color = cardColors[i];
-            return (
-              <FadeIn key={i} delay={i * 0.1}>
-                <div
-                  className="group h-full p-6 sm:p-8 rounded-3xl bg-gradient-to-br from-white/[0.06] to-transparent border transition-all duration-500 flex flex-col items-start gap-4 sm:gap-5 hover:scale-[1.02]"
-                  style={{
-                    borderColor: `rgba(255,255,255,0.1)`,
-                  }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.borderColor = color.border;
-                    e.currentTarget.style.boxShadow = `0 0 40px ${color.glow}`;
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.borderColor = 'rgba(255,255,255,0.1)';
-                    e.currentTarget.style.boxShadow = 'none';
-                  }}
-                >
-                  {/* Colored Icon Container */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
+            {t.items.map((item, i) => {
+              const color = cardColors[i];
+              return (
+                <FadeIn key={i} delay={i * 0.1} direction="up" className="h-full">
                   <div
-                    className="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-all duration-500"
+                    className="group h-full p-6 sm:p-8 rounded-3xl bg-[#0A1016] border transition-all duration-500 flex flex-col items-start gap-4 sm:gap-5 hover:-translate-y-2"
                     style={{
-                      background: `linear-gradient(135deg, ${color.bg}, transparent)`,
-                      color: color.primary,
-                      boxShadow: `0 0 20px ${color.glow}`
+                      borderColor: 'rgba(255,255,255,0.05)',
+                      boxShadow: '0 4px 20px rgba(0,0,0,0.2)',
+                    }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.borderColor = color.border;
+                      e.currentTarget.style.boxShadow = `0 10px 40px ${color.glow}`;
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.borderColor = 'rgba(255,255,255,0.05)';
+                      e.currentTarget.style.boxShadow = '0 4px 20px rgba(0,0,0,0.2)';
                     }}
                   >
-                    <Icon type={item.icon} size={36} />
+                    {/* Colored Icon Container */}
+                    <div
+                      className="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl flex items-center justify-center transition-all duration-500 group-hover:scale-110"
+                      style={{
+                        background: `linear-gradient(135deg, ${color.bg}, transparent)`,
+                        color: color.primary,
+                        border: `1px solid ${color.border}`
+                      }}
+                    >
+                      <Icon type={item.icon} size={36} />
+                    </div>
+                    <h3
+                      className="text-xl sm:text-2xl font-bold text-white transition-colors duration-300"
+                    >
+                      {item.title}
+                    </h3>
+                    <p className="text-[#8BA3B8] leading-relaxed text-sm flex-grow group-hover:text-white/90 transition-colors">
+                      {item.desc}
+                    </p>
+                    <div className="flex flex-wrap gap-2 mt-auto pt-6 border-t border-white/5 w-full">
+                      {item.features.map((f, j) => (
+                        <span
+                          key={j}
+                          className="px-2 sm:px-3 py-1 rounded text-[10px] uppercase tracking-wider font-bold"
+                          style={{
+                            background: 'rgba(255,255,255,0.05)',
+                            color: '#fff',
+                            border: `1px solid rgba(255,255,255,0.1)`
+                          }}
+                        >
+                          {f}
+                        </span>
+                      ))}
+                    </div>
                   </div>
-                  <h3
-                    className="text-xl sm:text-2xl font-bold text-white transition-colors duration-300"
-                    style={{}}
-                    onMouseEnter={(e) => e.currentTarget.style.color = color.primary}
-                    onMouseLeave={(e) => e.currentTarget.style.color = 'white'}
-                  >
-                    {item.title}
-                  </h3>
-                  <p className="text-[#8BA3B8] leading-relaxed text-sm flex-grow">{item.desc}</p>
-                  <div className="flex flex-wrap gap-2 mt-auto pt-4 border-t border-white/5 w-full">
-                    {item.features.map((f, j) => (
-                      <span
-                        key={j}
-                        className="px-2 sm:px-3 py-1 sm:py-1.5 rounded-full text-xs font-semibold"
-                        style={{
-                          background: color.bg,
-                          color: color.primary,
-                          border: `1px solid ${color.border}`
-                        }}
-                      >
-                        {f}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              </FadeIn>
-            );
-          })}
+                </FadeIn>
+              );
+            })}
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+
+      <CTAStrip lang={lang} />
+    </>
   );
 }
 
@@ -657,23 +725,23 @@ function ProblemsSection({ lang }: { lang: Language }) {
           </FadeIn>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 max-w-5xl mx-auto mb-12 sm:mb-20">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 max-w-6xl mx-auto mb-12 sm:mb-20">
           {t.items.map((item, i) => (
             <FadeIn key={i} delay={i * 0.1}>
-              <div className="group h-full min-h-[100px] sm:min-h-[120px] p-4 sm:p-6 rounded-2xl bg-gradient-to-br from-white/[0.06] to-transparent border border-white/[0.1] flex items-center gap-4 sm:gap-5 hover:bg-white/[0.1] hover:border-[#00E5FF]/40 hover:shadow-[0_0_25px_rgba(0,229,255,0.15)] transition-all duration-300">
-                <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-xl bg-[#00E5FF]/10 border border-[#00E5FF]/30 flex items-center justify-center text-[#00E5FF] shrink-0 group-hover:scale-110 group-hover:bg-[#00E5FF]/20 transition-all duration-300">
-                  <Icon type={item.icon} size={24} />
+              <div className="group h-full min-h-[140px] px-6 py-8 rounded-2xl bg-[#120C06] border border-white/[0.05] flex flex-col items-center text-center gap-4 hover:border-[#F59E0B]/40 hover:bg-[#1A1005] transition-all duration-300">
+                <div className="w-14 h-14 rounded-full bg-[#F59E0B]/10 flex items-center justify-center text-[#F59E0B] shrink-0 group-hover:scale-110 group-hover:bg-[#F59E0B]/20 transition-all duration-300">
+                  <Icon type={item.icon} size={28} />
                 </div>
-                <p className="text-gray-200 font-medium text-sm sm:text-base">{item.text}</p>
+                <p className="text-gray-300 font-medium text-base sm:text-lg">{item.text}</p>
               </div>
             </FadeIn>
           ))}
         </div>
 
         <FadeIn delay={0.4}>
-          <div className="max-w-3xl mx-auto p-8 sm:p-12 rounded-[2rem] bg-gradient-to-br from-[#00E5FF]/10 to-transparent border border-[#00E5FF]/20 text-center">
-            <p className="text-xl sm:text-2xl text-white mb-4">{t.insight}</p>
-            <p className="text-2xl sm:text-3xl font-bold text-[#00E5FF]">{t.insightBold}</p>
+          <div className="max-w-4xl mx-auto p-8 sm:p-12 rounded-[2rem] bg-gradient-to-r from-transparent via-[#F59E0B]/5 to-transparent border-y border-[#F59E0B]/20 text-center">
+            <p className="text-xl sm:text-2xl text-white mb-2">{t.insight}</p>
+            <p className="text-2xl sm:text-4xl font-bold text-[#F59E0B] text-glow">{t.insightBold}</p>
           </div>
         </FadeIn>
       </div>
@@ -723,6 +791,89 @@ function TimelineSection({ lang }: { lang: Language }) {
   );
 }
 
+function NewsSection({ lang }: { lang: Language }) {
+  const [news, setNews] = useState<any[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    // Fetch latest AI news from Hacker News API (No auth required)
+    fetch('https://hn.algolia.com/api/v1/search_by_date?query=artificial+intelligence&tags=story&hitsPerPage=3')
+      .then(res => res.json())
+      .then(data => {
+        setNews(data.hits);
+        setLoading(false);
+      })
+      .catch(() => setLoading(false));
+  }, []);
+
+  return (
+    <section className="relative z-10 py-24 bg-[#06101A]/50 border-t border-white/5 overflow-hidden">
+      {/* Background Glow for News */}
+      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#00E5FF]/5 rounded-full blur-[120px] pointer-events-none" />
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 relative">
+        <div className="flex items-center justify-between mb-12">
+          <div>
+            <h2 className="text-3xl sm:text-4xl font-bold text-white mb-2 tracking-tight">
+              {lang === 'en' ? "Latest in AI" : "Últimas Novedades en IA"}
+            </h2>
+            <p className="text-[#8BA3B8] text-base sm:text-lg">
+              {lang === 'en' ? "Real-time updates from the tech world." : "Actualizaciones en tiempo real del mundo tecnológico."}
+            </p>
+          </div>
+          <div className="flex items-center gap-3 px-4 py-2 bg-[#00E5FF]/10 rounded-full border border-[#00E5FF]/20 animate-pulse">
+            <span className="w-2.5 h-2.5 rounded-full bg-[#00E5FF]"></span>
+            <span className="text-xs sm:text-sm text-[#00E5FF] font-bold uppercase tracking-wider">Live Feed</span>
+          </div>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {loading ? (
+            // Skeletons
+            [1, 2, 3].map(i => (
+              <div key={i} className="h-48 rounded-2xl bg-white/5 animate-pulse border border-white/5" />
+            ))
+          ) : (
+            news.map((item: any, i) => (
+              <a
+                key={i}
+                href={item.url}
+                target="_blank"
+                rel="noreferrer"
+                className="group relative p-8 rounded-3xl bg-[#030B12] border border-white/10 hover:border-[#00E5FF]/50 transition-all duration-300 hover:-translate-y-2 flex flex-col justify-between h-full overflow-hidden"
+              >
+                {/* Card Hover Glow */}
+                <div className="absolute inset-0 bg-gradient-to-br from-[#00E5FF]/0 to-[#00E5FF]/0 group-hover:from-[#00E5FF]/5 group-hover:to-transparent transition-all duration-500" />
+
+                <div className="relative z-10">
+                  <div className="flex justify-between items-start mb-4">
+                    <span className="text-[10px] uppercase tracking-wider text-[#00E5FF] font-bold bg-[#00E5FF]/10 px-3 py-1 rounded-full border border-[#00E5FF]/20">
+                      News
+                    </span>
+                    <span className="text-xs text-[#5A7A90] font-mono">
+                      {new Date(item.created_at).toLocaleDateString()}
+                    </span>
+                  </div>
+                  <h3 className="text-xl text-white font-bold leading-snug group-hover:text-[#00E5FF] transition-colors line-clamp-3 mb-4">
+                    {item.title}
+                  </h3>
+                </div>
+                <div className="relative z-10 flex items-center justify-between mt-4 border-t border-white/5 pt-4">
+                  <span className="text-xs text-[#5A7A90] font-medium">{item.author || "Hacker News"}</span>
+                  <div className="text-sm font-bold text-white flex items-center gap-2 group-hover:gap-3 transition-all">
+                    {lang === 'en' ? "Read Artice" : "Leer Artículo"}
+                    <span className="text-[#00E5FF]">→</span>
+                  </div>
+                </div>
+              </a>
+            ))
+          )}
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function CTASection({ lang }: { lang: Language }) {
   const t = content[lang].cta;
 
@@ -735,7 +886,7 @@ function CTASection({ lang }: { lang: Language }) {
           <p className="text-lg sm:text-xl text-[#8BA3B8] mb-8 sm:mb-12">{t.description}</p>
 
           <a
-            href="mailto:atlasonecontact@gmail.com"
+            href="mailto:atlasonecontact@gmail.com?subject=Solicitar%20Consultor%C3%ADa%20-%20%5BNombre%20Empresa%5D&body=Hola%20Germ%C3%A1n%20de%20Atlas%20One%2C%0A%0AMi%20nombre%20es%20%5BNombre%5D%20de%20%5BNombre%20Empresa%5D%20del%20nicho%20%5BNombre%20nicho%5D.%0A%0ATengo%20el%20problema%20de%20que%20%5BProblema%5D%20y%20estoy%20listo%20para%20escalar%20mi%20operaci%C3%B3n.%0A%0ASaludos%2C%0A%5BNombre%5D"
             className="inline-flex items-center gap-3 px-8 sm:px-10 py-4 sm:py-5 bg-gradient-to-r from-[#00E5FF] to-[#00BCD4] text-[#030B12] font-bold text-lg sm:text-xl rounded-2xl shadow-[0_0_50px_rgba(0,229,255,0.4)] hover:shadow-[0_0_80px_rgba(0,229,255,0.6)] hover:-translate-y-1 transition-all"
           >
             {t.button} →
@@ -751,49 +902,63 @@ function FooterSection({ lang }: { lang: Language }) {
 
   return (
     <footer className="relative z-20 py-12 sm:py-16 bg-[#030B12] border-t border-[#00E5FF]/20">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 flex flex-col items-center gap-8 sm:gap-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 flex flex-col items-center gap-10">
 
-        {/* Logo & Horizontal Name */}
-        <div className="flex flex-col items-center gap-5">
-          <Image src="/logo-atlas.png" alt="Atlas One" width={80} height={80} className="drop-shadow-[0_0_40px_rgba(0,229,255,0.6)]" />
-          <Image
-            src="/nombre.png"
-            alt="Atlas One"
-            width={180}
-            height={45}
-            style={{ width: 'auto', height: 'auto' }}
-            className="drop-shadow-[0_0_20px_rgba(0,229,255,0.4)]"
-          />
-          <p className="text-base sm:text-lg text-[#8BA3B8] text-center max-w-md mt-2">{t.tagline}</p>
-        </div>
+        {/* Top: Logo & Main Links */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 w-full items-center text-center">
 
-        {/* Email Link - Same style as social icons */}
-        <a
-          href="mailto:atlasonecontact@gmail.com"
-          className="flex items-center gap-3 px-6 py-3 rounded-2xl bg-white/5 border border-white/10 text-[#8BA3B8] hover:text-[#00E5FF] hover:border-[#00E5FF]/50 hover:bg-[#00E5FF]/10 hover:shadow-[0_0_20px_rgba(0,229,255,0.3)] transition-all text-sm sm:text-base"
-        >
-          <Icon type="mail" size={22} />
-          <span className="font-medium">atlasonecontact@gmail.com</span>
-        </a>
+          {/* 1. Quick Links */}
+          <div className="hidden md:flex flex-col gap-4 text-sm text-[#8BA3B8] items-center md:items-start">
+            <a href="#about" className="hover:text-[#00E5FF] transition-colors">Nosotros</a>
+            <a href="#ecosystem" className="hover:text-[#00E5FF] transition-colors">Servicios</a>
+            <a href="#method" className="hover:text-[#00E5FF] transition-colors">Metodología</a>
+          </div>
 
-        {/* Social Icons */}
-        <div className="flex gap-4 sm:gap-5">
-          {socialLinks.map((social, i) => (
+          {/* 2. Logo */}
+          <div className="flex flex-col items-center gap-5">
+            <Image src="/logo-atlas.png" alt="Atlas One" width={80} height={80} className="drop-shadow-[0_0_40px_rgba(0,229,255,0.6)]" />
+            <Image
+              src="/nombre.png"
+              alt="Atlas One"
+              width={180}
+              height={45}
+              style={{ width: 'auto', height: 'auto' }}
+              className="drop-shadow-[0_0_20px_rgba(0,229,255,0.4)]"
+            />
+            <p className="text-base sm:text-lg text-[#8BA3B8] text-center max-w-md mt-2 leading-relaxed">{t.tagline}</p>
+          </div>
+
+          {/* 3. Socials */}
+          <div className="flex flex-col gap-6 items-center md:items-end">
             <a
-              key={i}
-              href={social.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-[#8BA3B8] hover:text-[#00E5FF] hover:border-[#00E5FF]/50 hover:bg-[#00E5FF]/10 hover:shadow-[0_0_20px_rgba(0,229,255,0.3)] transition-all hover:scale-110"
-              aria-label={social.name}
+              href="mailto:atlasonecontact@gmail.com?subject=Agendar%20Reuni%C3%B3n%20-%20%5BNombre%20Empresa%5D&body=Hola%20Germ%C3%A1n%20de%20Atlas%20One%2C%0A%0AMi%20nombre%20es%20%5BNombre%5D%20de%20%5BNombre%20Empresa%5D%20del%20nicho%20%5BNombre%20nicho%5D.%0A%0AMe%20gustar%C3%ADa%20coordinar%20una%20reuni%C3%B3n%20para%20el%20d%C3%ADa%20%5BD%C3%ADa%5D.%0A%0ASaludos%2C%0A%5BNombre%5D"
+              className="flex items-center gap-3 px-6 py-3 rounded-2xl bg-white/5 border border-white/10 text-white font-medium hover:border-[#00E5FF]/50 hover:bg-[#00E5FF]/10 transition-all text-sm"
             >
-              <Icon type={social.icon} size={24} />
+              <Icon type="mail" size={20} />
+              <span>Agendar Reunión</span>
             </a>
-          ))}
+
+            <div className="flex gap-4">
+              {socialLinks.map((social, i) => (
+                <a
+                  key={i}
+                  href={social.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-[#8BA3B8] hover:text-[#00E5FF] hover:border-[#00E5FF]/50 transition-all hover:scale-110"
+                  aria-label={social.name}
+                >
+                  <Icon type={social.icon} size={20} />
+                </a>
+              ))}
+            </div>
+          </div>
         </div>
 
-        {/* Copyright */}
-        <p className="text-xs sm:text-sm text-[#5A7A90] pt-6 border-t border-white/5 w-full text-center">{t.rights}</p>
+        {/* Copyright - CENTERED and SPACED */}
+        <div className="w-full pt-12 mt-4 border-t border-white/5 flex justify-center text-center text-xs text-[#5A7A90]">
+          <p className="opacity-60">{t.rights}</p>
+        </div>
       </div>
     </footer>
   );
@@ -812,6 +977,7 @@ export default function Home() {
         <EcosystemSection lang={lang} />
         <ProblemsSection lang={lang} />
         <TimelineSection lang={lang} />
+        <NewsSection lang={lang} />
         <CTASection lang={lang} />
       </div>
 
