@@ -2,17 +2,18 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Atlas One | Software, Automatizacion e Inteligencia Artificial",
+  title: "Atlas One | Soluciones Digitales y Automatización",
   description:
-    "Desarrollamos soluciones digitales a medida: software, aplicaciones, CRM, automatizaciones y agentes de inteligencia artificial para empresas que buscan escalar sin friccion.",
+    "Desarrollamos software, automatizaciones y agentes de inteligencia artificial para potenciar tu negocio. Atlas One: Tecnología que escala.",
   keywords: [
     "desarrollo de software",
     "automatizacion",
     "inteligencia artificial",
+    "agentes IA",
     "CRM",
-    "aplicaciones moviles",
     "consultoria tecnologica",
     "Argentina",
+    "Atlas One",
   ],
   authors: [{ name: "Atlas One" }],
   icons: {
@@ -21,16 +22,16 @@ export const metadata: Metadata = {
     apple: "/logo-atlas.png",
   },
   openGraph: {
-    title: "Atlas One | Software, Automatizacion e Inteligencia Artificial",
+    title: "Atlas One | Soluciones Digitales y Automatización",
     description:
-      "Desarrollamos soluciones digitales a medida para empresas que buscan escalar sin friccion.",
+      "Desarrollamos software, automatizaciones y agentes de inteligencia artificial para potenciar tu negocio.",
     type: "website",
     locale: "es_AR",
     images: [
       {
         url: "/logo-atlas.png",
         width: 800,
-        height: 600,
+        height: 800,
         alt: "Atlas One Logo",
       },
     ],
@@ -52,7 +53,7 @@ export default function RootLayout({
           rel="stylesheet"
         />
       </head>
-      <body className="antialiased">
+      <body className="antialiased font-inter">
         {children}
       </body>
     </html>

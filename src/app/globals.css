@@ -1,7 +1,6 @@
 @import "tailwindcss";
 
-/* ===== CUSTOM STYLES ===== */
-
+/* ========== CUSTOM STYLES ========== */
 html {
   scroll-behavior: smooth;
 }
@@ -13,102 +12,109 @@ body {
   overflow-x: hidden;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: 'Space Grotesk', sans-serif;
-}
-
-/* ===== ROTATING PLANET ===== */
-@keyframes rotatePlanet {
-  from {
-    transform: translate(-50%, -50%) rotate(0deg);
-  }
-  to {
-    transform: translate(-50%, -50%) rotate(360deg);
-  }
-}
-
-@keyframes pulse {
-  0%, 100% {
-    opacity: 0.3;
-    transform: scale(1);
-  }
-  50% {
-    opacity: 0.5;
-    transform: scale(1.05);
-  }
-}
-
-@keyframes float {
-  0%, 100% {
-    transform: translateY(0px);
-  }
-  50% {
-    transform: translateY(-20px);
-  }
-}
-
-@keyframes glow {
-  0%, 100% {
-    box-shadow: 0 0 60px rgba(0, 229, 255, 0.4);
-  }
-  50% {
-    box-shadow: 0 0 100px rgba(0, 229, 255, 0.7);
-  }
-}
-
-@keyframes shimmer {
-  0% {
-    background-position: -200% 0;
-  }
-  100% {
-    background-position: 200% 0;
-  }
-}
-
-.rotating-planet {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  width: 90vh;
-  height: 90vh;
-  max-width: 900px;
-  max-height: 900px;
-  transform: translate(-50%, -50%);
-  animation: rotatePlanet 120s linear infinite;
-  opacity: 0.25;
-  z-index: 0;
-  pointer-events: none;
-}
-
-.floating {
-  animation: float 6s ease-in-out infinite;
-}
-
-.glowing {
-  animation: glow 3s ease-in-out infinite;
-}
-
-.shimmer-text {
-  background: linear-gradient(90deg, #00E5FF, #ffffff, #00E5FF);
-  background-size: 200% auto;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: shimmer 3s linear infinite;
 }
 
 /* Scrollbar */
 ::-webkit-scrollbar {
   width: 6px;
 }
+
 ::-webkit-scrollbar-track {
   background: #030B12;
 }
+
 ::-webkit-scrollbar-thumb {
   background: rgba(0, 229, 255, 0.3);
   border-radius: 3px;
 }
 
-/* Selection */
 ::selection {
   background: rgba(0, 229, 255, 0.3);
+  color: white;
+}
+
+/* Animations */
+@keyframes float {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes pulse-glow {
+
+  0%,
+  100% {
+    opacity: 0.5;
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: 0.8;
+    transform: scale(1.05);
+  }
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 3s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.animate-shimmer {
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  background-size: 200% 100%;
+  animation: shimmer 2s infinite;
+}
+
+/* Stellar wave animations */
+@keyframes fadeInOut {
+
+  0%,
+  100% {
+    opacity: 0;
+  }
+
+  20%,
+  80% {
+    opacity: 1;
+  }
+}
+
+@keyframes pulse {
+
+  0%,
+  100% {
+    opacity: 0.3;
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: 0.6;
+    transform: scale(1.1);
+  }
 }
