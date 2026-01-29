@@ -12,6 +12,32 @@ import { GlassCard } from "@/components/ui/GlassCard";
 import { Button } from "@/components/ui/Button";
 import { useNavScroll } from "@/hooks/useNavScroll";
 
+function usePrefersReducedMotion() {
+  const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const updatePreference = () => setPrefersReducedMotion(mediaQuery.matches);
+
+    updatePreference();
+    if (mediaQuery.addEventListener) {
+      mediaQuery.addEventListener("change", updatePreference);
+    } else {
+      mediaQuery.addListener(updatePreference);
+    }
+
+    return () => {
+      if (mediaQuery.addEventListener) {
+        mediaQuery.removeEventListener("change", updatePreference);
+      } else {
+        mediaQuery.removeListener(updatePreference);
+      }
+    };
+  }, []);
+
+  return prefersReducedMotion;
+}
+
 // ============ NAVIGATION ============
 function Navigation({ lang, setLang }: { lang: Language; setLang: (l: Language) => void }) {
   const { visible, scrolled } = useNavScroll();
@@ -63,15 +89,17 @@ function Navigation({ lang, setLang }: { lang: Language; setLang: (l: Language) 
 function HeroSection({ lang, mounted }: { lang: Language; mounted: boolean }) {
   const t = content[lang].hero;
   const bgRef = useRef<HTMLImageElement>(null);
+  const prefersReducedMotion = usePrefersReducedMotion();
 
   useEffect(() => {
+    if (prefersReducedMotion) return;
     const handleScroll = () => {
       if (!bgRef.current) return;
       bgRef.current.style.transform = `rotate(${window.scrollY * 0.08}deg)`;
     };
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [prefersReducedMotion]);
 
   return (
     <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden">
@@ -96,16 +124,20 @@ function HeroSection({ lang, mounted }: { lang: Language; mounted: boolean }) {
       <Container className="relative z-10 py-32 sm:py-40 lg:py-48">
         <div className="text-center max-w-5xl mx-auto">
           {/* Logo */}
-          <div className={`relative mb-14 sm:mb-20 ${mounted ? "animate-fade-in" : "opacity-0"}`}>
+          <div
+            className={`relative mb-14 sm:mb-20 ${mounted ? "animate-fade-in" : "opacity-0"}`}
+          >
             <div className="absolute inset-0 bg-cyan-400/40 blur-[80px] rounded-full animate-pulse-glow" />
-            <Image
-              src="/logo-atlas.png"
-              alt="Atlas One"
-              width={320}
-              height={320}
-              className="relative mx-auto w-48 h-48 sm:w-64 sm:h-64 md:w-80 md:h-80 object-contain drop-shadow-[0_0_60px_rgba(0,229,255,0.7)] hover:scale-105 transition-transform duration-700"
-              priority
-            />
+            <div className="relative mx-auto w-fit animate-drift">
+              <Image
+                src="/logo-atlas.png"
+                alt="Atlas One"
+                width={320}
+                height={320}
+                className="relative w-48 h-48 sm:w-64 sm:h-64 md:w-80 md:h-80 object-contain drop-shadow-[0_0_60px_rgba(0,229,255,0.7)] hover:scale-105 transition-transform duration-700"
+                priority
+              />
+            </div>
           </div>
 
           {/* Title */}

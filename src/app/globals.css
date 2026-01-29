@@ -178,6 +178,19 @@ h6 {
   animation: drift 25s ease-in-out infinite;
 }
 
+@media (prefers-reduced-motion: reduce) {
+  .animate-fade-in,
+  .animate-fade-in-up,
+  .animate-slide-down,
+  .animate-float,
+  .animate-pulse-glow,
+  .animate-drift,
+  .animate-particle-float,
+  .animate-bounce {
+    animation: none !important;
+  }
+}
+
 /* Stagger delays */
 .delay-100 {
   animation-delay: 100ms;
