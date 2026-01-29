@@ -8,25 +8,26 @@ interface SectionHeaderProps {
   className?: string;
 }
 
-export function SectionHeader({ 
-  title, 
-  subtitle, 
+export function SectionHeader({
+  title,
+  subtitle,
   centered = true,
   gradient = false,
-  className = "" 
+  className = ""
 }: SectionHeaderProps) {
   return (
-    <div className={`${centered ? "text-center" : ""} mb-16 sm:mb-20 lg:mb-28 ${className}`}>
+    <div className={`${centered ? "text-center" : ""} mb-20 sm:mb-24 lg:mb-32 ${className}`}>
       <h2 className={`
-        text-3xl sm:text-4xl md:text-5xl lg:text-6xl 
-        font-bold text-white 
-        mb-4 sm:mb-6 lg:mb-8
+        text-4xl sm:text-5xl md:text-6xl lg:text-7xl
+        font-bold text-white
+        mb-6 sm:mb-8 lg:mb-10
         leading-tight
+        animate-fade-in-up fill-backwards
       `}>
         {gradient ? <span className="gradient-text">{title}</span> : title}
       </h2>
       {subtitle && (
-        <p className="text-lg sm:text-xl md:text-2xl text-muted max-w-3xl mx-auto leading-relaxed">
+        <p className="text-xl sm:text-2xl md:text-3xl text-muted max-w-4xl mx-auto leading-relaxed animate-fade-in-up delay-100 fill-backwards">
           {subtitle}
         </p>
       )}
