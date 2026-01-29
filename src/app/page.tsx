@@ -113,7 +113,7 @@ function HeroSection({ lang, mounted }: { lang: Language; mounted: boolean }) {
             text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl
             font-bold text-white leading-[1.1] tracking-tight
             mb-8 sm:mb-10 lg:mb-12
-            ${mounted ? "animate-fade-in-up delay-100 fill-backwards" : "opacity-0"}
+            ${mounted ? "animate-fade-in-up delay-100 " : "opacity-0"}
           `}>
             {t.title}
           </h1>
@@ -123,7 +123,7 @@ function HeroSection({ lang, mounted }: { lang: Language; mounted: boolean }) {
             text-2xl sm:text-3xl md:text-4xl lg:text-5xl
             font-light text-transparent bg-clip-text bg-gradient-to-r from-white to-cyan-400
             mb-10 sm:mb-12 lg:mb-16
-            ${mounted ? "animate-fade-in-up delay-200 fill-backwards" : "opacity-0"}
+            ${mounted ? "animate-fade-in-up delay-200 " : "opacity-0"}
           `}>
             {t.subtitle}
           </p>
@@ -133,13 +133,13 @@ function HeroSection({ lang, mounted }: { lang: Language; mounted: boolean }) {
             text-lg sm:text-xl md:text-2xl lg:text-3xl
             text-[#8BA3B8] max-w-4xl mx-auto leading-relaxed
             mb-14 sm:mb-18 lg:mb-24
-            ${mounted ? "animate-fade-in-up delay-300 fill-backwards" : "opacity-0"}
+            ${mounted ? "animate-fade-in-up delay-300 " : "opacity-0"}
           `}>
             {t.description}
           </p>
 
           {/* CTA */}
-          <div className={mounted ? "animate-fade-in-up delay-400 fill-backwards" : "opacity-0"}>
+          <div className={mounted ? "animate-fade-in-up delay-400 " : "opacity-0"}>
             <Button href="mailto:atlasonecontact@gmail.com" size="lg">
               {t.cta}
             </Button>
@@ -171,7 +171,8 @@ function PillarsSection({ lang }: { lang: Language }) {
             <GlassCard
               key={index}
               padding="xl"
-              className={`group animate-fade-in-up fill-backwards delay-${(index + 1) * 100}`}
+              className="group animate-fade-in-up"
+              style={{ animationDelay: `${(index + 1) * 100}ms` }}
             >
               <div className="flex flex-col items-center text-center gap-8 sm:gap-10 py-4 sm:py-6">
                 {/* Icon */}
@@ -221,8 +222,8 @@ function ProblemsSection({ lang }: { lang: Language }) {
             <GlassCard
               key={i}
               padding="lg"
-              className={`text-center group min-h-[160px] sm:min-h-[180px] lg:min-h-[200px] flex items-center justify-center hover-lift animate-fade-in-up fill-backwards`}
-              style={{ animationDelay: `${i * 100}ms` } as React.CSSProperties}
+              className="text-center group min-h-[160px] sm:min-h-[180px] lg:min-h-[200px] flex items-center justify-center hover-lift animate-fade-in-up"
+              style={{ animationDelay: `${i * 100}ms` }}
             >
               <p className="text-lg sm:text-xl lg:text-2xl text-gray-200 group-hover:text-white transition-colors duration-300 leading-relaxed px-2">
                 {item}
@@ -278,7 +279,7 @@ function TimelineSection({ lang }: { lang: Language }) {
             {t.stages.map((stage, i) => (
               <div
                 key={i}
-                className="relative flex flex-col items-center text-center group animate-fade-in-up fill-backwards"
+                className="relative flex flex-col items-center text-center group animate-fade-in-up"
                 style={{ animationDelay: `${i * 150}ms` }}
               >
                 {/* Number Circle */}
@@ -356,7 +357,7 @@ function FooterSection({ lang }: { lang: Language }) {
                   transition-all duration-300
                   hover:scale-110
                   hover-glow
-                  animate-fade-in-up fill-backwards
+                  animate-fade-in-up
                 "
                 style={{ animationDelay: `${i * 100}ms` }}
                 aria-label={social.name}

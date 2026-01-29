@@ -22,8 +22,7 @@ export function SectionHeader({
         font-bold text-white
         mb-6 sm:mb-8 lg:mb-10
         leading-tight
-        animate-fade-in-up fill-backwards
-      `}>
+        animate-fade-in-up       `}>
         {gradient ? <span className="gradient-text">{title}</span> : title}
       </h2>
       {subtitle && (
