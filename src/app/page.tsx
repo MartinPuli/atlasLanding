@@ -456,180 +456,34 @@ function HeroSection({ lang }: { lang: Language }) {
   }, []);
 
   return (
-    <section id="hero" className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden">
+    <section id="hero" className="relative min-h-[85vh] sm:min-h-screen flex flex-col items-center justify-center overflow-hidden pb-20 sm:pb-28">
       {/* Planet - FIXED GLOBAL with continuous + scroll-based rotation */}
       <div
         ref={planetRef}
-        className="fixed top-1/2 left-1/2 w-[80vw] h-[80vw] sm:w-[100vh] sm:h-[100vh] md:w-[120vh] md:h-[120vh] lg:w-[150vh] lg:h-[150vh] max-w-[1400px] max-h-[1400px] -z-10 opacity-80 pointer-events-none will-change-transform"
+        className="fixed top-1/2 left-1/2 w-[65vw] h-[65vw] sm:w-[80vh] sm:h-[80vh] md:w-[85vh] md:h-[85vh] lg:w-[90vh] lg:h-[90vh] max-w-[1000px] max-h-[1000px] z-0 opacity-60 pointer-events-none will-change-transform rounded-full overflow-hidden"
         style={{ transform: "translate(-50%, -50%)" }}
       >
         <Image
           src="/digital-globe.jpg"
           alt=""
           fill
-          className="object-contain"
+          className="object-cover scale-110"
           priority
         />
+        {/* Radial fade to soften edges */}
+        <div className="absolute inset-0 bg-[radial-gradient(circle,transparent_40%,#030B12_75%)]" />
       </div>
 
-      {/* Stellar Waves - Multiple groups appearing from different positions */}
-      <div className="absolute inset-0 pointer-events-none -z-5 overflow-hidden">
-        {/* Wave Group 1 - Bottom Right */}
-        <svg
-          className="absolute -bottom-10 -right-20 w-[120%] h-[60%] opacity-70"
-          viewBox="0 0 1200 400"
-          preserveAspectRatio="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <defs>
-            <linearGradient id="wave1" x1="100%" y1="100%" x2="0%" y2="0%">
-              <stop offset="0%" stopColor="#00E5FF" stopOpacity="0.6" />
-              <stop offset="50%" stopColor="#00A6FF" stopOpacity="0.3" />
-              <stop offset="100%" stopColor="#0066FF" stopOpacity="0" />
-            </linearGradient>
-            <filter id="glow1" x="-50%" y="-50%" width="200%" height="200%">
-              <feGaussianBlur stdDeviation="8" result="blur" />
-              <feMerge><feMergeNode in="blur" /><feMergeNode in="SourceGraphic" /></feMerge>
-            </filter>
-          </defs>
-          <g filter="url(#glow1)">
-            <path
-              d="M1200 400 Q1000 350, 800 380 T400 340 T0 400"
-              fill="none"
-              stroke="url(#wave1)"
-              strokeWidth="3"
-              opacity="0.8"
-            >
-              <animate attributeName="d"
-                values="M1200 400 Q1000 350, 800 380 T400 340 T0 400;
-                        M1200 400 Q1000 320, 800 360 T400 380 T0 400;
-                        M1200 400 Q1000 350, 800 380 T400 340 T0 400"
-                dur="8s" repeatCount="indefinite" />
-              <animate attributeName="opacity" values="0.8;0.4;0.8" dur="6s" repeatCount="indefinite" />
-            </path>
-            <path
-              d="M1200 380 Q950 340, 700 360 T300 320 T-100 380"
-              fill="none"
-              stroke="url(#wave1)"
-              strokeWidth="2"
-              opacity="0.6"
-            >
-              <animate attributeName="d"
-                values="M1200 380 Q950 340, 700 360 T300 320 T-100 380;
-                        M1200 380 Q950 300, 700 340 T300 360 T-100 380;
-                        M1200 380 Q950 340, 700 360 T300 320 T-100 380"
-                dur="10s" repeatCount="indefinite" />
-            </path>
-            <path
-              d="M1200 360 Q900 320, 600 350 T200 300 T-200 360"
-              fill="none"
-              stroke="url(#wave1)"
-              strokeWidth="1.5"
-              opacity="0.4"
-            >
-              <animate attributeName="d"
-                values="M1200 360 Q900 320, 600 350 T200 300 T-200 360;
-                        M1200 360 Q900 280, 600 320 T200 340 T-200 360;
-                        M1200 360 Q900 320, 600 350 T200 300 T-200 360"
-                dur="12s" repeatCount="indefinite" />
-            </path>
-          </g>
-        </svg>
+      {/* Hero dark overlay to dim planet in this section */}
+      <div className="absolute inset-0 bg-[#030B12]/50 z-[1]" />
 
-        {/* Wave Group 2 - Bottom Left (delayed appearance) */}
-        <svg
-          className="absolute -bottom-5 -left-10 w-[80%] h-[50%]"
-          viewBox="0 0 1000 300"
-          preserveAspectRatio="none"
-          xmlns="http://www.w3.org/2000/svg"
-          style={{ animation: 'fadeInOut 12s ease-in-out infinite 4s' }}
-        >
-          <defs>
-            <linearGradient id="wave2" x1="0%" y1="100%" x2="100%" y2="0%">
-              <stop offset="0%" stopColor="#0088FF" stopOpacity="0.5" />
-              <stop offset="60%" stopColor="#00CFFF" stopOpacity="0.2" />
-              <stop offset="100%" stopColor="#00E5FF" stopOpacity="0" />
-            </linearGradient>
-            <filter id="glow2" x="-50%" y="-50%" width="200%" height="200%">
-              <feGaussianBlur stdDeviation="6" result="blur" />
-              <feMerge><feMergeNode in="blur" /><feMergeNode in="SourceGraphic" /></feMerge>
-            </filter>
-          </defs>
-          <g filter="url(#glow2)" opacity="0.5">
-            <path
-              d="M-100 300 Q150 260, 400 280 T800 240 T1100 300"
-              fill="none"
-              stroke="url(#wave2)"
-              strokeWidth="2.5"
-            >
-              <animate attributeName="d"
-                values="M-100 300 Q150 260, 400 280 T800 240 T1100 300;
-                        M-100 300 Q150 220, 400 260 T800 280 T1100 300;
-                        M-100 300 Q150 260, 400 280 T800 240 T1100 300"
-                dur="9s" repeatCount="indefinite" />
-            </path>
-            <path
-              d="M-50 280 Q200 240, 450 260 T850 220 T1050 280"
-              fill="none"
-              stroke="url(#wave2)"
-              strokeWidth="1.5"
-              opacity="0.7"
-            >
-              <animate attributeName="d"
-                values="M-50 280 Q200 240, 450 260 T850 220 T1050 280;
-                        M-50 280 Q200 200, 450 240 T850 260 T1050 280;
-                        M-50 280 Q200 240, 450 260 T850 220 T1050 280"
-                dur="11s" repeatCount="indefinite" />
-            </path>
-          </g>
-        </svg>
-
-        {/* Wave Group 3 - Center flowing (staggered) */}
-        <svg
-          className="absolute bottom-[10%] left-[20%] w-[70%] h-[40%]"
-          viewBox="0 0 800 200"
-          preserveAspectRatio="none"
-          xmlns="http://www.w3.org/2000/svg"
-          style={{ animation: 'fadeInOut 15s ease-in-out infinite 8s' }}
-        >
-          <defs>
-            <linearGradient id="wave3" x1="50%" y1="100%" x2="50%" y2="0%">
-              <stop offset="0%" stopColor="#00D4FF" stopOpacity="0.4" />
-              <stop offset="100%" stopColor="#0099FF" stopOpacity="0" />
-            </linearGradient>
-          </defs>
-          <g opacity="0.4">
-            <path
-              d="M0 200 Q200 160, 400 180 T800 160"
-              fill="none"
-              stroke="url(#wave3)"
-              strokeWidth="2"
-            >
-              <animate attributeName="d"
-                values="M0 200 Q200 160, 400 180 T800 160;
-                        M0 200 Q200 140, 400 160 T800 180;
-                        M0 200 Q200 160, 400 180 T800 160"
-                dur="7s" repeatCount="indefinite" />
-              <animate attributeName="opacity" values="0.4;0.8;0.4" dur="8s" repeatCount="indefinite" />
-            </path>
-          </g>
-        </svg>
-
-        {/* Subtle glow spots */}
-        <div className="absolute bottom-[5%] right-[10%] w-[300px] h-[300px] bg-[#00E5FF]/10 rounded-full blur-[100px]"
-          style={{ animation: 'pulse 6s ease-in-out infinite' }} />
-        <div className="absolute bottom-[15%] left-[5%] w-[200px] h-[200px] bg-[#0088FF]/8 rounded-full blur-[80px]"
-          style={{ animation: 'pulse 8s ease-in-out infinite 3s' }} />
-      </div>
-
-
-      {/* Very subtle gradient overlay - mostly transparent */}
-      <div className="absolute inset-0 bg-gradient-to-t from-[#030B12]/40 via-transparent to-transparent z-0" />
+      {/* Subtle gradient for depth */}
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#030B12]/30 z-[1]" />
 
       <div className="relative z-10 text-center px-4 sm:px-6 max-w-5xl mx-auto pt-24 sm:pt-20">
 
         {/* LOGO - No Background, Screen Blend */}
-        <div className="flex justify-center mb-8 sm:mb-12 animate-float">
+        <div className="flex justify-center mb-4 sm:mb-6 animate-float">
           <div className="relative w-[150px] h-[150px] sm:w-[200px] sm:h-[200px] md:w-[240px] md:h-[240px]">
             <Image
               src="/logo-atlas.png"
@@ -677,7 +531,7 @@ function AboutSection({ lang }: { lang: Language }) {
   const t = content[lang].about;
 
   return (
-    <section id="about" className="relative py-20 sm:py-32 bg-gradient-to-b from-[#041820]/40 to-[#030B11]/40 backdrop-blur-sm border-t border-[#00E5FF]/10">
+    <section id="about" className="relative z-10 py-20 sm:py-32 bg-gradient-to-b from-[#041820]/60 to-[#030B11]/60 backdrop-blur-sm border-t border-[#00E5FF]/10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
         <div className="text-center mb-12 sm:mb-16">
           <FadeIn>
@@ -715,7 +569,7 @@ function EcosystemSection({ lang }: { lang: Language }) {
   ];
 
   return (
-    <section id="ecosystem" className="relative py-20 sm:py-32 bg-gradient-to-b from-[#0A0F18]/50 to-[#050810]/50 backdrop-blur-md border-t border-white/5">
+    <section id="ecosystem" className="relative z-10 py-20 sm:py-32 bg-gradient-to-b from-[#0A0F18]/60 to-[#050810]/60 backdrop-blur-md border-t border-white/5">
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
         <div className="text-center mb-12 sm:mb-20">
           <FadeIn>
@@ -794,7 +648,7 @@ function ProblemsSection({ lang }: { lang: Language }) {
   const t = content[lang].problems;
 
   return (
-    <section id="problem" className="relative py-20 sm:py-32 bg-gradient-to-b from-[#18120A]/40 to-[#100D08]/40 backdrop-blur-sm border-t border-[#F59E0B]/10">
+    <section id="problem" className="relative z-10 py-20 sm:py-32 bg-gradient-to-b from-[#18120A]/60 to-[#100D08]/60 backdrop-blur-sm border-t border-[#F59E0B]/10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
         <div className="text-center mb-12 sm:mb-16">
           <FadeIn>
@@ -831,7 +685,7 @@ function TimelineSection({ lang }: { lang: Language }) {
   const t = content[lang].timeline;
 
   return (
-    <section id="method" className="relative py-20 sm:py-32 bg-gradient-to-b from-[#0D0818]/40 to-[#080510]/40 backdrop-blur-sm border-t border-[#A855F7]/10">
+    <section id="method" className="relative z-10 py-20 sm:py-32 bg-gradient-to-b from-[#0D0818]/60 to-[#080510]/60 backdrop-blur-sm border-t border-[#A855F7]/10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
         <div className="text-center mb-12 sm:mb-20">
           <FadeIn>
@@ -873,7 +727,7 @@ function CTASection({ lang }: { lang: Language }) {
   const t = content[lang].cta;
 
   return (
-    <section id="contact" className="relative py-24 sm:py-40 bg-gradient-to-b from-[#040812]/50 to-[#020408]/50 backdrop-blur-sm border-t border-[#3B82F6]/10">
+    <section id="contact" className="relative z-10 py-24 sm:py-40 bg-gradient-to-b from-[#040812]/70 to-[#020408]/70 backdrop-blur-sm border-t border-[#3B82F6]/10">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 text-center">
         <FadeIn>
           <h2 className="text-3xl sm:text-4xl md:text-6xl font-bold text-white mb-4 sm:mb-6">{t.title}</h2>
@@ -896,7 +750,7 @@ function FooterSection({ lang }: { lang: Language }) {
   const t = content[lang].footer;
 
   return (
-    <footer className="py-12 sm:py-16 bg-[#030B12]/95 backdrop-blur-md border-t border-[#00E5FF]/20">
+    <footer className="relative z-20 py-12 sm:py-16 bg-[#030B12] border-t border-[#00E5FF]/20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 flex flex-col items-center gap-8 sm:gap-10">
 
         {/* Logo & Horizontal Name */}
