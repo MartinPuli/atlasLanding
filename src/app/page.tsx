@@ -2,520 +2,529 @@
 
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
-import { Language, content, socialLinks } from "@/lib/content";
-import { Icon } from "@/components/icons/Icon";
-import { FlagUS, FlagAR } from "@/components/icons/Flags";
-import { Container } from "@/components/ui/Container";
-import { Section } from "@/components/ui/Section";
-import { SectionHeader } from "@/components/ui/SectionHeader";
-import { GlassCard } from "@/components/ui/GlassCard";
-import { Button } from "@/components/ui/Button";
-import { useNavScroll } from "@/hooks/useNavScroll";
 
-function usePrefersReducedMotion() {
-  const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
+type Language = "en" | "es";
 
-  useEffect(() => {
-    const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
-    const updatePreference = () => setPrefersReducedMotion(mediaQuery.matches);
+const content = {
+  en: {
+    nav: { home: "Home", solutions: "Solutions", about: "About", contact: "Contact" },
+    hero: {
+      title: "Innovating Data & Technology",
+      subtitle: "Decisions. Real-Time. Real Impact.",
+      description: "Stop guessing. Start building. We architect the data infrastructure that powers your next big leap.",
+      cta: "Start Building",
+    },
+    about: {
+      title: "Who We Are",
+      description: "We are Atlas One, a team obsessed with transforming chaos into clarity. We don't just build software—we engineer ecosystems that grow with your ambition.",
+    },
+    ecosystem: {
+      title: "Our Ecosystem",
+      subtitle: "Four pillars powering your transformation.",
+      items: [
+        { title: "Artificial Intelligence", desc: "We deploy autonomous agents that sell, support, and analyze for you 24/7.", icon: "ai" },
+        { title: "Custom Software", desc: "Internal systems and platforms that fit your operation like a glove.", icon: "code" },
+        { title: "Digital Security", desc: "Military-grade automated defense to protect your most valuable asset.", icon: "shield" },
+        { title: "Data Intelligence", desc: "Interactive dashboards that reveal hidden opportunities in your data.", icon: "chart" },
+      ],
+    },
+    problems: {
+      title: "Why Systems Fail",
+      items: ["Manual spreadsheets", "Disconnected tools", "Unused expensive CRMs", "Knowledge silos", "Meaningless data", "AI as toy, not tool"],
+      insight: "It's not about buying more software.",
+      insightBold: "It's about architecture that works.",
+      cta: "Fix Your Infrastructure",
+    },
+    timeline: {
+      quote: "Software shouldn't rust.",
+      quoteSub: "We build living systems designed to evolve with you.",
+      stages: [
+        { title: "Foundation", desc: "Digital Core" },
+        { title: "Automation", desc: "Speed & Flow" },
+        { title: "Intelligence", desc: "Cognitive Layer" },
+        { title: "Evolution", desc: "Limitless Scale" },
+      ],
+    },
+    footer: {
+      tagline: "Building the future of your business, line by line.",
+      rights: "© 2025 Atlas One. All rights reserved.",
+    },
+  },
+  es: {
+    nav: { home: "Inicio", solutions: "Soluciones", about: "Nosotros", contact: "Contacto" },
+    hero: {
+      title: "Innovando en Datos y Tecnología",
+      subtitle: "Decisiones Reales. Impacto Real.",
+      description: "Dejá de adivinar. Empezá a construir. Diseñamos la infraestructura de datos que impulsa tu próximo gran salto.",
+      cta: "Empezar Ahora",
+    },
+    about: {
+      title: "Quiénes Somos",
+      description: "Somos Atlas One, un equipo obsesionado con transformar el caos en claridad. No solo construimos software—diseñamos ecosistemas que crecen con tu ambición.",
+    },
+    ecosystem: {
+      title: "Nuestro Ecosistema",
+      subtitle: "Cuatro pilares que impulsan tu transformación.",
+      items: [
+        { title: "Inteligencia Artificial", desc: "Desplegamos agentes autónomos que venden, asisten y analizan por vos 24/7.", icon: "ai" },
+        { title: "Software a Medida", desc: "Sistemas y plataformas que le calzan a tu operación como un guante.", icon: "code" },
+        { title: "Seguridad Digital", desc: "Defensa automatizada de grado militar para proteger tu activo más valioso.", icon: "shield" },
+        { title: "Inteligencia de Datos", desc: "Dashboards interactivos que revelan oportunidades ocultas en tus datos.", icon: "chart" },
+      ],
+    },
+    problems: {
+      title: "Por Qué Fallan los Sistemas",
+      items: ["Planillas manuales", "Herramientas desconectadas", "CRMs caros sin uso", "Conocimiento aislado", "Datos sin sentido", "IA como juguete"],
+      insight: "No se trata de comprar más software.",
+      insightBold: "Se trata de arquitectura que funcione.",
+      cta: "Arreglá tu Infraestructura",
+    },
+    timeline: {
+      quote: "El software no debería oxidarse.",
+      quoteSub: "Construimos sistemas vivos diseñados para evolucionar con vos.",
+      stages: [
+        { title: "Cimientos", desc: "Núcleo Digital" },
+        { title: "Automatización", desc: "Velocidad y Flujo" },
+        { title: "Inteligencia", desc: "Capa Cognitiva" },
+        { title: "Evolución", desc: "Escala Sin Límites" },
+      ],
+    },
+    footer: {
+      tagline: "Construyendo el futuro de tu negocio, línea por línea.",
+      rights: "© 2025 Atlas One. Todos los derechos reservados.",
+    },
+  },
+};
 
-    updatePreference();
-    if (mediaQuery.addEventListener) {
-      mediaQuery.addEventListener("change", updatePreference);
-    } else {
-      mediaQuery.addListener(updatePreference);
-    }
+const socialLinks = [
+  { name: "Instagram", url: "https://www.instagram.com/atlasone.arg/", icon: "instagram" },
+  { name: "LinkedIn", url: "https://www.linkedin.com/company/atlas-one-erp-ar/", icon: "linkedin" },
+  { name: "X", url: "https://x.com/atlasonearg", icon: "x" },
+];
 
-    return () => {
-      if (mediaQuery.addEventListener) {
-        mediaQuery.removeEventListener("change", updatePreference);
-      } else {
-        mediaQuery.removeListener(updatePreference);
-      }
-    };
-  }, []);
-
-  return prefersReducedMotion;
+function Icon({ type, size = 32 }: { type: string; size?: number }) {
+  const style = { width: size, height: size };
+  const icons: Record<string, React.ReactNode> = {
+    ai: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" style={style}><path strokeLinecap="round" strokeLinejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 00-2.456 2.456z" /></svg>,
+    code: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" style={style}><path strokeLinecap="round" strokeLinejoin="round" d="M17.25 6.75L22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3l-4.5 16.5" /></svg>,
+    shield: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" style={style}><path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" /></svg>,
+    chart: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" style={style}><path strokeLinecap="round" strokeLinejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 013 19.875v-6.75zM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V8.625zM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V4.125z" /></svg>,
+    instagram: <svg viewBox="0 0 24 24" fill="currentColor" style={style}><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" /></svg>,
+    linkedin: <svg viewBox="0 0 24 24" fill="currentColor" style={style}><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" /></svg>,
+    x: <svg viewBox="0 0 24 24" fill="currentColor" style={style}><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" /></svg>,
+  };
+  return <>{icons[type] || null}</>;
 }
 
-// ============ NAVIGATION ============
-function Navigation({ lang, setLang }: { lang: Language; setLang: (l: Language) => void }) {
-  const { visible, scrolled } = useNavScroll();
-  const [mounted, setMounted] = useState(false);
-  const [menuOpen, setMenuOpen] = useState(false);
-  const menuButtonRef = useRef<HTMLButtonElement>(null);
-  const firstLinkRef = useRef<HTMLAnchorElement>(null);
-  const hasToggledMenuRef = useRef(false);
-  const t = content[lang].nav;
-  const mobileMenuId = "mobile-navigation";
+function FlagUS() {
+  return (
+    <svg viewBox="0 0 60 30" style={{ width: 24, height: 16 }}>
+      <rect width="60" height="30" fill="#b22234" />
+      <path d="M0,4h60v4h-60M0,12h60v4h-60M0,20h60v4h-60" fill="#fff" />
+      <rect width="24" height="15" fill="#3c3b6e" />
+    </svg>
+  );
+}
 
-  useEffect(() => { setMounted(true); }, []);
+function FlagAR() {
+  return (
+    <svg viewBox="0 0 30 20" style={{ width: 24, height: 16 }}>
+      <rect width="30" height="20" fill="#fff" />
+      <rect width="30" height="6" fill="#74acdf" />
+      <rect y="14" width="30" height="6" fill="#74acdf" />
+      <circle cx="15" cy="10" r="2" fill="#f6b40e" />
+    </svg>
+  );
+}
+
+// ===== STYLES =====
+const styles = {
+  // Layout
+  container: {
+    width: "100%",
+    maxWidth: 1200,
+    margin: "0 auto",
+    padding: "0 24px",
+  } as React.CSSProperties,
+  
+  containerSm: {
+    width: "100%",
+    maxWidth: 900,
+    margin: "0 auto",
+    padding: "0 24px",
+  } as React.CSSProperties,
+
+  // Sections
+  section: {
+    width: "100%",
+    padding: "120px 0",
+  } as React.CSSProperties,
+
+  sectionDark: {
+    width: "100%",
+    padding: "120px 0",
+    backgroundColor: "#020609",
+  } as React.CSSProperties,
+
+  // Text
+  heading1: {
+    fontSize: "clamp(2.5rem, 6vw, 4.5rem)",
+    fontWeight: 700,
+    color: "#ffffff",
+    marginBottom: 24,
+    lineHeight: 1.1,
+  } as React.CSSProperties,
+
+  heading2: {
+    fontSize: "clamp(2rem, 5vw, 3.5rem)",
+    fontWeight: 700,
+    color: "#ffffff",
+    marginBottom: 16,
+    lineHeight: 1.1,
+  } as React.CSSProperties,
+
+  subtitle: {
+    fontSize: "clamp(1.25rem, 3vw, 1.75rem)",
+    color: "#00E5FF",
+    marginBottom: 24,
+    fontWeight: 300,
+  } as React.CSSProperties,
+
+  bodyText: {
+    fontSize: "clamp(1rem, 2vw, 1.25rem)",
+    color: "#8BA3B8",
+    lineHeight: 1.7,
+    maxWidth: 700,
+    margin: "0 auto",
+  } as React.CSSProperties,
+
+  // Buttons
+  btnPrimary: {
+    display: "inline-block",
+    padding: "18px 48px",
+    background: "linear-gradient(135deg, #00E5FF, #00BCD4)",
+    color: "#030B12",
+    fontWeight: 700,
+    fontSize: 18,
+    borderRadius: 16,
+    textDecoration: "none",
+    border: "none",
+    cursor: "pointer",
+    boxShadow: "0 0 40px rgba(0, 229, 255, 0.4)",
+  } as React.CSSProperties,
+
+  btnSecondary: {
+    display: "inline-block",
+    padding: "16px 40px",
+    background: "transparent",
+    color: "#00E5FF",
+    fontWeight: 700,
+    fontSize: 16,
+    borderRadius: 16,
+    textDecoration: "none",
+    border: "2px solid #00E5FF",
+    cursor: "pointer",
+  } as React.CSSProperties,
+
+  // Cards
+  card: {
+    padding: 32,
+    borderRadius: 24,
+    background: "rgba(255, 255, 255, 0.03)",
+    border: "1px solid rgba(255, 255, 255, 0.1)",
+    transition: "all 0.3s ease",
+  } as React.CSSProperties,
+
+  // Grid
+  grid4: {
+    display: "grid",
+    gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr))",
+    gap: 24,
+  } as React.CSSProperties,
+
+  grid3: {
+    display: "grid",
+    gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))",
+    gap: 16,
+  } as React.CSSProperties,
+
+  // Flex
+  flexCenter: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+  } as React.CSSProperties,
+
+  textCenter: {
+    textAlign: "center" as const,
+  },
+};
+
+// ===== NAVIGATION =====
+function Navigation({ lang, setLang }: { lang: Language; setLang: (l: Language) => void }) {
+  const [scrolled, setScrolled] = useState(false);
+  const t = content[lang].nav;
+
   useEffect(() => {
-    if (!hasToggledMenuRef.current) {
-      hasToggledMenuRef.current = true;
-      return;
-    }
-    if (menuOpen) {
-      firstLinkRef.current?.focus();
-    } else {
-      menuButtonRef.current?.focus();
-    }
-  }, [menuOpen]);
+    const handleScroll = () => setScrolled(window.scrollY > 50);
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
-    <nav className={`
-      fixed top-0 left-0 right-0 z-50 
-      transition-all duration-500 ease-out
-      ${visible ? "translate-y-0 opacity-100" : "-translate-y-full opacity-0"}
-      ${scrolled ? "nav-blur" : ""}
-      ${mounted ? "animate-slide-down" : "opacity-0"}
-    `}>
-      <Container>
-        <div className="flex items-center justify-between h-20 sm:h-24">
-          {/* Logo */}
-          <a href="#" className="flex items-center gap-3 hover:opacity-80 transition-opacity">
-            <Image src="/logo-atlas.png" alt="Atlas One" width={48} height={48} className="w-10 h-10 sm:w-12 sm:h-12 object-contain" />
-            <Image src="/nombre-atlas-horizontal.png" alt="Atlas One" width={140} height={36} className="h-6 sm:h-8 w-auto object-contain hidden sm:block" />
-          </a>
+    <nav style={{
+      position: "fixed",
+      top: 0,
+      left: 0,
+      right: 0,
+      zIndex: 50,
+      padding: "16px 0",
+      backgroundColor: scrolled ? "rgba(3, 11, 18, 0.95)" : "transparent",
+      backdropFilter: scrolled ? "blur(20px)" : "none",
+      borderBottom: scrolled ? "1px solid rgba(0, 229, 255, 0.1)" : "none",
+      transition: "all 0.3s ease",
+    }}>
+      <div style={{ ...styles.container, display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+        <a href="#" style={{ display: "flex", alignItems: "center", gap: 12, textDecoration: "none" }}>
+          <Image src="/logo-atlas.png" alt="Atlas One" width={48} height={48} />
+          <span style={{ fontSize: 20, fontWeight: 700, color: "#fff" }}>Atlas One</span>
+        </a>
 
-          <div className="flex items-center gap-3 sm:gap-4">
-            {/* Desktop Nav */}
-            <div className="hidden md:flex items-center gap-2 lg:gap-4">
-              <a href="#" className="nav-link">{t.home}</a>
-              <a href="#ecosystem" className="nav-link">{t.solutions}</a>
-              <a href="#about" className="nav-link">{t.about}</a>
-              <a href="#footer" className="nav-link">{t.contact}</a>
-            </div>
-
-            {/* Mobile Nav Toggle */}
-            <button
-              ref={menuButtonRef}
-              type="button"
-              className="md:hidden flex items-center justify-center w-11 h-11 rounded-full border border-white/10 hover:border-white/30 transition-all bg-white/5 hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400/60"
-              aria-expanded={menuOpen}
-              aria-controls={mobileMenuId}
-              aria-label={menuOpen ? "Cerrar menú" : "Abrir menú"}
-              onClick={() => setMenuOpen((prev) => !prev)}
-            >
-              <span className="sr-only">{menuOpen ? "Cerrar menú" : "Abrir menú"}</span>
-              <span className="relative w-5 h-5">
-                <span className={`absolute left-0 top-1 w-5 h-0.5 bg-white transition-transform duration-300 ${menuOpen ? "translate-y-2 rotate-45" : ""}`} />
-                <span className={`absolute left-0 top-2.5 w-5 h-0.5 bg-white transition-opacity duration-300 ${menuOpen ? "opacity-0" : "opacity-100"}`} />
-                <span className={`absolute left-0 top-4 w-5 h-0.5 bg-white transition-transform duration-300 ${menuOpen ? "-translate-y-2 -rotate-45" : ""}`} />
-              </span>
-            </button>
-
-            {/* Lang Toggle */}
-            <button
-              onClick={() => setLang(lang === "en" ? "es" : "en")}
-              className="flex items-center gap-3 px-4 py-2 rounded-full border border-white/10 hover:border-white/30 transition-all bg-white/5 hover:bg-white/10"
-            >
-              <FlagUS className={`w-6 h-4 transition-opacity ${lang === "en" ? "opacity-100" : "opacity-40"}`} />
-              <div className="w-px h-4 bg-white/20" />
-              <FlagAR className={`w-6 h-4 transition-opacity ${lang === "es" ? "opacity-100" : "opacity-40"}`} />
-            </button>
+        <div style={{ display: "flex", alignItems: "center", gap: 32 }}>
+          <div style={{ display: "flex", gap: 24 }}>
+            <a href="#" style={{ color: "#8BA3B8", textDecoration: "none" }}>{t.home}</a>
+            <a href="#ecosystem" style={{ color: "#8BA3B8", textDecoration: "none" }}>{t.solutions}</a>
+            <a href="#about" style={{ color: "#8BA3B8", textDecoration: "none" }}>{t.about}</a>
+            <a href="#footer" style={{ color: "#8BA3B8", textDecoration: "none" }}>{t.contact}</a>
           </div>
-        </div>
 
-        {/* Mobile Nav Panel */}
-        <div
-          id={mobileMenuId}
-          className={`md:hidden overflow-hidden transition-all duration-300 ease-out ${menuOpen ? "max-h-64 opacity-100" : "max-h-0 opacity-0 pointer-events-none"}`}
-          aria-hidden={!menuOpen}
-          onKeyDown={(event) => {
-            if (event.key === "Escape") {
-              event.preventDefault();
-              setMenuOpen(false);
-            }
-          }}
-        >
-          <div className="mt-2 rounded-2xl border border-white/10 bg-[#0B0F1A]/95 backdrop-blur-lg px-4 py-4 flex flex-col gap-2 shadow-[0_12px_40px_rgba(0,0,0,0.35)]">
-            <a
-              ref={firstLinkRef}
-              href="#"
-              className="nav-link"
-              tabIndex={menuOpen ? 0 : -1}
-              onClick={() => setMenuOpen(false)}
-            >
-              {t.home}
-            </a>
-            <a
-              href="#ecosystem"
-              className="nav-link"
-              tabIndex={menuOpen ? 0 : -1}
-              onClick={() => setMenuOpen(false)}
-            >
-              {t.solutions}
-            </a>
-            <a
-              href="#about"
-              className="nav-link"
-              tabIndex={menuOpen ? 0 : -1}
-              onClick={() => setMenuOpen(false)}
-            >
-              {t.about}
-            </a>
-            <a
-              href="#footer"
-              className="nav-link"
-              tabIndex={menuOpen ? 0 : -1}
-              onClick={() => setMenuOpen(false)}
-            >
-              {t.contact}
-            </a>
-          </div>
+          <button
+            onClick={() => setLang(lang === "en" ? "es" : "en")}
+            style={{
+              display: "flex",
+              alignItems: "center",
+              gap: 8,
+              padding: "8px 16px",
+              borderRadius: 999,
+              border: "1px solid rgba(255,255,255,0.2)",
+              background: "rgba(255,255,255,0.05)",
+              cursor: "pointer",
+            }}
+          >
+            <span style={{ opacity: lang === "en" ? 1 : 0.4 }}><FlagUS /></span>
+            <span style={{ color: "#666" }}>|</span>
+            <span style={{ opacity: lang === "es" ? 1 : 0.4 }}><FlagAR /></span>
+          </button>
         </div>
-      </Container>
+      </div>
     </nav>
   );
 }
 
-// ============ HERO SECTION ============
-function HeroSection({ lang, mounted }: { lang: Language; mounted: boolean }) {
+// ===== HERO =====
+function HeroSection({ lang }: { lang: Language }) {
   const t = content[lang].hero;
-  const bgRef = useRef<HTMLImageElement>(null);
-  const prefersReducedMotion = usePrefersReducedMotion();
-
-  useEffect(() => {
-    if (prefersReducedMotion) return;
-    const handleScroll = () => {
-      if (!bgRef.current) return;
-      bgRef.current.style.transform = `rotate(${window.scrollY * 0.08}deg)`;
-    };
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, [prefersReducedMotion]);
 
   return (
-    <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden">
+    <section style={{
+      minHeight: "100vh",
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      position: "relative",
+      overflow: "hidden",
+      backgroundColor: "#010408",
+    }}>
       {/* Background */}
-      <div className="fixed inset-0 -z-10 bg-[#010408] flex items-center justify-center overflow-hidden">
-        <Image
-          ref={bgRef}
-          src="/atlas-bg.jpg"
-          alt="Background"
-          width={1200}
-          height={1200}
-          className="w-[120vh] h-[120vh] max-w-none object-contain opacity-50 mix-blend-screen"
-          style={{ filter: "contrast(1.2) brightness(1.1)" }}
-          priority
-        />
+      <div style={{ position: "absolute", inset: 0, display: "flex", alignItems: "center", justifyContent: "center" }}>
+        <Image src="/atlas-bg.jpg" alt="" width={1000} height={1000} style={{ width: "80vh", height: "80vh", objectFit: "contain", opacity: 0.4 }} priority />
       </div>
 
-      {/* Glow Effects */}
-      <div className="absolute bottom-0 left-0 right-0 h-[50vh] bg-gradient-to-t from-cyan-400/20 via-transparent to-transparent opacity-70" />
-      <div className="absolute bottom-[-100px] left-1/2 -translate-x-1/2 w-[150%] h-[400px] bg-blue-500/30 blur-[150px] rounded-full" />
+      {/* Glow */}
+      <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, height: 400, background: "linear-gradient(to top, rgba(0,229,255,0.15), transparent)" }} />
 
-      <Container className="relative z-10 py-32 sm:py-40 lg:py-48">
-        <div className="text-center max-w-5xl mx-auto">
-          {/* Logo */}
-          <div
-            className={`relative mb-14 sm:mb-20 ${mounted ? "animate-fade-in" : "opacity-0"}`}
-          >
-            <div className="absolute inset-0 bg-cyan-400/40 blur-[80px] rounded-full animate-pulse-glow" />
-            <div className="relative mx-auto w-fit animate-drift">
-              <Image
-                src="/logo-atlas.png"
-                alt="Atlas One"
-                width={320}
-                height={320}
-                className="relative w-48 h-48 sm:w-64 sm:h-64 md:w-80 md:h-80 object-contain drop-shadow-[0_0_60px_rgba(0,229,255,0.7)] hover:scale-105 transition-transform duration-700"
-                priority
-              />
-            </div>
-          </div>
-
-          {/* Title */}
-          <h1 className={`
-            text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl 
-            font-bold text-white leading-[1.1] tracking-tight
-            mb-6 sm:mb-8 lg:mb-10
-            ${mounted ? "animate-fade-in-up delay-100 fill-backwards" : "opacity-0"}
-          `}>
-            {t.title}
-          </h1>
-
-          {/* Subtitle */}
-          <p className={`
-            text-xl sm:text-2xl md:text-3xl lg:text-4xl 
-            font-light text-transparent bg-clip-text bg-gradient-to-r from-white to-cyan-400 
-            mb-8 sm:mb-10 lg:mb-12
-            ${mounted ? "animate-fade-in-up delay-200 fill-backwards" : "opacity-0"}
-          `}>
-            {t.subtitle}
-          </p>
-
-          {/* Description */}
-          <p className={`
-            text-base sm:text-lg md:text-xl lg:text-2xl 
-            text-[#8BA3B8] max-w-3xl mx-auto leading-relaxed
-            mb-12 sm:mb-16 lg:mb-20
-            ${mounted ? "animate-fade-in-up delay-300 fill-backwards" : "opacity-0"}
-          `}>
-            {t.description}
-          </p>
-
-          {/* CTA */}
-          <div className={mounted ? "animate-fade-in-up delay-400 fill-backwards" : "opacity-0"}>
-            <Button href="mailto:atlasonecontact@gmail.com" size="lg">
-              {t.cta}
-            </Button>
-          </div>
+      {/* Content */}
+      <div style={{ ...styles.containerSm, position: "relative", zIndex: 10, textAlign: "center", paddingTop: 100, paddingBottom: 100 }}>
+        <div style={{ marginBottom: 48 }}>
+          <Image src="/logo-atlas.png" alt="Atlas One" width={200} height={200} style={{ filter: "drop-shadow(0 0 60px rgba(0,229,255,0.6))" }} priority />
         </div>
-      </Container>
 
-      {/* Scroll Indicator */}
-      <div className="absolute bottom-10 sm:bottom-14 left-1/2 -translate-x-1/2 animate-float opacity-50">
-        <div className="w-7 h-12 border-2 border-white/30 rounded-full flex justify-center pt-2">
-          <div className="w-1.5 h-3 bg-white/50 rounded-full animate-bounce" />
-        </div>
-      </div>
+        <h1 style={styles.heading1}>{t.title}</h1>
+        <p style={styles.subtitle}>{t.subtitle}</p>
+        <p style={{ ...styles.bodyText, marginBottom: 48 }}>{t.description}</p>
 
-      {/* Floating Particles */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        <div className="absolute top-1/4 left-1/4 w-2 h-2 bg-cyan-400/40 rounded-full animate-particle-float delay-100" />
-        <div className="absolute top-3/4 left-1/3 w-3 h-3 bg-blue-500/30 rounded-full animate-particle-float delay-300" />
-        <div className="absolute top-1/2 right-1/4 w-2 h-2 bg-cyan-300/30 rounded-full animate-particle-float delay-500" />
-        <div className="absolute bottom-1/4 right-1/3 w-4 h-4 bg-teal-400/20 rounded-full animate-particle-float delay-700" />
+        <a href="mailto:atlasonecontact@gmail.com" style={styles.btnPrimary}>{t.cta}</a>
       </div>
     </section>
   );
 }
 
-// ============ ABOUT SECTION ============
+// ===== ABOUT =====
 function AboutSection({ lang }: { lang: Language }) {
   const t = content[lang].about;
 
   return (
-    <Section id="about" className="relative overflow-hidden">
-      {/* Background decoration */}
-      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-gradient-to-b from-blue-600/10 to-transparent blur-[120px] rounded-full -translate-y-1/2 translate-x-1/2 pointer-events-none" />
+    <section id="about" style={{ ...styles.section, backgroundColor: "#030B12" }}>
+      {/* Top line */}
+      <div style={{ width: 1, height: 80, background: "linear-gradient(to bottom, transparent, rgba(0,229,255,0.5), transparent)", margin: "0 auto 60px" }} />
 
-      <Container size="md">
-        <div className="text-center">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-8 sm:mb-10 leading-tight">
-            <span className="text-shimmer">{t.title}</span>
-          </h2>
-          <p className="text-lg sm:text-xl md:text-2xl text-[#8BA3B8] leading-relaxed">
-            {t.description}
-          </p>
-        </div>
-      </Container>
-    </Section>
+      <div style={{ ...styles.containerSm, textAlign: "center" }}>
+        <h2 style={styles.heading2}>{t.title}</h2>
+        <p style={styles.bodyText}>{t.description}</p>
+      </div>
+
+      {/* Bottom line */}
+      <div style={{ width: 1, height: 80, background: "linear-gradient(to bottom, transparent, rgba(0,229,255,0.5), transparent)", margin: "60px auto 0" }} />
+    </section>
   );
 }
 
-// ============ ECOSYSTEM SECTION ============
+// ===== ECOSYSTEM =====
 function EcosystemSection({ lang }: { lang: Language }) {
   const t = content[lang].ecosystem;
 
   return (
-    <Section id="ecosystem" spacing="xl" className="gradient-border-bottom">
-      <Container>
-        <SectionHeader title={t.title} subtitle={t.subtitle} gradient />
+    <section id="ecosystem" style={styles.sectionDark}>
+      <div style={styles.container}>
+        {/* Header */}
+        <div style={{ textAlign: "center", marginBottom: 80 }}>
+          <h2 style={{ ...styles.heading2, background: "linear-gradient(135deg, #00E5FF, #00BCD4)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>
+            {t.title}
+          </h2>
+          <p style={{ fontSize: 20, color: "#8BA3B8" }}>{t.subtitle}</p>
+        </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {t.items.map((item, index) => (
-            <GlassCard
-              key={index}
-              className="group relative overflow-hidden flex flex-col items-center text-center md:items-start md:text-left h-full"
-            >
-              {/* Hover Grad */}
-              <div className="absolute inset-0 bg-gradient-to-br from-cyan-400/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
-
-              {/* Content */}
-              <div className="relative z-10 flex flex-col items-center text-center md:items-start md:text-left h-full w-full">
-                <div className="mb-6 p-3 bg-white/5 rounded-2xl group-hover:scale-110 transition-transform duration-500 border border-white/10 group-hover:border-cyan-400/30 group-hover:shadow-[0_0_20px_rgba(0,229,255,0.2)]">
-                  <Icon type={item.icon} className="w-8 h-8 text-cyan-400" />
-                </div>
-
-                <h3 className="text-xl font-bold text-white mb-3 group-hover:text-cyan-400 transition-colors">
-                  {item.title}
-                </h3>
-
-                <p className="text-sm text-[#8BA3B8] leading-relaxed">
-                  {item.desc}
-                </p>
+        {/* Cards */}
+        <div style={styles.grid4}>
+          {t.items.map((item, i) => (
+            <div key={i} style={{ ...styles.card, textAlign: "center" }}>
+              <div style={{ width: 72, height: 72, borderRadius: 20, background: "rgba(0,229,255,0.1)", display: "flex", alignItems: "center", justifyContent: "center", margin: "0 auto 24px", color: "#00E5FF" }}>
+                <Icon type={item.icon} size={36} />
               </div>
-            </GlassCard>
+              <h3 style={{ fontSize: 22, fontWeight: 700, color: "#fff", marginBottom: 12 }}>{item.title}</h3>
+              <p style={{ fontSize: 15, color: "#8BA3B8", lineHeight: 1.6 }}>{item.desc}</p>
+            </div>
           ))}
         </div>
-      </Container>
-    </Section>
+      </div>
+    </section>
   );
 }
 
-
-
-// ============ PROBLEMS SECTION ============
+// ===== PROBLEMS =====
 function ProblemsSection({ lang }: { lang: Language }) {
   const t = content[lang].problems;
 
   return (
-    <Section id="problems" dark spacing="xl">
-      <Container size="lg">
-        <SectionHeader title={t.title} />
+    <section id="problems" style={{ ...styles.section, backgroundColor: "#030B12" }}>
+      <div style={styles.container}>
+        {/* Header */}
+        <div style={{ textAlign: "center", marginBottom: 60 }}>
+          <h2 style={styles.heading2}>{t.title}</h2>
+        </div>
 
         {/* Problems Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6 lg:gap-8 mb-20 sm:mb-28 lg:mb-36">
+        <div style={{ ...styles.grid3, marginBottom: 80 }}>
           {t.items.map((item, i) => (
-            <GlassCard key={i} padding="lg" className="text-center group min-h-[140px] sm:min-h-[160px] flex items-center justify-center">
-              <p className="text-base sm:text-lg lg:text-xl text-gray-200 group-hover:text-white transition-colors duration-300 leading-relaxed">
-                {item}
-              </p>
-            </GlassCard>
+            <div key={i} style={{ ...styles.card, textAlign: "center", padding: 24 }}>
+              <p style={{ fontSize: 16, color: "#ccc" }}>{item}</p>
+            </div>
           ))}
         </div>
 
-        {/* Insight */}
-        <div className="text-center max-w-4xl mx-auto">
-          <GlassCard padding="xl" className="glow-md">
-            <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-white font-medium leading-relaxed mb-6 sm:mb-8">
-              {t.insight}
-            </p>
-            <p className="text-xl sm:text-2xl md:text-3xl lg:text-4xl text-cyan-400 font-bold mb-8 sm:mb-12">
-              {t.insightBold}
-            </p>
-            <Button href="#footer" variant="secondary" size="lg">
-              {t.cta}
-            </Button>
-          </GlassCard>
+        {/* Insight Box */}
+        <div style={{ maxWidth: 700, margin: "0 auto", padding: 48, borderRadius: 32, background: "linear-gradient(to bottom, rgba(0,229,255,0.1), transparent)", border: "1px solid rgba(0,229,255,0.2)", textAlign: "center" }}>
+          <p style={{ fontSize: 22, color: "#fff", marginBottom: 16 }}>{t.insight}</p>
+          <p style={{ fontSize: 28, fontWeight: 700, color: "#00E5FF", marginBottom: 32 }}>{t.insightBold}</p>
+          <a href="#footer" style={styles.btnSecondary}>{t.cta}</a>
         </div>
-      </Container>
-    </Section>
+      </div>
+    </section>
   );
 }
 
-// ============ TIMELINE SECTION ============
+// ===== TIMELINE =====
 function TimelineSection({ lang }: { lang: Language }) {
   const t = content[lang].timeline;
 
   return (
-    <Section spacing="xl">
-      <Container size="lg">
+    <section style={styles.sectionDark}>
+      <div style={styles.container}>
         {/* Quote */}
-        <div className="text-center mb-20 sm:mb-28 lg:mb-36 max-w-4xl mx-auto">
-          <blockquote className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6 sm:mb-8 leading-tight">
-            &ldquo;<span className="gradient-text">{t.quote}</span>&rdquo;
+        <div style={{ textAlign: "center", marginBottom: 80 }}>
+          <blockquote style={{ fontSize: "clamp(1.5rem, 4vw, 2.5rem)", fontWeight: 700, color: "#fff", marginBottom: 16 }}>
+            &ldquo;<span style={{ color: "#00E5FF" }}>{t.quote}</span>&rdquo;
           </blockquote>
-          <p className="text-lg sm:text-xl md:text-2xl text-[#8BA3B8] leading-relaxed">
-            {t.quoteSub}
-          </p>
+          <p style={{ fontSize: 18, color: "#8BA3B8" }}>{t.quoteSub}</p>
         </div>
 
         {/* Stages */}
-        <div className="relative">
-          {/* Connection Line - Desktop */}
-          <div className="hidden lg:block absolute top-1/2 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-cyan-400/30 to-transparent -translate-y-1/2" />
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-12 sm:gap-x-8 sm:gap-y-10 lg:gap-x-6 lg:gap-y-6">
-            {t.stages.map((stage, i) => (
-              <div key={i} className="relative flex flex-col items-center text-center group">
-                {/* Number Circle */}
-                <div className="
-                  relative z-10
-                  w-20 h-20 sm:w-24 sm:h-24 lg:w-28 lg:h-28
-                  rounded-full
-                  bg-gradient-to-br from-[#010408] to-[#020810]
-                  border-2 border-cyan-400/30
-                  flex items-center justify-center
-                  mb-6 sm:mb-8
-                  group-hover:border-cyan-400/60
-                  group-hover:scale-110
-                  transition-all duration-500
-                  icon-glow
-                ">
-                  <span className="text-3xl sm:text-4xl lg:text-5xl font-bold gradient-text">
-                    {i + 1}
-                  </span>
-                </div>
-
-                {/* Stage Info */}
-                <h3 className="text-lg sm:text-xl lg:text-2xl font-bold text-white mb-2 sm:mb-3">
-                  {stage.title}
-                </h3>
-                <p className="text-sm sm:text-base lg:text-lg text-[#8BA3B8]">
-                  {stage.desc}
-                </p>
+        <div style={styles.grid4}>
+          {t.stages.map((stage, i) => (
+            <div key={i} style={{ textAlign: "center" }}>
+              <div style={{ width: 80, height: 80, borderRadius: "50%", border: "2px solid rgba(0,229,255,0.3)", display: "flex", alignItems: "center", justifyContent: "center", margin: "0 auto 20px", background: "#030B12" }}>
+                <span style={{ fontSize: 32, fontWeight: 700, color: "#00E5FF" }}>{i + 1}</span>
               </div>
-            ))}
-          </div>
+              <h3 style={{ fontSize: 20, fontWeight: 700, color: "#fff", marginBottom: 8 }}>{stage.title}</h3>
+              <p style={{ fontSize: 15, color: "#8BA3B8" }}>{stage.desc}</p>
+            </div>
+          ))}
         </div>
-      </Container>
-    </Section>
+      </div>
+    </section>
   );
 }
 
-// ============ FOOTER SECTION ============
+// ===== FOOTER =====
 function FooterSection({ lang }: { lang: Language }) {
   const t = content[lang].footer;
 
   return (
-    <footer id="footer" className="relative py-24 sm:py-32 lg:py-40 bg-[#020609] border-t border-cyan-400/10">
-      <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-cyan-400/5 to-transparent pointer-events-none" />
-
-      <Container size="md">
-        <div className="flex flex-col items-center text-center gap-12 sm:gap-16 lg:gap-20">
-          {/* Brand */}
-          <div className="flex items-center justify-center gap-4">
-            <Image src="/logo-atlas.png" alt="Atlas One" width={60} height={60} className="w-14 h-14 sm:w-16 sm:h-16 object-contain drop-shadow-[0_0_15px_rgba(0,229,255,0.3)]" />
-            <Image src="/nombre-atlas-horizontal.png" alt="Atlas One" width={180} height={48} className="h-8 sm:h-10 w-auto object-contain" />
-          </div>
-
-          {/* Tagline */}
-          <p className="text-lg sm:text-xl md:text-2xl text-[#8BA3B8] max-w-2xl leading-relaxed">
-            {t.tagline}
-          </p>
-
-          {/* Social Links */}
-          <div className="flex items-center justify-center gap-5 sm:gap-6">
-            {socialLinks.map((social, i) => (
-              <a
-                key={i}
-                href={social.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="
-                  w-14 h-14 sm:w-16 sm:h-16
-                  rounded-2xl
-                  bg-white/5 hover:bg-cyan-400/10
-                  border border-white/10 hover:border-cyan-400/50
-                  flex items-center justify-center
-                  text-[#8BA3B8] hover:text-cyan-400
-                  transition-all duration-300
-                  hover:scale-110
-                "
-                aria-label={social.name}
-              >
-                <Icon type={social.icon} className="w-6 h-6 sm:w-7 sm:h-7" />
-              </a>
-            ))}
-          </div>
-
-          {/* Divider */}
-          <div className="w-full max-w-xl h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
-
-          {/* Copyright */}
-          <p className="text-sm sm:text-base text-[#8BA3B8]/60">
-            {t.rights}
-          </p>
+    <footer id="footer" style={{ padding: "100px 0", backgroundColor: "#010408", borderTop: "1px solid rgba(0,229,255,0.1)" }}>
+      <div style={{ ...styles.containerSm, textAlign: "center" }}>
+        {/* Brand */}
+        <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 16, marginBottom: 24 }}>
+          <Image src="/logo-atlas.png" alt="Atlas One" width={56} height={56} />
+          <span style={{ fontSize: 24, fontWeight: 700, color: "#fff" }}>Atlas One</span>
         </div>
-      </Container>
+
+        {/* Tagline */}
+        <p style={{ fontSize: 18, color: "#8BA3B8", marginBottom: 40, maxWidth: 500, margin: "0 auto 40px" }}>{t.tagline}</p>
+
+        {/* Social */}
+        <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 16, marginBottom: 40 }}>
+          {socialLinks.map((social, i) => (
+            <a
+              key={i}
+              href={social.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{ width: 56, height: 56, borderRadius: 16, background: "rgba(255,255,255,0.05)", border: "1px solid rgba(255,255,255,0.1)", display: "flex", alignItems: "center", justifyContent: "center", color: "#8BA3B8", textDecoration: "none" }}
+              aria-label={social.name}
+            >
+              <Icon type={social.icon} size={24} />
+            </a>
+          ))}
+        </div>
+
+        {/* Divider */}
+        <div style={{ width: 200, height: 1, background: "linear-gradient(to right, transparent, rgba(255,255,255,0.2), transparent)", margin: "0 auto 24px" }} />
+
+        {/* Copyright */}
+        <p style={{ fontSize: 14, color: "#666" }}>{t.rights}</p>
+      </div>
     </footer>
   );
 }
 
-// ============ MAIN PAGE ============
+// ===== MAIN =====
 export default function Home() {
-  const [mounted, setMounted] = useState(false);
   const [lang, setLang] = useState<Language>("es");
 
-  useEffect(() => { setMounted(true); }, []);
-
   return (
-    <main className="min-h-screen overflow-x-hidden">
+    <main style={{ minHeight: "100vh", backgroundColor: "#030B12", color: "#fff" }}>
       <Navigation lang={lang} setLang={setLang} />
-      <HeroSection lang={lang} mounted={mounted} />
+      <HeroSection lang={lang} />
       <AboutSection lang={lang} />
       <EcosystemSection lang={lang} />
       <ProblemsSection lang={lang} />
