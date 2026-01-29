@@ -20,24 +20,28 @@ export const content = {
       subtitle: "The engine behind your business transformation.",
       items: [
         {
-          title: "Artificial Intelligence",
+          title: "Atlas IA",
           desc: "Not just a buzzword. We deploy autonomous agents that sell, support, and analyze for you 24/7.",
           icon: "ai",
+          color: "cyan",
         },
         {
-          title: "Custom Software",
+          title: "Atlas Software",
           desc: "Forget cookie-cutter apps. We forge internal systems and platforms that fit your operation like a glove.",
           icon: "code",
+          color: "blue",
         },
         {
-          title: "Digital Security",
+          title: "Atlas Cybersecurity",
           desc: "Your fortress. We implement military-grade automated defense to protect your most valuable asset: data.",
           icon: "shield",
+          color: "purple",
         },
         {
-          title: "Data & Intelligence",
+          title: "Atlas Analytics",
           desc: "Turn noise into signal. Interactive dashboards that reveal the hidden opportunities in your numbers.",
           icon: "chart",
+          color: "green",
         },
       ],
     },
@@ -99,7 +103,7 @@ export const content = {
     },
     footer: {
       tagline: "Building the future of your business, line by line.",
-      rights: "© 2025 Atlas One. All rights reserved.",
+      rights: "© 2026 Atlas One. All rights reserved.",
     },
   },
   es: {
@@ -121,24 +125,28 @@ export const content = {
       subtitle: "La tecnología que impulsa tu transformación.",
       items: [
         {
-          title: "Inteligencia Artificial",
+          title: "Atlas IA",
           desc: "No es solo hype. Desplegamos agentes autónomos que venden, asisten y analizan por vos 24/7.",
           icon: "ai",
+          color: "cyan",
         },
         {
-          title: "Software a Medida",
+          title: "Atlas Software",
           desc: "Olvidate de las apps genéricas. Forjamos sistemas y plataformas que le calzan a tu operación como un guante.",
           icon: "code",
+          color: "blue",
         },
         {
-          title: "Seguridad Digital",
+          title: "Atlas Cybersecurity",
           desc: "Tu fortaleza. Implementamos defensa automatizada de grado militar para proteger tu activo más valioso: los datos.",
           icon: "shield",
+          color: "purple",
         },
         {
-          title: "Datos e Inteligencia",
+          title: "Atlas Analytics",
           desc: "Transformamos ruido en señales. Dashboards interactivos que revelan las oportunidades ocultas en tus números.",
           icon: "chart",
+          color: "green",
         },
       ],
     },
@@ -200,7 +208,7 @@ export const content = {
     },
     footer: {
       tagline: "Construyendo el futuro de tu negocio, línea por línea.",
-      rights: "© 2025 Atlas One. Todos los derechos reservados.",
+      rights: "© 2026 Atlas One. Todos los derechos reservados.",
     },
   },
 };

@@ -16,7 +16,7 @@ export function AboutSection({ lang }: AboutSectionProps) {
   const t = content[lang].about;
 
   return (
-    <Section id="about" spacing="xl">
+    <Section id="about" spacing="xl" dark>
       <Container size="lg">
         {/* Header */}
         <SectionHeader title={t.title} subtitle={t.subtitle} gradient />

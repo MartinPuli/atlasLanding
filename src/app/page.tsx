@@ -159,43 +159,79 @@ function HeroSection({ lang, mounted }: { lang: Language; mounted: boolean }) {
 }
 
 // ============ PILLARS SECTION ============
+const pillarColors = {
+  cyan: {
+    bg: "from-cyan-400/20 to-cyan-600/20",
+    text: "text-cyan-400",
+    border: "border-cyan-400/30 hover:border-cyan-400/60",
+    glow: "shadow-[0_0_30px_rgba(34,211,238,0.15)]",
+  },
+  blue: {
+    bg: "from-blue-400/20 to-blue-600/20",
+    text: "text-blue-400",
+    border: "border-blue-400/30 hover:border-blue-400/60",
+    glow: "shadow-[0_0_30px_rgba(96,165,250,0.15)]",
+  },
+  purple: {
+    bg: "from-purple-400/20 to-purple-600/20",
+    text: "text-purple-400",
+    border: "border-purple-400/30 hover:border-purple-400/60",
+    glow: "shadow-[0_0_30px_rgba(192,132,252,0.15)]",
+  },
+  green: {
+    bg: "from-emerald-400/20 to-emerald-600/20",
+    text: "text-emerald-400",
+    border: "border-emerald-400/30 hover:border-emerald-400/60",
+    glow: "shadow-[0_0_30px_rgba(52,211,153,0.15)]",
+  },
+};
+
 function PillarsSection({ lang }: { lang: Language }) {
   const t = content[lang].pillars;
 
   return (
     <Section id="pilares" spacing="xl">
-      <Container>
+      <Container size="lg">
         <SectionHeader title={t.title} subtitle={t.subtitle} gradient />
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 lg:gap-10">
-          {t.items.map((pillar, index) => (
-            <GlassCard key={index} padding="xl" className="group">
-              <div className="flex flex-col items-center text-center gap-6 sm:gap-8">
-                {/* Icon */}
-                <div className="
-                  w-20 h-20 sm:w-24 sm:h-24 lg:w-28 lg:h-28
-                  rounded-2xl sm:rounded-3xl
-                  bg-gradient-to-br from-cyan-400/20 to-blue-500/20
-                  flex items-center justify-center
-                  icon-glow
-                  group-hover:scale-110
-                  transition-transform duration-500
-                ">
-                  <Icon type={pillar.icon} className="w-10 h-10 sm:w-12 sm:h-12 lg:w-14 lg:h-14 text-cyan-400" />
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-10 lg:gap-12 max-w-6xl mx-auto">
+          {t.items.map((pillar, index) => {
+            const color = pillarColors[pillar.color as keyof typeof pillarColors] || pillarColors.cyan;
+            return (
+              <div
+                key={index}
+                className={`
+                  glass-card rounded-2xl sm:rounded-3xl p-8 sm:p-10 lg:p-12
+                  border ${color.border} ${color.glow}
+                  group transition-all duration-500 hover:scale-[1.02]
+                `}
+              >
+                <div className="flex flex-col items-center text-center gap-6 sm:gap-8">
+                  {/* Icon */}
+                  <div className={`
+                    w-20 h-20 sm:w-24 sm:h-24 lg:w-28 lg:h-28
+                    rounded-2xl sm:rounded-3xl
+                    bg-gradient-to-br ${color.bg}
+                    flex items-center justify-center
+                    group-hover:scale-110
+                    transition-transform duration-500
+                  `}>
+                    <Icon type={pillar.icon} className={`w-10 h-10 sm:w-12 sm:h-12 lg:w-14 lg:h-14 ${color.text}`} />
+                  </div>
+
+                  {/* Title con color */}
+                  <h3 className={`text-xl sm:text-2xl lg:text-3xl font-bold ${color.text}`}>
+                    {pillar.title}
+                  </h3>
+
+                  {/* Description */}
+                  <p className="text-base sm:text-lg lg:text-xl text-[#8BA3B8] leading-relaxed">
+                    {pillar.desc}
+                  </p>
                 </div>
-
-                {/* Title */}
-                <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold text-white">
-                  {pillar.title}
-                </h3>
-
-                {/* Description */}
-                <p className="text-base sm:text-lg lg:text-xl text-[#8BA3B8] leading-relaxed max-w-md">
-                  {pillar.desc}
-                </p>
               </div>
-            </GlassCard>
-          ))}
+            );
+          })}
         </div>
       </Container>
     </Section>
