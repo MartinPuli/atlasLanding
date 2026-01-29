@@ -39,8 +39,8 @@ function Navigation({ lang, setLang }: { lang: Language; setLang: (l: Language) 
           {/* Desktop Nav */}
           <div className="hidden md:flex items-center gap-2 lg:gap-4">
             <a href="#" className="nav-link">{t.home}</a>
-            <a href="#pilares" className="nav-link">{t.solutions}</a>
-            <a href="#problems" className="nav-link">{t.about}</a>
+            <a href="#ecosystem" className="nav-link">{t.solutions}</a>
+            <a href="#about" className="nav-link">{t.about}</a>
             <a href="#footer" className="nav-link">{t.contact}</a>
           </div>
 
@@ -153,44 +153,68 @@ function HeroSection({ lang, mounted }: { lang: Language; mounted: boolean }) {
           <div className="w-1.5 h-3 bg-white/50 rounded-full animate-bounce" />
         </div>
       </div>
+
+      {/* Floating Particles */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+        <div className="absolute top-1/4 left-1/4 w-2 h-2 bg-cyan-400/40 rounded-full animate-particle-float delay-100" />
+        <div className="absolute top-3/4 left-1/3 w-3 h-3 bg-blue-500/30 rounded-full animate-particle-float delay-300" />
+        <div className="absolute top-1/2 right-1/4 w-2 h-2 bg-cyan-300/30 rounded-full animate-particle-float delay-500" />
+        <div className="absolute bottom-1/4 right-1/3 w-4 h-4 bg-teal-400/20 rounded-full animate-particle-float delay-700" />
+      </div>
     </section>
   );
 }
 
-// ============ PILLARS SECTION ============
-function PillarsSection({ lang }: { lang: Language }) {
-  const t = content[lang].pillars;
+// ============ ABOUT SECTION ============
+function AboutSection({ lang }: { lang: Language }) {
+  const t = content[lang].about;
 
   return (
-    <Section id="pilares" spacing="xl">
+    <Section id="about" className="relative overflow-hidden">
+      {/* Background decoration */}
+      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-gradient-to-b from-blue-600/10 to-transparent blur-[120px] rounded-full -translate-y-1/2 translate-x-1/2 pointer-events-none" />
+
+      <Container size="md">
+        <div className="text-center">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-8 sm:mb-10 leading-tight">
+            <span className="text-shimmer">{t.title}</span>
+          </h2>
+          <p className="text-lg sm:text-xl md:text-2xl text-[#8BA3B8] leading-relaxed">
+            {t.description}
+          </p>
+        </div>
+      </Container>
+    </Section>
+  );
+}
+
+// ============ ECOSYSTEM SECTION ============
+function EcosystemSection({ lang }: { lang: Language }) {
+  const t = content[lang].ecosystem;
+
+  return (
+    <Section id="ecosystem" spacing="xl" className="gradient-border-bottom">
       <Container>
         <SectionHeader title={t.title} subtitle={t.subtitle} gradient />
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 lg:gap-10">
-          {t.items.map((pillar, index) => (
-            <GlassCard key={index} padding="xl" className="group">
-              <div className="flex flex-col items-center text-center gap-6 sm:gap-8">
-                {/* Icon */}
-                <div className="
-                  w-20 h-20 sm:w-24 sm:h-24 lg:w-28 lg:h-28
-                  rounded-2xl sm:rounded-3xl
-                  bg-gradient-to-br from-cyan-400/20 to-blue-500/20
-                  flex items-center justify-center
-                  icon-glow
-                  group-hover:scale-110
-                  transition-transform duration-500
-                ">
-                  <Icon type={pillar.icon} className="w-10 h-10 sm:w-12 sm:h-12 lg:w-14 lg:h-14 text-cyan-400" />
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {t.items.map((item, index) => (
+            <GlassCard key={index} className="group relative overflow-hidden flex flex-col items-start h-full">
+              {/* Hover Grad */}
+              <div className="absolute inset-0 bg-gradient-to-br from-cyan-400/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+
+              {/* Content */}
+              <div className="relative z-10 flex flex-col items-start h-full w-full">
+                <div className="mb-6 p-3 bg-white/5 rounded-2xl group-hover:scale-110 transition-transform duration-500 border border-white/10 group-hover:border-cyan-400/30 group-hover:shadow-[0_0_20px_rgba(0,229,255,0.2)]">
+                  <Icon type={item.icon} className="w-8 h-8 text-cyan-400" />
                 </div>
 
-                {/* Title */}
-                <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold text-white">
-                  {pillar.title}
+                <h3 className="text-xl font-bold text-white mb-3 group-hover:text-cyan-400 transition-colors">
+                  {item.title}
                 </h3>
 
-                {/* Description */}
-                <p className="text-base sm:text-lg lg:text-xl text-[#8BA3B8] leading-relaxed max-w-md">
-                  {pillar.desc}
+                <p className="text-sm text-[#8BA3B8] leading-relaxed">
+                  {item.desc}
                 </p>
               </div>
             </GlassCard>
@@ -200,6 +224,8 @@ function PillarsSection({ lang }: { lang: Language }) {
     </Section>
   );
 }
+
+
 
 // ============ PROBLEMS SECTION ============
 function ProblemsSection({ lang }: { lang: Language }) {
@@ -370,7 +396,8 @@ export default function Home() {
     <main className="min-h-screen overflow-x-hidden">
       <Navigation lang={lang} setLang={setLang} />
       <HeroSection lang={lang} mounted={mounted} />
-      <PillarsSection lang={lang} />
+      <AboutSection lang={lang} />
+      <EcosystemSection lang={lang} />
       <ProblemsSection lang={lang} />
       <TimelineSection lang={lang} />
       <FooterSection lang={lang} />

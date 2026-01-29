@@ -4,7 +4,7 @@ export const content = {
   en: {
     nav: {
       home: "Home",
-      solutions: "Solutions",
+      solutions: "Ecosystem",
       about: "About",
       contact: "Contact",
     },
@@ -15,32 +15,37 @@ export const content = {
         "Stop guessing. Start building. We architect the data infrastructure that powers your next big leap.",
       cta: "Start Building",
     },
-    pillars: {
-      title: "Our Core Power",
-      subtitle: "The engine behind your business transformation.",
+    about: {
+      title: "The Future is Autonomous",
+      description: "We believe in a world where technology doesn't just assist—it empowers. Our mission is to bridge the gap between human potential and artificial intelligence, creating systems that think, learn, and evolve. We are not just coding; we are architecting the intelligence of tomorrow.",
+    },
+    ecosystem: {
+      title: "The Atlas Ecosystem",
+      subtitle: "A unified suite of power.",
       items: [
         {
-          title: "Artificial Intelligence",
-          desc: "Not just a buzzword. We deploy autonomous agents that sell, support, and analyze for you 24/7.",
+          title: "Atlas AI",
+          desc: "Autonomous agents that learn your business to drive growth and efficiency.",
           icon: "ai",
         },
         {
-          title: "Custom Software",
-          desc: "Forget cookie-cutter apps. We forge internal systems and platforms that fit your operation like a glove.",
+          title: "Atlas Software",
+          desc: "Bespoke digital foundations built for scale, speed, and reliability.",
           icon: "code",
         },
         {
-          title: "Digital Security",
-          desc: "Your fortress. We implement military-grade automated defense to protect your most valuable asset: data.",
-          icon: "shield",
+          title: "Atlas Analytics",
+          desc: "Deep data visualization that turns complex metrics into clear decisions.",
+          icon: "chart",
         },
         {
-          title: "Data & Intelligence",
-          desc: "Turn noise into signal. Interactive dashboards that reveal the hidden opportunities in your numbers.",
-          icon: "chart",
+          title: "Atlas Cybersecurity",
+          desc: "Iron-clad protection for your digital assets in an unpredictable world.",
+          icon: "shield",
         },
       ],
     },
+
     problems: {
       title: "Why Do Most Systems Fail?",
       items: [
@@ -73,7 +78,7 @@ export const content = {
   es: {
     nav: {
       home: "Inicio",
-      solutions: "Soluciones",
+      solutions: "Ecosistema",
       about: "Nosotros",
       contact: "Contacto",
     },
@@ -84,32 +89,37 @@ export const content = {
         "Dejá de adivinar. Empezá a construir. Diseñamos la infraestructura de datos que impulsa tu próximo gran salto.",
       cta: "Empezar Ahora",
     },
-    pillars: {
-      title: "Nuestro Motor",
-      subtitle: "La tecnología que impulsa tu transformación.",
+    about: {
+      title: "El Futuro es Autónomo",
+      description: "Creemos en un mundo donde la tecnología no solo asiste—potencia. Nuestra misión es cerrar la brecha entre el potencial humano y la inteligencia artificial, creando sistemas que piensan, aprenden y evolucionan. No solo programamos; arquitectamos la inteligencia del mañana.",
+    },
+    ecosystem: {
+      title: "El Ecosistema Atlas",
+      subtitle: "Una suite unificada de poder.",
       items: [
         {
-          title: "Inteligencia Artificial",
-          desc: "No es solo hype. Desplegamos agentes autónomos que venden, asisten y analizan por vos 24/7.",
+          title: "Atlas IA",
+          desc: "Agentes autónomos que aprenden de tu negocio para impulsar crecimiento y eficiencia.",
           icon: "ai",
         },
         {
-          title: "Software a Medida",
-          desc: "Olvidate de las apps genéricas. Forjamos sistemas y plataformas que le calzan a tu operación como un guante.",
+          title: "Atlas Software",
+          desc: "Cimientos digitales a medida construidos para escalar, veloz y confiables.",
           icon: "code",
         },
         {
-          title: "Seguridad Digital",
-          desc: "Tu fortaleza. Implementamos defensa automatizada de grado militar para proteger tu activo más valioso: los datos.",
-          icon: "shield",
+          title: "Atlas Analytics",
+          desc: "Visualización profunda de datos que convierte métricas complejas en decisiones claras.",
+          icon: "chart",
         },
         {
-          title: "Datos e Inteligencia",
-          desc: "Transformamos ruido en señales. Dashboards interactivos que revelan las oportunidades ocultas en tus números.",
-          icon: "chart",
+          title: "Atlas Cybersecurity",
+          desc: "Protección blindada para tus activos digitales en un mundo impredecible.",
+          icon: "shield",
         },
       ],
     },
+
     problems: {
       title: "¿Por Qué Fallan los Sistemas?",
       items: [
