@@ -23,10 +23,14 @@ const content = {
         "Stop guessing. Start building. We architect the data infrastructure and intelligent systems that power your next big leap.",
       cta: "Start Your Transformation",
       ctaSecondary: "Learn More",
+      emailSubject: "Inquiry from Web - [Company Name]",
+      emailBody: "Hello German from Atlas One,\n\nMy name is [Name] from [Company Name] in the [Niche Name] niche.\n\nI have a problem with [Problem] and I want to digitalize my business.\n\nBest regards,\n[Name]"
     },
     ctaSecondary: {
       title: "Stop letting inefficiencies drain your profit.",
-      subtitle: "Automate your workflows today."
+      subtitle: "Automate your workflows today.",
+      emailSubject: "Demo Request - [Company Name]",
+      emailBody: "Hello German from Atlas One,\n\nMy name is [Name] from [Company Name] in the [Niche Name] niche.\n\nI have a problem with [Problem] and I want to schedule a demo for [Day].\n\nBest regards,\n[Name]"
     },
     about: {
       title: "Who We Are",
@@ -136,10 +140,14 @@ const content = {
         "Dejá de operar con sistemas del pasado. Atlas One diseña la arquitectura de datos, automatización e IA que tu negocio necesita para escalar sin fricción.",
       cta: "Agendá Tu Diagnóstico",
       ctaSecondary: "Explorar Ecosistema",
+      emailSubject: "Consulta desde Web - [Nombre Empresa]",
+      emailBody: "Hola Germán de Atlas One,\n\nMi nombre es [Nombre] de [Nombre Empresa] del nicho [Nombre nicho].\n\nTengo el problema de que [Problema] y quiero transformar mi negocio.\n\nSaludos,\n[Nombre]"
     },
     ctaSecondary: {
       title: "Dejá que las ineficiencias drenen tu rentabilidad.",
-      subtitle: "Automatizá tus flujos de trabajo hoy mismo."
+      subtitle: "Automatizá tus flujos de trabajo hoy mismo.",
+      emailSubject: "Solicitud de Demo - [Nombre Empresa]",
+      emailBody: "Hola Germán de Atlas One,\n\nMi nombre es [Nombre] de [Nombre Empresa] del nicho [Nombre nicho].\n\nTengo el problema de que [Problema] y quiero agendar una demo para el día [Día].\n\nSaludos,\n[Nombre]"
     },
     about: {
       title: "Más que Software. Socios de Crecimiento.",
@@ -369,7 +377,7 @@ function CTAStrip({ lang }: { lang: Language }) {
           </p>
         </div>
         <a
-          href="mailto:atlasonecontact@gmail.com?subject=Solicitud%20de%20Demo%20-%20%5BNombre%20Empresa%5D&body=Hola%20Germ%C3%A1n%20de%20Atlas%20One%2C%0A%0AMi%20nombre%20es%20%5BNombre%5D%20de%20%5BNombre%20Empresa%5D%20del%20nicho%20%5BNombre%20nicho%5D.%0A%0ATengo%20el%20problema%20de%20que%20%5BProblema%5D%20y%20quiero%20agendar%20una%20demo%20para%20el%20d%C3%ADa%20%5BD%C3%ADa%5D.%0A%0ASaludos%2C%0A%5BNombre%5D"
+          href={`mailto:atlasonecontact@gmail.com?subject=${encodeURIComponent(t.emailSubject)}&body=${encodeURIComponent(t.emailBody)}`}
           className="whitespace-nowrap px-8 py-4 bg-[#030B12] text-white font-bold text-lg rounded-xl hover:scale-105 hover:shadow-2xl transition-all"
         >
           {lang === 'en' ? "Book a Demo" : "Agendar Demo"}
@@ -480,11 +488,11 @@ function Navigation({ lang, setLang }: { lang: Language; setLang: (l: Language) 
             ))}
             {/* CTA in mobile menu */}
             <a
-              href="mailto:atlasonecontact@gmail.com?subject=Contacto%20desde%20Web%20-%20%5BNombre%20Empresa%5D&body=Hola%20Germ%C3%A1n%20de%20Atlas%20One%2C%0A%0AMi%20nombre%20es%20%5BNombre%5D%20de%20%5BNombre%20Empresa%5D%20del%20nicho%20%5BNombre%20nicho%5D.%0A%0ATengo%20el%20problema%20de%20que%20%5BProblema%5D%20y%20me%20gustar%C3%ADa%20m%C3%A1s%20informaci%C3%B3n.%0A%0ASaludos%2C%0A%5BNombre%5D"
+              href={`mailto:atlasonecontact@gmail.com?subject=${encodeURIComponent(lang === 'en' ? "Contact from Web - [Company Name]" : "Contacto desde Web - [Nombre Empresa]")}&body=${encodeURIComponent(lang === 'en' ? "Hello..." : "Hola Germán de Atlas One,\n\nMi nombre es [Nombre] de [Nombre Empresa] del nicho [Nombre nicho].\n\nTengo el problema de que [Problema] y me gustaría más información.\n\nSaludos,\n[Nombre]")}`}
               onClick={() => setMobileMenuOpen(false)}
               className="mt-4 px-8 py-3 bg-gradient-to-r from-[#00E5FF] to-[#00BCD4] text-[#030B12] font-bold rounded-xl shadow-[0_0_30px_rgba(0,229,255,0.4)]"
             >
-              Contactar →
+              Contactar&nbsp;→
             </a>
           </div>
         </div>
@@ -578,8 +586,8 @@ function HeroSection({ lang }: { lang: Language }) {
 
         <FadeIn delay={0.6}>
           <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center">
-            <a href="mailto:atlasonecontact@gmail.com?subject=Consulta%20desde%20Web%20-%20%5BNombre%20Empresa%5D&body=Hola%20Germ%C3%A1n%20de%20Atlas%20One%2C%0A%0AMi%20nombre%20es%20%5BNombre%5D%20de%20%5BNombre%20Empresa%5D%20del%20nicho%20%5BNombre%20nicho%5D.%0A%0ATengo%20el%20problema%20de%20que%20%5BProblema%5D%20y%20quiero%20transformar%20mi%20negocio.%0A%0ASaludos%2C%0A%5BNombre%5D" className="px-8 sm:px-10 py-4 sm:py-5 bg-gradient-to-r from-[#00E5FF] to-[#00BCD4] text-[#030B12] font-bold text-lg sm:text-xl rounded-2xl shadow-[0_0_50px_rgba(0,229,255,0.4)] hover:shadow-[0_0_80px_rgba(0,229,255,0.6)] hover:-translate-y-1 transition-all">
-              {t.cta} →
+            <a href={`mailto:atlasonecontact@gmail.com?subject=${encodeURIComponent(t.emailSubject)}&body=${encodeURIComponent(t.emailBody)}`} className="px-8 sm:px-10 py-4 sm:py-5 bg-gradient-to-r from-[#00E5FF] to-[#00BCD4] text-[#030B12] font-bold text-lg sm:text-xl rounded-2xl shadow-[0_0_50px_rgba(0,229,255,0.4)] hover:shadow-[0_0_80px_rgba(0,229,255,0.6)] hover:-translate-y-1 transition-all">
+              {t.cta}&nbsp;→
             </a>
             <a href="#about" className="px-8 sm:px-10 py-4 sm:py-5 bg-transparent text-[#00E5FF] font-bold text-lg sm:text-xl border border-[#00E5FF]/50 rounded-2xl hover:bg-[#00E5FF]/10 transition-all">
               {t.ctaSecondary}
