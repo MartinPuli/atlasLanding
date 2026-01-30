@@ -122,9 +122,9 @@ export const IntroScene: React.FC = () => {
         }}
       >
         <Img
-          src={staticFile("nombre-atlas.png")}
+          src={staticFile("nombre-atlas-horizontal.png")}
           style={{
-            height: 100,
+            height: 140,
             objectFit: "contain",
             filter: `drop-shadow(0 0 ${20 * glowIntensity}px rgba(0, 212, 255, 0.5))`,
           }}
