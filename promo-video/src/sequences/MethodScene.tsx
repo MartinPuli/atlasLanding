@@ -1,10 +1,42 @@
-import { AbsoluteFill, useCurrentFrame, interpolate, spring, useVideoConfig } from "remotion";
+import { AbsoluteFill, useCurrentFrame, interpolate, spring, useVideoConfig, Img, staticFile } from "remotion";
+
+// SVG Icons para metodología
+const SearchIcon = () => (
+  <svg width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="#00D4FF" strokeWidth="2">
+    <circle cx="11" cy="11" r="8"/>
+    <path d="m21 21-4.35-4.35"/>
+  </svg>
+);
+
+const ArchitectureIcon = () => (
+  <svg width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="#00D4FF" strokeWidth="2">
+    <path d="M2 20h20"/>
+    <path d="M5 20V8l7-5 7 5v12"/>
+    <path d="M9 20v-6h6v6"/>
+  </svg>
+);
+
+const CodeIcon = () => (
+  <svg width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="#00D4FF" strokeWidth="2">
+    <path d="m8 6-6 6 6 6"/>
+    <path d="m16 6 6 6-6 6"/>
+  </svg>
+);
+
+const RocketIcon = () => (
+  <svg width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="#00D4FF" strokeWidth="2">
+    <path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/>
+    <path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/>
+    <path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/>
+    <path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/>
+  </svg>
+);
 
 const steps = [
-  { number: "01", title: "Auditoría", description: "Diagnóstico profundo", icon: "🔍" },
-  { number: "02", title: "Arquitectura", description: "Diseño escalable", icon: "📐" },
-  { number: "03", title: "Implementación", description: "Desarrollo ágil", icon: "⚡" },
-  { number: "04", title: "Escalado", description: "Soporte continuo", icon: "🚀" },
+  { number: "01", title: "Auditoría", description: "Diagnóstico profundo", Icon: SearchIcon },
+  { number: "02", title: "Arquitectura", description: "Diseño escalable", Icon: ArchitectureIcon },
+  { number: "03", title: "Implementación", description: "Desarrollo ágil", Icon: CodeIcon },
+  { number: "04", title: "Escalado", description: "Soporte continuo", Icon: RocketIcon },
 ];
 
 export const MethodScene: React.FC = () => {
@@ -119,7 +151,7 @@ export const MethodScene: React.FC = () => {
                 zIndex: 1,
               }}
             >
-              {/* Círculo con icono */}
+              {/* Círculo con icono SVG */}
               <div
                 style={{
                   width: 120,
@@ -134,7 +166,7 @@ export const MethodScene: React.FC = () => {
                   boxShadow: "0 0 30px rgba(0, 212, 255, 0.3)",
                 }}
               >
-                <span style={{ fontSize: 50 }}>{step.icon}</span>
+                <step.Icon />
               </div>
 
               {/* Número */}

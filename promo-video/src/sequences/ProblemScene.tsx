@@ -1,12 +1,58 @@
-import { AbsoluteFill, useCurrentFrame, interpolate, spring, useVideoConfig } from "remotion";
+import { AbsoluteFill, useCurrentFrame, interpolate, spring, useVideoConfig, Img, staticFile } from "remotion";
+
+// SVG Icons para problemas
+const WarningIcon = () => (
+  <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#FF6B6B" strokeWidth="2">
+    <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/>
+    <path d="M12 9v4"/>
+    <path d="M12 17h.01"/>
+  </svg>
+);
+
+const PlugIcon = () => (
+  <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#FF6B6B" strokeWidth="2">
+    <path d="M12 22v-5"/>
+    <path d="M9 8V2"/>
+    <path d="M15 8V2"/>
+    <path d="M18 8v5a4 4 0 0 1-4 4h-4a4 4 0 0 1-4-4V8Z"/>
+  </svg>
+);
+
+const ClockIcon = () => (
+  <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#FF6B6B" strokeWidth="2">
+    <circle cx="12" cy="12" r="10"/>
+    <path d="M12 6v6l4 2"/>
+  </svg>
+);
+
+const ChartIcon = () => (
+  <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#FF6B6B" strokeWidth="2">
+    <path d="M3 3v18h18"/>
+    <path d="m19 9-5 5-4-4-3 3"/>
+  </svg>
+);
+
+const UserIcon = () => (
+  <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#FF6B6B" strokeWidth="2">
+    <circle cx="12" cy="8" r="5"/>
+    <path d="M20 21a8 8 0 1 0-16 0"/>
+  </svg>
+);
+
+const MoneyIcon = () => (
+  <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#FF6B6B" strokeWidth="2">
+    <path d="M12 2v20"/>
+    <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+  </svg>
+);
 
 const problems = [
-  { icon: "⚠️", text: "Procesos manuales propensos a errores" },
-  { icon: "🔌", text: "Sistemas desconectados" },
-  { icon: "⏰", text: "Pérdida de oportunidades por lentitud" },
-  { icon: "📊", text: "Datos dispersos e inaccesibles" },
-  { icon: "👤", text: "Dependencia de personal clave" },
-  { icon: "💸", text: "Tecnología costosa sin retorno" },
+  { Icon: WarningIcon, text: "Procesos manuales propensos a errores" },
+  { Icon: PlugIcon, text: "Sistemas desconectados" },
+  { Icon: ClockIcon, text: "Pérdida de oportunidades por lentitud" },
+  { Icon: ChartIcon, text: "Datos dispersos e inaccesibles" },
+  { Icon: UserIcon, text: "Dependencia de personal clave" },
+  { Icon: MoneyIcon, text: "Tecnología costosa sin retorno" },
 ];
 
 export const ProblemScene: React.FC = () => {
@@ -105,7 +151,7 @@ export const ProblemScene: React.FC = () => {
                 gap: 20,
               }}
             >
-              <span style={{ fontSize: 48 }}>{problem.icon}</span>
+              <problem.Icon />
               <p
                 style={{
                   fontSize: 22,

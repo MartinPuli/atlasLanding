@@ -1,4 +1,4 @@
-import { AbsoluteFill, useCurrentFrame, interpolate, spring, useVideoConfig } from "remotion";
+import { AbsoluteFill, useCurrentFrame, interpolate, spring, useVideoConfig, Img, staticFile } from "remotion";
 
 export const IntroScene: React.FC = () => {
   const frame = useCurrentFrame();
@@ -92,7 +92,7 @@ export const IntroScene: React.FC = () => {
         }}
       />
 
-      {/* Logo Atlas One */}
+      {/* Logo Atlas One - Imagen real */}
       <div
         style={{
           display: "flex",
@@ -102,59 +102,18 @@ export const IntroScene: React.FC = () => {
           opacity: logoOpacity,
         }}
       >
-        {/* Icono del Atlas */}
-        <svg
-          width="180"
-          height="180"
-          viewBox="0 0 100 100"
+        <Img
+          src={staticFile("logo-atlas.png")}
           style={{
+            width: 220,
+            height: 220,
+            objectFit: "contain",
             filter: `drop-shadow(0 0 ${30 * glowIntensity}px #00D4FF)`,
           }}
-        >
-          {/* Globo */}
-          <circle
-            cx="50"
-            cy="50"
-            r="40"
-            fill="none"
-            stroke="url(#gradient)"
-            strokeWidth="2"
-          />
-          {/* Líneas del globo */}
-          <ellipse
-            cx="50"
-            cy="50"
-            rx="40"
-            ry="15"
-            fill="none"
-            stroke="#00D4FF"
-            strokeWidth="1"
-            opacity="0.5"
-          />
-          <ellipse
-            cx="50"
-            cy="50"
-            rx="15"
-            ry="40"
-            fill="none"
-            stroke="#00D4FF"
-            strokeWidth="1"
-            opacity="0.5"
-            transform={`rotate(${frame * 0.5} 50 50)`}
-          />
-          {/* Centro brillante */}
-          <circle cx="50" cy="50" r="8" fill="#00D4FF" opacity="0.8" />
-          <circle cx="50" cy="50" r="4" fill="#FFFFFF" />
-          <defs>
-            <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stopColor="#00D4FF" />
-              <stop offset="100%" stopColor="#00FF94" />
-            </linearGradient>
-          </defs>
-        </svg>
+        />
       </div>
 
-      {/* Nombre */}
+      {/* Nombre Atlas - Imagen real */}
       <div
         style={{
           marginTop: 40,
@@ -162,20 +121,14 @@ export const IntroScene: React.FC = () => {
           transform: `translateY(${textY}px)`,
         }}
       >
-        <h1
+        <Img
+          src={staticFile("nombre-atlas.png")}
           style={{
-            fontSize: 120,
-            fontWeight: 800,
-            letterSpacing: "-0.02em",
-            background: "linear-gradient(90deg, #FFFFFF 0%, #00D4FF 50%, #00FF94 100%)",
-            WebkitBackgroundClip: "text",
-            WebkitTextFillColor: "transparent",
-            margin: 0,
-            textShadow: `0 0 ${40 * glowIntensity}px rgba(0, 212, 255, 0.5)`,
+            height: 100,
+            objectFit: "contain",
+            filter: `drop-shadow(0 0 ${20 * glowIntensity}px rgba(0, 212, 255, 0.5))`,
           }}
-        >
-          ATLAS ONE
-        </h1>
+        />
       </div>
 
       {/* Tagline */}

@@ -1,4 +1,4 @@
-import { AbsoluteFill, useCurrentFrame, interpolate, spring, useVideoConfig } from "remotion";
+import { AbsoluteFill, useCurrentFrame, interpolate, spring, useVideoConfig, Img, staticFile } from "remotion";
 
 export const CTAScene: React.FC = () => {
   const frame = useCurrentFrame();
@@ -173,7 +173,7 @@ export const CTAScene: React.FC = () => {
         </div>
       </div>
 
-      {/* Logo final */}
+      {/* Logo final - Imágenes reales */}
       <div
         style={{
           position: "absolute",
@@ -181,23 +181,25 @@ export const CTAScene: React.FC = () => {
           opacity: contactOpacity,
           display: "flex",
           alignItems: "center",
-          gap: 16,
+          gap: 20,
         }}
       >
-        <svg width="40" height="40" viewBox="0 0 100 100">
-          <circle cx="50" cy="50" r="40" fill="none" stroke="#00D4FF" strokeWidth="2" />
-          <circle cx="50" cy="50" r="6" fill="#00D4FF" />
-        </svg>
-        <span
+        <Img
+          src={staticFile("logo-atlas.png")}
           style={{
-            fontSize: 28,
-            fontWeight: 700,
-            color: "#FFFFFF",
-            letterSpacing: "0.1em",
+            width: 60,
+            height: 60,
+            objectFit: "contain",
+            filter: "drop-shadow(0 0 10px rgba(0, 212, 255, 0.5))",
           }}
-        >
-          ATLAS ONE
-        </span>
+        />
+        <Img
+          src={staticFile("nombre-atlas.png")}
+          style={{
+            height: 35,
+            objectFit: "contain",
+          }}
+        />
       </div>
     </AbsoluteFill>
   );

@@ -1,0 +1,72 @@
+<svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="glowGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00E5FF"/>
+      <stop offset="50%" stop-color="#00BCD4"/>
+      <stop offset="100%" stop-color="#0097A7"/>
+    </linearGradient>
+    <linearGradient id="darkFill" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0A1929"/>
+      <stop offset="100%" stop-color="#051219"/>
+    </linearGradient>
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <filter id="innerShadow">
+      <feOffset dx="2" dy="2"/>
+      <feGaussianBlur stdDeviation="2" result="offset-blur"/>
+      <feComposite operator="out" in="SourceGraphic" in2="offset-blur" result="inverse"/>
+      <feFlood flood-color="#000" flood-opacity="0.5" result="color"/>
+      <feComposite operator="in" in="color" in2="inverse" result="shadow"/>
+      <feComposite operator="over" in="shadow" in2="SourceGraphic"/>
+    </filter>
+  </defs>
+
+  <!-- Outer glow layer -->
+  <g filter="url(#glow)" opacity="0.6">
+    <polygon points="100,20 170,150 30,150" fill="none" stroke="url(#glowGradient)" stroke-width="8"/>
+  </g>
+
+  <!-- Main triangle body - 3D effect -->
+  <!-- Back face -->
+  <polygon points="100,35 155,135 45,135" fill="url(#darkFill)"/>
+
+  <!-- Left edge 3D -->
+  <polygon points="30,150 45,135 100,35 100,20 30,150" fill="#0D2137"/>
+
+  <!-- Right edge 3D -->
+  <polygon points="170,150 155,135 100,35 100,20 170,150" fill="#061520"/>
+
+  <!-- Bottom edge 3D -->
+  <polygon points="30,150 45,135 155,135 170,150 30,150" fill="#0A1929"/>
+
+  <!-- Glowing edges -->
+  <polygon
+    points="100,20 170,150 30,150"
+    fill="none"
+    stroke="url(#glowGradient)"
+    stroke-width="3"
+    stroke-linejoin="round"
+    filter="url(#glow)"
+  />
+
+  <!-- Inner triangle cutout effect -->
+  <polygon points="100,55 135,120 65,120" fill="#030B12"/>
+  <polygon
+    points="100,55 135,120 65,120"
+    fill="none"
+    stroke="url(#glowGradient)"
+    stroke-width="2"
+    stroke-linejoin="round"
+    opacity="0.7"
+  />
+
+  <!-- Highlight accents -->
+  <line x1="100" y1="20" x2="100" y2="35" stroke="#00E5FF" stroke-width="2" opacity="0.8"/>
+  <line x1="30" y1="150" x2="45" y2="135" stroke="#00E5FF" stroke-width="2" opacity="0.6"/>
+  <line x1="170" y1="150" x2="155" y2="135" stroke="#00E5FF" stroke-width="2" opacity="0.6"/>
+</svg>
