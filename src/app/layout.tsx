@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
+  metadataBase: new URL("http://localhost:3000"),
   title: "Atlas One | Soluciones Digitales y Automatización",
   description:
     "Desarrollamos software, automatizaciones y agentes de inteligencia artificial para potenciar tu negocio. Atlas One: Tecnología que escala.",

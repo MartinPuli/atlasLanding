@@ -530,6 +530,7 @@ function HeroSection({ lang }: { lang: Language }) {
           alt=""
           fill
           className="object-cover scale-110"
+          sizes="100vw"
           priority
         />
         {/* Radial fade to soften edges */}
@@ -545,13 +546,14 @@ function HeroSection({ lang }: { lang: Language }) {
       <div className="relative z-10 text-center px-4 sm:px-6 max-w-5xl mx-auto pt-24 sm:pt-20">
 
         {/* LOGO - No Background, Screen Blend */}
-        <div className="flex justify-center mb-4 sm:mb-6 animate-float">
-          <div className="relative w-[150px] h-[150px] sm:w-[200px] sm:h-[200px] md:w-[240px] md:h-[240px]">
+        <div className="flex justify-center mb-4 sm:mb-6 animate-float pt-10">
+          <div className="relative w-[100px] h-[100px] sm:w-[140px] sm:h-[140px] md:w-[180px] md:h-[180px]">
             <Image
               src="/logo-atlas.png"
               alt="Atlas One"
               fill
-              className="object-contain mix-blend-screen drop-shadow-[0_0_80px_rgba(0,229,255,0.8)]"
+              className="object-contain mix-blend-screen drop-shadow-[0_0_80px_rgba(0,229,255,0.8)] opacity-90"
+              sizes="(max-width: 768px) 100vw, 300px"
               priority
             />
           </div>
